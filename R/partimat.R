@@ -129,7 +129,7 @@ partimat.matrix<-function (x, grouping, ..., subset, na.action = na.fail)
         grouping <- dfr$g
         x <- dfr$x
     }
-    res <- NextMethod("partimat")
+    res <- partimat.default(x, grouping, ...)
     cl <- match.call()
     cl[[1]] <- as.name("partimat")
     res$call <- cl

@@ -56,7 +56,7 @@ sknn.matrix<-function (x, grouping, ..., subset, na.action = na.fail)
         grouping <- dfr$g
         x <- dfr$x
     }
-    res <- NextMethod("sknn")
+    res <- sknn(x, grouping, ...)
     cl <- match.call()
     cl[[1]] <- as.name("sknn")
     res$call <- cl

@@ -141,7 +141,7 @@ svmlight.matrix <- function(x, grouping, ..., subset, na.action = na.fail)
         grouping <- dfr$g
         x <- dfr$x
     }
-    res <- NextMethod("svmlight")
+    res <- svmlight.default(x, grouping, ...)
     cl <- match.call()
     cl[[1]] <- as.name("svmlight")
     res$call <- cl
@@ -230,7 +230,7 @@ return(erg)
     }
     if (object$del) 
         file.remove(c(test.filename, pred.filename, model.filename))
-    if (length(J)>1)
+    if (object$type=="C")
     {
     ### Classification: choose class with highest decision value f(x)
     if  (object$class.type=="oao")   

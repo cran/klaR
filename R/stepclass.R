@@ -122,8 +122,10 @@ stepclass.default <-function (x, grouping, method, improvement = 0.05,
         #    group.rates <- c(group.rates, (1-ucpm(classi,)$criterion))
         #}
         
-        if (any(predicted == 0)) 
+        if (any(predicted == 0)){
+            goalfunc <- fold
             warning(" Error(s) in modeling/prediction step.\n")
+        }
         return(goalfunc / fold)
     }
     min.sec <- function(seconds) {
@@ -221,7 +223,7 @@ stepclass.default <-function (x, grouping, method, improvement = 0.05,
                   cv.groups = cv.groups, criterion = criterion, ...)
                 error.rates <- rbind(error.rates, c(var = tryvar, rate = newrate))
             }
-        else if (fwd && (length(out[!is.element(out, last.changed)]) == 0)) 
+        else if (fwd && (length(out[!is.element(out, last.changed)]) == 0))
             error.rates <- rbind(error.rates, c(var = 1, rate = 1))
         if (bwd && (length(model[!is.element(model, last.changed)]) >= 2)) 
             for (outvar in model[!is.element(model, last.changed)]) {

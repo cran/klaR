@@ -70,7 +70,11 @@ Changelog:
 
 ==== release: 0.3-2
 
+- major bugfixes: *.matrix have been made NAMESPACE compatible
+                  stepclass, try-catching corrected
+                  predict.svmlight oao works for two classes
 
+==== release: 0.3-3
 
 
 To Do:
