@@ -54,7 +54,7 @@ partimat(x,...)
 }
 \seealso{for much more fine tuning see \code{\link{drawparti}}}
 \author{Karsten Luebke, \email{luebke@statistik.uni-dortmund.de}, Uwe Ligges, Irina Czogiel}
-\note{Warnings such as  \sQuote{parameter \dQuote{xyz} couldn't be set in high-level plot() function} are expected,
+\note{Warnings such as  \sQuote{parameter \dQuote{xyz} couldn't be set in high-level plot function} are expected,
     if making use of \code{...}.}
 \examples{
 library(MASS)

@@ -34,12 +34,17 @@ quadpoints <- function(e, f=NULL, g=NULL, h=NULL, sp=s3d, ...)
 
 quadplot <- function(e=NULL, f=NULL, g=NULL, h=NULL, angle=75, scale.y=0.6, 
                     label=1:4, labelcol=rainbow(4), labelpch=19, 
-                    labelcex=1.5, main="", ...)
+                    labelcex=1.5, main="", s3d.control = list(), 
+                    simplex.control = list(), legend.control = list(),
+                    ...)
 {
 corners <- quadtrafo(diag(4))
-s3d <- scatterplot3d(0.5, 0.2886751, 0.2041241, type="n", 
-    xlim=range(corners[,1]), ylim=range(corners[,2]), zlim=range(corners[,3]),
-    axis = FALSE, grid=FALSE, angle = angle, scale.y = scale.y, main=main)
+s3d <- do.call("scatterplot3d", 
+    c(list(0.5, 0.2886751, 0.2041241, type="n", 
+        xlim=range(corners[,1]), ylim=range(corners[,2]), zlim=range(corners[,3]),
+        axis = FALSE, grid=FALSE, angle = angle, scale.y = scale.y, main=main),
+      s3d.control)
+)
 
 # We need to get the correct "mar" values set in the first scatterplot3d() call:
 par(mar = get("mar", pos=environment(s3d$xyz.convert)))
@@ -47,11 +52,20 @@ par(mar = get("mar", pos=environment(s3d$xyz.convert)))
 usr <- as.vector(sapply(s3d$xyz.convert(corners), range))
 par(usr = usr, xpd = NA)
 
-# outer simplex
-quadlines((diag(4)[c(1:4,1,3,2,4),]),sp=s3d)
-quadpoints(diag(4), sp=s3d, pch=labelpch,col=labelcol,cex=labelcex)
-legend(usr[1], usr[4], legend = label, 
-    col = labelcol, pch = labelpch, cex = labelcex)
-if (!is.null(e)) quadpoints(e,f,g,h,sp=s3d,...)
+# outer simplex:
+do.call("quadlines", 
+    c(list(e = diag(4)[c(1:4,1,3,2,4),], sp = s3d), 
+      simplex.control)
+)
+do.call("quadpoints", 
+    c(list(e = diag(4), sp = s3d, pch = labelpch, col = labelcol, cex = labelcex)))
+# legend:
+do.call("legend", 
+    c(list(usr[1], usr[4], legend = label, col = labelcol, pch = labelpch, cex = labelcex),
+      legend.control)
+)
+# points:
+if (!is.null(e)) 
+    quadpoints(e, f, g, h, sp = s3d, ...)
 return(s3d)
 }

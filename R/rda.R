@@ -100,8 +100,8 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
   
   nelder.mead <- function(func, startsimplex, mini=NULL, maxi=NULL, link=function(x)(x),
                           a=1, b=0.5, g=3, r=0.5, e=.Machine$double.eps^0.5, 
-                          max.iter=Inf, best.possible=-Inf, output=FALSE, 
-                          simAnn=TRUE, schedule=1, T.start=NULL, halflife=200, zero.temp=0.01, alpha=2, K=500)
+                          max.iter=1e6, best.possible=-Inf, output=FALSE, 
+                          simAnn=TRUE, schedule=1, T.start=NULL, halflife=200, zero.temp=0.01, alpha=2, K=500, degen=1)
   # minimizes the function `func' with several real parameters. 
   # Parameters: 
   #  func          :  the function to be minimized; must require a vector of (at least two) real-value-parameters 
@@ -123,7 +123,16 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
   #  zero.temp     :  temperature at which it is set to zero                         (schedule I) 
   #  alpha         :  power of temperature reduction (linear, quadratic, cubic,...)  (schedule II) 
   #  K             :  number of iterations until temperature = 0                     (schedule II) 
+  #  degen         :  number to substract or add to mini, maxi in degnerated simplices 
   {
+    rmunif<-function(n,min=0,max=1)
+    {
+        dim<-length(min)
+        erg<-matrix(0,nrow=n,ncol=dim)
+        for (i in 1:dim) erg[,i]<-runif(n,min[i],max[i])
+        if (n==1) erg<-as.vector(erg)
+        return(erg)
+    }
     restrict <- function(x) # forces x to be within its bounds (given by `mini' & `maxi') 
     {                       # (necessary for reflexion & expansion) 
       new.x <- x
@@ -149,11 +158,22 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
     }
 
     if (is.vector(startsimplex) && length(startsimplex)==1 && startsimplex>0 && startsimplex==trunc(startsimplex))
-      startsimplex <- rbind(rep(-sqrt(((sqrt(1.5)-sqrt(0.5))^2)/2),startsimplex),diag(startsimplex))
-    simplex <- startsimplex
-    p <- ncol(simplex)                  #  p = number of parameters 
+      startsimplex <- rbind(rep(-sqrt(((sqrt(1.5)-sqrt(0.5))^2)/2),startsimplex),diag(startsimplex))   
+    p <- ncol(startsimplex)                  #  p = number of parameters 
     if (is.null(mini)) mini <- rep(-Inf,p)
     if (is.null(maxi)) maxi <- rep(Inf,p)
+   
+    minir<-mini
+    maxir<-maxi
+    for (i in 1:length(mini))
+        {
+        if ((mini[i]==-Inf) && (maxi[i]==Inf)) {minir[i]<- -degen; maxir[i]<- degen}
+        else if ((mini[i]==-Inf) && (maxi[i]!=Inf)) minir[i]<- maxi[i]-degen
+        else if ((mini[i]!=-Inf) && (maxi[i]==Inf)) maxir[i]<- mini[i]+degen
+        }
+    startsimplex <- t(apply(startsimplex,1,restrict))
+    
+    simplex<-startsimplex
     if (output) {
       if (simAnn) {
         if (schedule==1) cat("Performing Simulated Annealing with `exponential' cooling schedule",paste("(halflife=",halflife,").\n", sep=""))
@@ -274,7 +294,16 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
                min.index <- min.sample(f.hot)
              }
            }
-      close.enough <- (!simAnn && ((sd(f.hot) <= e) || any(f <= best.possible)))
+           
+      # Check if simplex is degeneraed?
+      doubles<-apply(simplex,2,duplicated)
+      doublesdc<-apply(doubles,2,sum)
+      if (any(doublesdc==p)){
+       # If degenerated simplex replace by random vectors
+        simplex[apply(doubles,1,any),apply(doubles,2,any)]<-rmunif(sum(apply(doubles,1,any)),minir[apply(doubles,2,any)],maxir[apply(doubles,2,any)])
+        f <- apply(simplex,1,function(x){func(link(x))})  
+        }
+      close.enough <-((sd(f) <= e) || any(f <= best.possible))
       if (output) {
         if (simAnn) cat(paste(i,".",sep=""),"iteration; ",paste("temperature: ",as.character(signif(temp,4)),"; ", sep=""),"best/worst value:",best.ever[1],"/",max(f),"\n")
         else cat(paste(i,".",sep=""),"iteration; best/worst value:",f[min.index],"/",f[max.index],"\n")
@@ -300,11 +329,12 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
     }
     if ((close.enough) | any(f <= best.possible)) converged <- TRUE
     else converged <- FALSE
+    simplex<-t(apply(simplex,1,link))
     result <- list(minimum=link(best.ever[-1]), value=best.ever[1], iter=i-1, converged=converged, 
-                   epsilon=sd(f), startsimplex=startsimplex)
+                   epsilon=sd(f), startsimplex=startsimplex, finalsimplex=simplex)
     return(result)
   }
-
+  
   crossval.sample <- function(grouping, fold=10)
   # returns more or less equally sized cross-validation-samples. 
   {

@@ -1,14 +1,12 @@
 tritrafo <- function(x, y=NULL, z=NULL, check=TRUE, tolerance=0.0001)
 # projects 3D-mixture onto 2D-triangle 
 {
-  trafo <- function(mix)
+  projector <- cbind( "8.am"  =c(cos((2*pi)*(7/12)), sin((2*pi)*(7/12)))*(2/3),
+                     "12.noon"=c(0,2/3),
+                      "4.pm"  =c(cos((2*pi)*(11/12)), sin((2*pi)*(11/12)))*(2/3))
+  trafo <- function(mix, projct=projector)
   {
-    mix <- mix-rep(1/3,3)
-    projector <- cbind( "8.am"  =c(cos((2*pi)*(7/12)), sin((2*pi)*(7/12)))*(2/3),
-                       "12.noon"=c(0,2/3),
-                        "4.pm"  =c(cos((2*pi)*(11/12)), sin((2*pi)*(11/12)))*(2/3))
-    point <- projector %*% mix
-    return(point)
+    return(projct %*% (mix - rep(1/3, 3)))
   }
   if (is.matrix(x)) dat <- x
   else if (is.null(y)) dat <- t(x)
@@ -81,7 +79,7 @@ triframe <- function(label=1:3, label.col=1, cex=1,...)
 {
   shift <- 1.1
   corners <- tritrafo(x=diag(3))
-  if (is.character(label) && (length(label)==3)) {
+  if(length(label)==3) {
     text(corners[1,1]*shift, corners[1,2]*shift, label[1], adj=c(1/3,1), col=label.col, cex=1)
     text(corners[2,1]*shift, corners[2,2]*shift, label[2], adj=c(0.5,0), col=label.col, cex=1)
     text(corners[3,1]*shift, corners[3,2]*shift, label[3], adj=c(2/3,1), col=label.col, cex=1)
@@ -90,7 +88,7 @@ triframe <- function(label=1:3, label.col=1, cex=1,...)
 }
 
 triplot <- function(x=NULL, y=NULL, z=NULL, main="",
-                    frame=TRUE, label=1:3,  
+                    frame=TRUE, label=1:3,
                     grid=seq(0.1,0.9,by=0.1), center=FALSE, set.par=TRUE, ...)
 {
   margin <- c(0.1, 0.1, 0.1, 0.1) # bottom, left, top, right 
@@ -117,4 +115,27 @@ triplot <- function(x=NULL, y=NULL, z=NULL, main="",
   if (!is.null(x))
     tripoints(x,y,z,...)
   invisible(corners)
+}
+
+triperplines <- function(x, y=NULL, z=NULL, lcol="red", pch=17, ...)
+{
+  if (all(is.null(c(y,z)))) point <- x[1:3]
+  else if (all(is.null(z))) point <- c(x[1], y[1], 1-x[1]-y[1])
+  else point <- c(x[1], y[1], z[1])
+  projektor <- cbind("10.am" = -c(cos((2*pi)*(7/12)), sin((2*pi)*(7/12))),
+                      "6.pm" = -c(0,1),
+                      "2.pm" = -c(cos((2*pi)*(11/12)), sin((2*pi)*(11/12))))
+  tpoint <- tritrafo(point)[1,]
+  footlines <- rbind(tpoint,
+                     tpoint+projektor[,1]*point[1],
+                     rep(NA,2),
+                     tpoint,
+                     tpoint+projektor[,2]*point[2],
+                     rep(NA,2),
+                     tpoint,
+                     tpoint+projektor[,3]*point[3])
+  rownames(footlines) <- NULL
+  lines(footlines, col=lcol, ...)
+  if(pch) tripoints(point, pch = pch, ...)
+  invisible(footlines)
 }

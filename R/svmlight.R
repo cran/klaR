@@ -8,7 +8,8 @@ svmlight.default <- function(x, grouping, temp.dir=NULL, pathsvm=NULL, del=TRUE,
     y <- grouping
     if(is.null(prior)) prior <- table(y) / length(y)
 
-### Dummymatrix
+### Construct Dummymatrix for 1-a-a classification: 
+### ncol= no. of classes, (i,j)=+1 iff obj i comes from class j, -1 else 
     ys <- as.factor(y)
     tys <- table(ys)
     ymat <- matrix(-1, nrow = nrow(x), ncol = length(tys))
@@ -16,20 +17,26 @@ svmlight.default <- function(x, grouping, temp.dir=NULL, pathsvm=NULL, del=TRUE,
     ymat[cbind(seq(along = ys), sapply(ys, function(x) which(x == lev)))] <- 1
     counts <- as.vector(tys)
     svm.model <- list()
-    cmd <- file.path(pathsvm, "svm_learn")
+### call svm_learn
+    cmd <- if(is.null(pathsvm)) "svm_learn" else file.path(pathsvm, "svm_learn")
     J <- 1:ncol(ymat)
+### "paste" file names for training data and model
     train.filename <- paste(temp.dir, "_train_", J, ".dat", sep = "")
     model.filename <- paste(temp.dir, "_model_", J, ".txt", sep = "")
     PWin <- .Platform$OS.type == "windows"
+### for all 1-a-a test call svm_learn
     for (j in J){
+    ### construct matrix to learn svm in a format, so that svmlight can read it
         train <- svmlight.file(cbind(ymat[,j], x), train = TRUE)    
+    ### save to disk
         write.table(train, file = train.filename[j], row.names = FALSE, 
-            col.names = FALSE, quote = FALSE)
+        col.names = FALSE, quote = FALSE)
         if (PWin) 
             system(paste(cmd, svm.options, train.filename[j], model.filename[j]), 
                 show.output.on.console = out)
         else 
             system(paste(cmd,svm.options, train.filename[j], model.filename[j]))
+    ### store learned model
         svm.model[[j]] <- readLines(model.filename[j])
     }
     if (del) 
@@ -44,7 +51,7 @@ svmlight.default <- function(x, grouping, temp.dir=NULL, pathsvm=NULL, del=TRUE,
 
 
 
-
+#### svmlight interface for different calls. Copied and adapted from lda.xxx
 svmlight.formula <- function(formula, data = NULL, ..., subset, na.action = na.fail) 
 {
     m <- match.call(expand.dots = FALSE)
@@ -98,7 +105,7 @@ svmlight.matrix <- function(x, grouping, ..., subset, na.action = na.fail)
     res
 }
 
-svmlight.data.frame<-function (x, ...) 
+svmlight.data.frame <- function (x, ...) 
 {
    res <- svmlight.matrix(structure(data.matrix(x), class = "matrix"), 
         ...)
@@ -109,8 +116,10 @@ svmlight.data.frame<-function (x, ...)
 }
 
 
-predict.svmlight <- function(object, newdata, ...)
+### predict method for svmlight
+predict.svmlight <- function(object, newdata, scal = TRUE, ...)
 {
+### copied and adapted form predict.lda
     if (!inherits(object, "svmlight")) 
         stop("object not of class svmlight")
     if (!is.null(Terms <- object$terms)) {
@@ -139,33 +148,55 @@ predict.svmlight <- function(object, newdata, ...)
             dim(newdata) <- c(1, length(newdata))
         x <- as.matrix(newdata)
     }
+#######################################
 
-
+### save test data on disk
     x <- svmlight.file(x, train = FALSE)
     test.filename <- paste(object$temp.dir, "_test_.dat", sep = "")
     write.table(x, file = test.filename, row.names = FALSE, 
         col.names = FALSE, quote = FALSE)
     werte <- NULL
-    cmd <- file.path(object$pathsvm, "svm_classify")
+    cmd <- if(is.null(object$pathsvm)) "svm_classify" 
+           else file.path(object$pathsvm, "svm_classify")    
     J <- seq(along = object$counts)
     model.filename <- paste(object$temp.dir, "_model_", J, ".txt", sep = "")
     pred.filename <- paste(object$temp.dir, "_pred_", J, ".txt", sep = "")
+### for all learned models predict call svm_classify
     for (j in J){
         writeLines(object$svm.model[[j]], model.filename[j])
         system(paste(cmd, test.filename, model.filename[j], pred.filename[j]))
+    ### read predicted values
         prognose <- read.table(pred.filename[j], header = FALSE)[ , 1]
         werte <- cbind(werte, prognose)
     }
     if (object$del) 
         file.remove(c(test.filename, pred.filename, model.filename))
+### choose class with highest decision value f(x)
     classes <- factor(max.col(werte), levels = seq(along = object$lev), 
         labels = object$lev)
-    colnames(werte)<-object$lev
-    return(list(posterior = werte, class = classes))
+    colnames(werte) <- object$lev
+    if (scal) werte <- e.scal(werte)$sv
+    return(list(class = classes, posterior = werte))
 }
 
 svmlight.file <- function(x, train = FALSE,...)
 {
+### write data to the following svmlight format. See: http://svmlight.joachims.org/
+# <line> .=. <target> <feature>:<value> <feature>:<value> ... <feature>:<value>
+# <target> .=. +1 | -1 | 0 | <float> 
+# <feature> .=. <integer> | "qid"  ### # qid not supported
+# <value> .=. <float>
+# The target value and each of the feature/value pairs are separated by a space character. 
+# Feature/value pairs MUST be ordered by increasing feature number. Features with value zero can be skipped.
+# In classification mode, the target value denotes the class of the example. +1 as the target value marks a positive example, 
+# -1 a negative example respectively. So, for example, the line
+# -1 1:0.43 3:0.12 9284:0.2
+# specifies a negative example for which feature number 1 has the value 0.43, feature number 3 has the value 0.12, 
+# feature number 9284 has the value 0.2, and all the other features have value 0. 
+# A class label of 0 indicates that this example should be classified using transduction.
+# The predictions for the examples classified by transduction are written to the file specified through the -l option. 
+# The order of the predictions is the same as in the training data. 
+# In regression mode, the <target> contains the real-valued target value.
     if(is.vector(x)) x <- t(x)
     erg <- x
     sn <- 1:nrow(x) 
@@ -176,17 +207,3 @@ svmlight.file <- function(x, train = FALSE,...)
     }
     return(erg)
 } 
-
-#svm.light.file<-function(x,train=FALSE)
-#{
-#if (is.vector(x)) x<-t(x)
-#erg<-x
-#for (i in 1:nrow(x))
-#   {
-#   if(!train) erg[i,1]<-paste("1:",x[i,1],sep="")
-#   if (ncol(x)>1)     
-#   {j <- 2:ncol(x)
-#   erg[i,j]<-paste((j-train), x[i,j], sep=":")}
-#   }
-#return(erg)
-#} 
