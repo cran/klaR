@@ -12,8 +12,8 @@ drawparti(grouping, x, y, method = "lda", prec = 100, xlab = NULL,
     ylab = NULL, col.correct = "black", col.wrong = "red", 
     col.mean = "black", col.contour = "darkgrey", 
     gs = as.character(grouping), pch.mean = 19, cex.mean = 1.3, 
-    print.err = 0.7, legend.err = FALSE, imageplot = TRUE, 
-    image.colors = cm.colors(nc), ...)        
+    print.err = 0.7, legend.err = FALSE, legend.bg = "white",
+    imageplot = TRUE, image.colors = cm.colors(nc), ...)        
 }
 
 \arguments{
@@ -29,7 +29,7 @@ drawparti(grouping, x, y, method = "lda", prec = 100, xlab = NULL,
   \item{col.correct}{color for correct classified objects.}
   \item{col.wrong}{color for wrong classified objects.}
   \item{col.mean}{color for class means (only for methods \code{lda} and \code{qda}).}
-  \item{col.contour}{color of the contour lines (if \code{image.colors = FALSE}).}
+  \item{col.contour}{color of the contour lines (if \code{imageplot = FALSE}).}
   \item{gs}{group symbol (plot character), must have the same length as \code{grouping}.}            
   \item{pch.mean}{plot character for class means (only for methods \code{lda} and \code{qda}).}
   \item{cex.mean}{character expansion for class means (only for methods \code{lda} and \code{qda}).}
@@ -38,6 +38,7 @@ drawparti(grouping, x, y, method = "lda", prec = 100, xlab = NULL,
   \item{legend.err}{logical; whether to plot the apparent error rate above the plot (if \code{FALSE}),
     or into a legend into the upper right corner of the plot (if \code{TRUE}). 
     This argument is ignored, if \code{print.err = 0}, i.e. if no error rate is printed.}
+  \item{legend.bg}{Backgound colour to use for the legend.}
   \item{imageplot}{logical; whether to use an \code{\link{image}} plot or \code{\link{contour}} lines.}
   \item{image.colors}{colors used for the \code{imageplot}, if TRUE.}
   \item{...}{Further arguments passed to the classification \code{method} 

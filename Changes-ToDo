@@ -60,16 +60,21 @@ Changelog:
 - fixes for help files: NaiveBayes, b.scal, betascale
 - cosmetic changes to correpsonding code
 
-
----->
 ==== release: 0.3-0 (second one on CRAN)
+
+- new argument legend.bg in drawparti
+- some more fixes for beta scaling
+- major fixes and extensions (regression, o-a-o) for svmlight
+- membercheck() function introduced (checks in ucpm and betascale)
+- NAMESPACE added
+
+==== release: 0.3-2
+
 
 
 
 To Do:
 ======
-
-Namespace
 
 Use \concept{} in ALL Rd files.
 
@@ -81,6 +86,8 @@ stepclass:
   (e.g. documenting them as "internal")
   Maybe to hide in a (forthcoming ?) Namespace?
 - LATER: Rewrite it to be readable.
+- allow for *arbitrary* performance measures
+- allow for arbitrary predict functions
 
 rda:
 - In Main Procedure some loops within loops within ... with 
@@ -89,6 +96,14 @@ rda:
 - LATER: rda.default() - Many functions defined therein rather 
   than in the package itself. Why?
 - LATER: another optimizer, e.g. optim()?
+- check whether rda == lda / qda for extreme parameter settings
+
+quadplot: 
+- rgl implementation
+
+triplot/quadplot:
+- check whether membership values are in [0,1]
 
 EDAM:
 - par(asp=1) is more appropriate than the default, isn't it?
+

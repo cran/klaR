@@ -152,7 +152,7 @@ drawparti <- function(grouping, x, y, method = "lda", prec = 100,
     xlab=NULL, ylab=NULL, col.correct = "black", col.wrong = "red", 
     col.mean = "black", col.contour = "darkgrey", gs = as.character(grouping), 
     pch.mean = 19, cex.mean = 1.3, print.err = 0.7, legend.err = FALSE,
-    imageplot = TRUE, image.colors = cm.colors(nc), ...){
+    legend.bg = "white", imageplot = TRUE, image.colors = cm.colors(nc), ...){
     #grouping: class vec.
     #x: first data vec.
     #y: second data vec.
@@ -228,7 +228,7 @@ drawparti <- function(grouping, x, y, method = "lda", prec = 100,
     if(print.err){
         if(legend.err)
             legend(par("usr")[1], par("usr")[4], 
-                legend = paste("Error:", err), bg = "white", cex = print.err)
+                legend = paste("Error:", err), bg = legend.bg, cex = print.err)
         else
             mtext(paste("app. error rate:", err), 3, cex = print.err)
     }

@@ -14,7 +14,8 @@ classification is done with the one-against-rest partition of data.
 svmlight(x, ...)
 
 \method{svmlight}{default}(x, grouping, temp.dir = NULL, pathsvm = NULL, del = TRUE,
-    svm.options = NULL, prior = NULL, out = FALSE,...)
+    type = "C", class.type = "oaa", svm.options = NULL, prior = NULL, 
+    out = FALSE, ...)
 \method{svmlight}{data.frame}(x, ...)
 \method{svmlight}{matrix}(x, grouping, ..., subset, na.action = na.fail)
 \method{svmlight}{formula}(formula, data = NULL, ..., subset, na.action = na.fail)
@@ -31,6 +32,8 @@ svmlight(x, ...)
   \item{temp.dir}{directory for temporary files.}
   \item{pathsvm}{Path to SVMlight binaries (required, if path os unknown by the OS).}
   \item{del}{Logical: whether to delete temporary files}
+  \item{type}{Perform \code{"C"}=Classification or \code{"R"}=Regression}
+  \item{class.type}{Multiclass scheme to use. See details.}
   \item{svm.options}{Optional parameters to SVMlight.
   
     For further details see: \dQuote{How to use} on \url{http://svmlight.joachims.org/}.
@@ -49,21 +52,24 @@ svmlight(x, ...)
   
 }
 \details{
-  Function to call SVMlight from R for classification. Multiple group
-  classification is done with the one-against-rest partition of data.
+  Function to call SVMlight from R for classification (\code{type="C"}). 
   SVMlight is an implementation of Vapnik's Support Vector Machine. It
   is written in C by Thorsten Joachims. On the homepage (see below) the
   source-code and several binaries for SVMlight are available. If more
-  then two classes are given the SVM is learned by the one-against-rest
-  scheme. That means that each class is trained against the other K-1
+  then two classes are given the SVM is learned by the one-against-all
+  scheme (\code{class.type="oaa"}). That means that each class is trained against the other K-1
   classes. The class with the highest decision function in the SVM
   wins. So K SVMs have to be learned.
+  If \code{class.type="oao"} each class is tested against every other and the final class is elected
+  by a majority vote.
+
+  If \code{type="R"} a SVM Regression is performed.
 }
 \value{
   A list containing the function call and the result of SVMlight. 
 }
 \references{\url{http://svmlight.joachims.org/}}
-\author{Karsten Luebke, \email{luebke@statistik.uni-dortmund.de}}
+\author{Karsten Luebke, \email{luebke@statistik.uni-dortmund.de}, Andrea Preusser}
 \seealso{\code{\link{predict.svmlight}},\code{\link[e1071]{svm}},
 }
 \examples{

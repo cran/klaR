@@ -12,6 +12,7 @@ ucpm <- function(m, tc, ec = NULL)
         return(Y)
     }
     if(is.null(colnames(m))) colnames(m) <- levels(tc)
+    membercheck(m)
     G <- ncol(m)
     N <- nrow(m)
     dummy <- matrix(0, nrow=N, ncol=G)
