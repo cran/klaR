@@ -1,0 +1,57 @@
+quadtrafo<-function(e, f=NULL, g=NULL, h=NULL)
+{
+require(scatterplot3d)
+if (is.matrix(e)) dat <- e
+else    if (is.null(f)) dat <- t(e)
+        else dat <- cbind(e,f,g,h)
+result <- dat %*%   
+    matrix(c(1, 0.5, 0.5, 0, 
+            0, sqrt(3)/2, sqrt(3)/6, 0, 
+            0, 0, sqrt(6)/3, 0), nrow = 4)
+            
+colnames(result)<-c("x","y","z")
+return(result)
+}
+
+
+quadlines <- function(e, f=NULL, g=NULL, h=NULL, sp=s3d, ...)
+{
+  result <- quadtrafo(e,f,g,h)
+  sp$points3d(result[,1], result[,2], result[,3], type="l", ...)
+  invisible(result)
+}
+
+
+quadpoints <- function(e, f=NULL, g=NULL, h=NULL, sp=s3d, ...)
+{
+  result <- quadtrafo(e,f,g,h)
+  sp$points3d(result[,1], result[,2], result[,3], type="p", ...)
+  invisible(result)
+}
+
+
+
+
+quadplot <- function(e=NULL, f=NULL, g=NULL, h=NULL, angle=75, scale.y=0.6, 
+                    label=1:4, labelcol=rainbow(4), labelpch=19, 
+                    labelcex=1.5, main="", ...)
+{
+corners <- quadtrafo(diag(4))
+s3d <- scatterplot3d(0.5, 0.2886751, 0.2041241, type="n", 
+    xlim=range(corners[,1]), ylim=range(corners[,2]), zlim=range(corners[,3]),
+    axis = FALSE, grid=FALSE, angle = angle, scale.y = scale.y, main=main)
+
+# We need to get the correct "mar" values set in the first scatterplot3d() call:
+par(mar = get("mar", pos=environment(s3d$xyz.convert)))
+# We don't want to waste too much space:
+usr <- as.vector(sapply(s3d$xyz.convert(corners), range))
+par(usr = usr, xpd = NA)
+
+# outer simplex
+quadlines((diag(4)[c(1:4,1,3,2,4),]),sp=s3d)
+quadpoints(diag(4), sp=s3d, pch=labelpch,col=labelcol,cex=labelcex)
+legend(usr[1], usr[4], legend = label, 
+    col = labelcol, pch = labelpch, cex = labelcex)
+if (!is.null(e)) quadpoints(e,f,g,h,sp=s3d,...)
+return(s3d)
+}
