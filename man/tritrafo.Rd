@@ -1,5 +1,6 @@
 \name{tritrafo}
 \alias{tritrafo}
+\encoding{latin1}
 \title{Barycentric plots}
 \description{
 Function to carry out the transformation into 2D space

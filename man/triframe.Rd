@@ -1,5 +1,6 @@
 \name{triframe}
 \alias{triframe}
+\encoding{latin1}
 \title{Barycentric plots}
 \description{Function to add a frame to an existing (barycentric) plot.}
 \usage{

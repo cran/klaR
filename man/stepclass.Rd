@@ -1,5 +1,6 @@
 \name{stepclass}
 \alias{stepclass}
+\encoding{latin1}
 \alias{stepclass.default}
 \alias{stepclass.formula}
 \alias{print.stepclass}

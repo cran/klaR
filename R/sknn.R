@@ -1,16 +1,18 @@
 sknn<-function (x, ...) 
     UseMethod("sknn")
 
-sknn.default <- function(x,grouping,k=3,...)
+sknn.default <- function(x, grouping, kn = 3, gamma = 0,...)
 {
 cl <- match.call()
 cl[[1]] <- as.name("sknn")
-structure(list(learn = x, grouping = grouping, lev = levels(grouping), k=k, call = cl), class = "sknn")
+structure(list(learn = x, grouping = grouping, lev = levels(grouping), 
+               k = kn, gamma = gamma, call = cl), 
+    class = "sknn")
 }
 
 
 ### sknn bei verschiedenen Eingabeformaten:
-sknn.formula<-function (formula, data = NULL, ..., subset, na.action = na.fail) 
+sknn.formula <- function (formula, data = NULL, ..., subset, na.action = na.fail) 
 {
     m <- match.call(expand.dots = FALSE)
     if (is.matrix(eval.parent(m$data))) 
@@ -56,12 +58,14 @@ sknn.matrix<-function (x, grouping, ..., subset, na.action = na.fail)
         grouping <- dfr$g
         x <- dfr$x
     }
-    res <- sknn(x, grouping, ...)
+    res <- sknn.default(x, grouping, ...)
     cl <- match.call()
     cl[[1]] <- as.name("sknn")
     res$call <- cl
     res
 }
+
+
 
 sknn.data.frame<-function (x, ...) 
 {
@@ -74,13 +78,21 @@ sknn.data.frame<-function (x, ...)
 }
 
 
-predict.sknn<-function(object, newdata,...)
+predict.sknn <- function(object, newdata,...)
 {
-spsknn <- function(x,object)
+spsknn <- function(neux,object)
     {
-        abstand<-apply(object$learn, 1, function(y) sum((y-x)^2))
-        kdach<-(object$grouping[order(abstand)][1:object$k])
-        return(table(kdach))
+        abstand <- apply(object$learn, 1, function(y) sum((y-neux)^2))
+        kdach <- (object$grouping[order(abstand)][1:object$k])
+        abdach <- abstand[order(abstand)][1:object$k] # Hier stehen jetzt die k kuerzesten Abstaende
+        if (object$gamma == 0) dichten <- rep(1, length(abdach))
+        else dichten <- exp(-object$gamma * abdach)
+        
+        erg <- tapply(dichten, kdach, sum)
+        erg[is.na(erg)] <- 0
+        erg2 <- table(kdach)
+        #cat("\n tapply: ",erg," table: ",erg2,"\n")
+        return(erg)
     } 
 
 if (!inherits(object, "sknn")) 
@@ -111,11 +123,10 @@ if (!inherits(object, "sknn"))
             dim(newdata) <- c(1, length(newdata))
         x <- as.matrix(newdata)
     }
-
-werte<-t(apply(x,1,spsknn,object=object))
-werte<-werte/object$k
+werte <- t(apply(x, 1, spsknn, object = object))
+werte <- werte / rowSums(werte)
 classes <- factor(max.col(werte), levels = seq(along = object$lev), 
         labels = object$lev)
-result<-list(posterior=werte,class=classes)
+result <- list(posterior = werte, class = classes)
 return(result)
 }

@@ -1,5 +1,6 @@
 \name{errormatrix}
 \alias{errormatrix}
+\encoding{latin1}
 \title{Tabulation of prediction errors by classes}
 \description{
 Cross-tabulates true and predicted classes 

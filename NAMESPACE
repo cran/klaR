@@ -1,8 +1,10 @@
-export(b.scal, betascale, calc.trans, centerlines, dkernel,
-	e.scal, EDAM, errormatrix, hmm.sop, NaiveBayes, partimat, drawparti,
-	shardsplot, quadtrafo, quadlines, quadpoints, quadplot, rda, 
-	sknn, stepclass, svmlight, tritrafo, trilines, tripoints, trigrid, 
-	triframe, triplot, triperplines, ucpm, TopoS)
+export(b.scal, betascale, calc.trans, centerlines, classscatter, dkernel, 
+    drawparti, e.scal, EDAM, errormatrix, friedman.data, hmm.sop, NaiveBayes, 
+    partimat, plineplot, shardsplot, 
+    quadtrafo, quadlines, quadpoints, quadplot, 
+    rda, sknn, stepclass, svmlight, TopoS, 
+    tritrafo, trilines, tripoints, trigrid, triframe, triplot, triperplines, 
+    ucpm)
 
 S3method(NaiveBayes, formula)
 S3method(NaiveBayes, default)
@@ -32,4 +34,3 @@ S3method(svmlight, formula)
 S3method(svmlight, matrix)
 S3method(svmlight, data.frame)
 S3method(predict, svmlight)
-

@@ -1,5 +1,6 @@
 \name{tripoints}
 \alias{tripoints}
+\encoding{latin1}
 \alias{trilines}
 \title{Barycentric plots}
 \description{Function to add points or lines to an existing (barycentric) plot.}

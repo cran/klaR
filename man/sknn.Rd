@@ -11,14 +11,13 @@ Function for simple knn classification.
 \usage{
 sknn(x, ...)
 
-\method{sknn}{default}(x, grouping, k = 3,...)
+\method{sknn}{default}(x, grouping, kn = 3, gamma=0, ...)
 \method{sknn}{data.frame}(x, ...)
 \method{sknn}{matrix}(x, grouping, ..., subset, na.action = na.fail)
 \method{sknn}{formula}(formula, data = NULL, ..., subset, na.action = na.fail)
 }
 
 \arguments{
-  
   \item{x}{matrix or data frame containing the explanatory variables 
     (required, if \code{formula} is not given).}
   \item{grouping}{factor specifying the class for each observation 
@@ -26,7 +25,8 @@ sknn(x, ...)
   \item{formula}{formula of the form \code{groups ~ x1 + x2 + ...}. 
     That is, the response is the grouping factor and the right hand side specifies the (non-factor) discriminators.}
   \item{data}{Data frame from which variables specified in \code{formula} are preferentially to be taken.}
-  \item{k}{Number of nearest neighbours to use.}
+  \item{kn}{Number of nearest neighbours to use.}
+  \item{gamma}{gamma parameter for rbf in knn. If \code{gamma=0} ordinary knn classification is used.}
   \item{subset}{An index vector specifying the cases to be used in the
     training sample. (Note: If given, this argument must be named.)}
   \item{na.action}{specify the action to be taken if \code{NA}s are
@@ -37,6 +37,11 @@ sknn(x, ...)
   \item{...}{}
 }
 
+\details{
+If \code{gamma>0} an gaussian like density is used to weight the classes of the \code{kn} nearest neighbors. 
+\code{weight=exp(-gamma*distance)}. This is similar to an rbf kernel. 
+If the distances are large it may be useful to \code{\link{scale}} the data first.
+}
 \value{
   A list containing the function call. 
 }
@@ -46,5 +51,6 @@ sknn(x, ...)
 \examples{
 data(iris)
 x <- sknn(Species ~ ., data = iris)
+x <- sknn(Species ~ ., gamma = 4, data = iris)
 }
 \keyword{classif}

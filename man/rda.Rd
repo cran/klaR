@@ -1,5 +1,6 @@
 \name{rda}
 \alias{rda}
+\encoding{latin1}
 \alias{rda.default}
 \alias{rda.formula}
 \alias{plot.rda}

@@ -1,5 +1,6 @@
 \name{B3}
 \alias{B3}
+\encoding{latin1}
 \docType{data}
 \title{West German Business Cycles 1955-1994}
 \description{West German Business Cycles 1955-1994}

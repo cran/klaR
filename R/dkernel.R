@@ -1,4 +1,4 @@
-dkernel<-function(x, kernel=density(x), interpolate=FALSE)
+dkernel<-function(x, kernel=density(x), interpolate=FALSE, ...)
 {
 foo<-function(x,kernel,n)
 {

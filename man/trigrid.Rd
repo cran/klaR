@@ -1,5 +1,6 @@
 \name{trigrid}
 \alias{trigrid}
+\encoding{latin1}
 \title{Barycentric plots}
 \description{Function to add a grid to an existing (barycentric) plot.}
 \usage{

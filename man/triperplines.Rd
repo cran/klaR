@@ -1,5 +1,6 @@
 \name{triperplines}
 \alias{triperplines}
+\encoding{latin1}
 \title{Barycentric plots}
 \description{Function to add a point and the corresponding perpendicular lines to all three 
     sides to an existing (barycentric) plot.}

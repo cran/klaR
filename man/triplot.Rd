@@ -1,5 +1,6 @@
 \name{triplot}
 \alias{triplot}
+\encoding{latin1}
 \title{Barycentric plots}
 \description{
 Function to produce triangular (barycentric) plots 

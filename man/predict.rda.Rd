@@ -1,5 +1,6 @@
 \name{predict.rda}
 \alias{predict.rda}
+\encoding{latin1}
 \title{Regularized Discriminant Analysis (RDA)}
 \description{
 Classifies new observations using parameters determined by 
