@@ -10,9 +10,9 @@ Transforming of 4 dimensional values in a barycentric coordinate system.
 \usage{
 quadtrafo(e, f = NULL, g = NULL, h = NULL)
         
-quadlines(e, f = NULL, g = NULL, h = NULL, sp = s3d, ...)
+quadlines(e, f = NULL, g = NULL, h = NULL, sp, ...)
 
-quadpoints(e, f = NULL, g = NULL, h = NULL, sp = s3d, ...)
+quadpoints(e, f = NULL, g = NULL, h = NULL, sp, ...)
 }
 \arguments{
   \item{e}{either a matrix with 4 columns represanting the membership values or a 
@@ -40,3 +40,5 @@ posterior <- predict(lda(PHASEN ~ ., data = B3))$post
 quadtrafo(posterior)
 }
 \keyword{internal}
+\concept{Visualizing Classification Performance Measures}
+\concept{Barycentric plots}

@@ -67,3 +67,4 @@ partimat(Species ~ ., data = iris, method = "lda",
 }
 \keyword{classif}
 \keyword{dplot}
+\concept{Vizualizing classification results}

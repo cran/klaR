@@ -37,3 +37,7 @@ e.scal(ldapred)
 e.scal(ldapred, tc = iris$Species)
 }
 \keyword{classif}
+\concept{Softmax scaling}
+\concept{E scaling}
+\concept{Classification}
+\concept{Membership values}

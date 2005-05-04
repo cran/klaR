@@ -99,3 +99,7 @@ legend(7.5, 6.1, col = rainbow(3), xjust = 0.5, yjust = 0,
 par(opar)    
 }
 \keyword{hplot}
+\concept{Vizualizing Eight Direction Arranged Maps}
+\concept{EDAM}
+\concept{SOM}
+\concept{Cluster analysis}

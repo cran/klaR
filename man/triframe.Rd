@@ -23,3 +23,5 @@ triframe(label = c("left", "top", "right"), col = "blue",
          label.col = "green3")          # frame on top of points 
 }
 \keyword{aplot}
+\concept{Visualizing Classification Performance Measures}
+\concept{Barycentric plots}

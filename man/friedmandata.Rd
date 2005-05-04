@@ -68,3 +68,5 @@ y <- predict(x, test[,-1])
 errormatrix(test[,1], y$class)
 }
 \keyword{multivariate}
+\concept{Friedman's classification benchmark data}
+\concept{Regularized Discriminant Analysis}

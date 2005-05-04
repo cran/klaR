@@ -46,3 +46,5 @@ triplot(point, pch=16)
 text(tritrafo(point), "(0.25, 0.60, 0.15)", adj=c(0.5,2)) # add a label 
 }
 \keyword{dplot}
+\concept{Visualizing Classification Performance Measures}
+\concept{Barycentric plots}

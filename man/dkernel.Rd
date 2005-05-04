@@ -26,3 +26,4 @@ plot(x, y, type = "l")
 }
 \keyword{distribution}
 \keyword{nonparametric}
+\concept{Kernel density estimation}

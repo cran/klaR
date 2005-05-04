@@ -67,26 +67,35 @@ further variables), if \sQuote{\code{direction}} is \dQuote{\code{backward}}, th
 reduced (by excluding variables from the model).
 }
 \value{
-A list of class \sQuote{\code{stepclass}} containing the following components:
+An object of class \sQuote{\code{stepclass}} containing the following components:
 \item{call}{the (matched) function call.}
 \item{method}{name of classification function used (e.g. \dQuote{\code{lda}}).}
 \item{start.variables}{vector of starting variables.}
 \item{process}{data frame showing selection process (included/excluded variables and performance measure).} 
 \item{model}{the final model: data frame with 2 columns; indices and names of variables.}
 \item{perfomance.measure}{value of the criterion used by \code{\link{ucpm}}}
+\item{formula}{formula of the form \sQuote{\code{response ~ list + of + selected + variables}}}
 }
 \author{Christian Röver, \email{roever@statistik.uni-dortmund.de}, Irina Czogiel}
 \seealso{
-\code{\link[stats]{step}}, \code{\link[MASS]{stepAIC}}
+\code{\link[stats]{step}}, \code{\link[MASS]{stepAIC}, 
+    and \code{\link{greedy.wilks}} for stepwise variable selection according to Wilk's lambda}
 }
 \examples{
 data(iris)
 library(MASS)
 iris.d <- iris[,1:4]  # the data    
 iris.c <- iris[,5]    # the classes 
-x <- stepclass(iris.d, iris.c, "lda", start.vars = "Sepal.Width")
-y <- stepclass(Species ~ ., data = iris, method = "qda", 
+sc_obj <- stepclass(iris.d, iris.c, "lda", start.vars = "Sepal.Width")
+sc_obj
+plot(sc_obj)
+
+## or using formulas:
+sc_obj <- stepclass(Species ~ ., data = iris, method = "qda", 
     start.vars = "Sepal.Width", criterion = "AS")  # same as above 
-plot(x)
+sc_obj
+## now you can say stuff like
+## qda(sc_obj$formula, data = B3)
 }
 \keyword{multivariate}
+\concept{Stepwise variable selection in classification}

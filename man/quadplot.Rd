@@ -68,3 +68,5 @@ par(opar)
 }
 \keyword{classif}
 \keyword{dplot}
+\concept{Visualizing Classification Performance Measures}
+\concept{Barycentric plots}

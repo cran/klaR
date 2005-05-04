@@ -41,3 +41,6 @@ errormatrix(B3$PHASEN, apply(prior.prob, 1, which.max))
 }
 \keyword{ts}
 \keyword{classif}
+\concept{Hidden Markov Model}
+\concept{Classification in time series}
+\concept{HMM}

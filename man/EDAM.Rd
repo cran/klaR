@@ -107,3 +107,6 @@ print(B3EDAM)
 par(opar)
 }
 \keyword{multivariate}
+\concept{Eight Direction Arranged Maps}
+\concept{EDAM}
+\concept{Cluster analysis}

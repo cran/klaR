@@ -177,7 +177,7 @@ return(erg)
 
 ### copied and adapted form predict.lda
     if (!inherits(object, "svmlight")) 
-        stop("object not of class svmlight")
+        stop("object not of class", "'svmlight'")
     if (!is.null(Terms <- object$terms)) {
         if (missing(newdata)) 
             newdata <- model.frame(object)

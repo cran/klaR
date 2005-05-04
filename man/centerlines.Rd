@@ -25,3 +25,5 @@ centerlines(4)
 }
 \keyword{classif}
 \keyword{dplot}
+\concept{Visualizing Classification Performance Measures}
+\concept{Barycentric plots}

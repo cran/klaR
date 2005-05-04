@@ -28,3 +28,5 @@ x <- sknn(Species ~ ., gamma = 10, kn = 10, data = iris)
 predict(x, iris)
 }
 \keyword{classif}
+\concept{k nearest neighbour classification}
+\concept{KNN}

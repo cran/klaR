@@ -16,14 +16,21 @@ stepclass.formula <- function(formula, data, method, ...)
   result <- stepclass(x=data[, discriminators], grouping=data[, response], 
                       method=method, ...)
   result$call <- match.call()
+  result$formula <- as.formula(paste(response, "~", 
+                                    paste(result$model$name, collapse = "+")))
   return(result)
 }
- 
+
 
 stepclass.default <-function (x, grouping, method, improvement = 0.05, 
     maxvar = Inf, start.vars = NULL, direction = c("both", "forward", "backward"), 
     criterion = "CR", fold = 10, cv.groups = NULL, output = TRUE, ...) 
 {
+
+    gpVar <- deparse(substitute(grouping))
+    if(!(is.character(method) && (length(method)==1)))
+        stop("method must be a character vector of length 1")
+    modelhist <- "NULL"
     cr <- c("correctness rate", "accuracy", "abiltity to seperate", "confidence")
     switch(criterion,
         CR = cr <- cr[1],
@@ -48,7 +55,7 @@ stepclass.default <-function (x, grouping, method, improvement = 0.05,
         cat(paste(cr, ": ", 1-round(rate, 5), ";", in.out,
             " ", sep = ""))
         if (length(variables) == 1) 
-            cat(paste("variables (1):", variablenames[variables], "\n"))
+            cat("variables (1):", variablenames[variables], "\n")
         else cat(paste("variables (", length(variables), "):", sep = ""), 
             paste(variablenames[variables[-length(variables)]], 
             coll = ",", sep = ""), variablenames[variables[length(variables)]], "\n")
@@ -124,7 +131,7 @@ stepclass.default <-function (x, grouping, method, improvement = 0.05,
         
         if (any(predicted == 0)){
             goalfunc <- fold
-            warning(" Error(s) in modeling/prediction step.\n")
+            warning("error(s) in modeling/prediction step")
         }
         return(goalfunc / fold)
     }
@@ -185,9 +192,9 @@ stepclass.default <-function (x, grouping, method, improvement = 0.05,
         fold <- max(cv.groups)
     }
     if (output) {
-        cat(paste(" `stepwise classification', using ", fold, 
+        cat(" `stepwise classification', using ", fold, 
             "-fold cross-validated ", cr, " of method ", method,
-            "'.\n", sep = ""))
+            "'.\n", sep = "")
         cat(dim(data)[1], "observations of", dim(data)[2], "variables in", 
             g, "classes; direction:", direction, "\n")
         if (!is.finite(maxvar)) 
@@ -237,6 +244,7 @@ stepclass.default <-function (x, grouping, method, improvement = 0.05,
             error.rates <- rbind(error.rates, c(var = 1, rate = 1))
         best <- order(error.rates[, 2])[1]
         last.changed <- error.rates[best, 1]
+        
         #if (error.rates[best, 2] >= improvement * old.rate) {
         if ((old.rate - error.rates[best, 2]) < improvement) {
             if (error.rates[best, 2] >= old.rate) 
@@ -288,6 +296,13 @@ stepclass.default <-function (x, grouping, method, improvement = 0.05,
         }
         if (is.finite(maxvar)) 
             finished <- (length(model) >= maxvar)
+        
+        modelhist <- c(modelhist, paste(model, collapse=","))
+        if (length(modelhist)>1)
+            {
+                lmh <- length(modelhist)
+                if (any(modelhist[1:(lmh-1)] == modelhist[lmh])) finished <- TRUE
+            }
     }
     runtime <- min.sec(proc.time()[3] - runtime)
     if (output) {
@@ -308,7 +323,9 @@ stepclass.default <-function (x, grouping, method, improvement = 0.05,
     }
     else aper <- NA
     model <- sort(model)
-  result <- list("call" = match.call(), "method" = method, 
+
+    resForm <- as.formula(paste(gpVar, "~", paste(varnames[model], collapse = "+")))
+    result <- list("call" = match.call(), "method" = method, 
         "start.variables" = start.vars, 
         "process" = cbind.data.frame("step" = result.v[,1], 
                                      "var" = as.numeric(result.v[,2]), 
@@ -317,7 +334,8 @@ stepclass.default <-function (x, grouping, method, improvement = 0.05,
         "model" = cbind.data.frame(  "nr" = model, 
                                      "name" = I(varnames[model])),
         "result.pm" = c("crossval" = 1 - result.e[length(result.e)], "apparent" = aper),
-        "runtime" = runtime, "performance.measure" = cr) #, "cv.groups"=cv.groups)
+        "runtime" = runtime, "performance.measure" = cr, #, "cv.groups"=cv.groups)
+        "formula" = resForm)
   rownames(result$process) <- as.character(0:(length(result.v[ ,1]) - 1))
   if(length(result$start.variables)) 
     names(result$start.variables) <- varnames[result$start.variables]
@@ -335,18 +353,19 @@ print.stepclass <- function(x,...)
   }
   cat("method      :", x$method, "\n")
   cat("final model : ")
-  kommalist(x$model$name)
+  print(x$formula)
   cat("\n")
   cat(x$performance.measure, "=", as.character(signif(x$result.pm[1],4)), "\n")
   invisible(x)
 }
 
-plot.stepclass <- function(x, ...)
+plot.stepclass <- function(x, mar = c(10, 4, 4, 2) + 0.1, ...)
 {
   signum <- rep("-", length(x$process$var)-1)
   signum[as.character(x$process$step[-1]) == "in"] <- "+"
   change <- c("START", paste(signum, x$process$varname[-1]))
-  par(mar = c(10, 4, 4, 2) + 0.1)
+  opar <- par(mar = mar)
+  on.exit(par(opar))
   plot(seq(along = x$process[,1]), x$process$result.pm, type = "b", 
        xlab = "", ylab = paste("estimated", x$performance.measure), xaxt = "n", ...)
   axis(1, at = seq(along = x$process$result.pm), labels = change, las = 3, ...)

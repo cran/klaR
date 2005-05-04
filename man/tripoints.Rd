@@ -32,3 +32,5 @@ trilines(c(0.1, 0.6), c(0.2, 0.3), c(0.7, 0.1),
 trilines(centerlines(3))
 }
 \keyword{aplot}
+\concept{Visualizing Classification Performance Measures}
+\concept{Barycentric plots}

@@ -38,6 +38,7 @@ supported by the Deutsche Forschungsgemeinschaft.
 \source{
 RWI (Rheinisch Westfälisches Institut für Wirtschaftsforschung), Essen, Germany.
 }
+\seealso{For benchmarking on this data see also \code{\link{benchB3}}}
 \references{
 Heilemann, U. and Münch, H.J. (1996): 
     West German Business Cycles 1963-1994: A Multivariate Discriminant Analysis.

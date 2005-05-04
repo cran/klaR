@@ -31,3 +31,5 @@ triplot()  # empty plot
 triperplines(1/2, 1/3, 1/6)
 }
 \keyword{aplot}
+\concept{Visualizing Classification Performance Measures}
+\concept{Barycentric plots}

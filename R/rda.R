@@ -176,12 +176,16 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
     simplex<-startsimplex
     if (output) {
       if (simAnn) {
-        if (schedule==1) cat("Performing Simulated Annealing with `exponential' cooling schedule",paste("(halflife=",halflife,").\n", sep=""))
-        else {cat("Performing Simulated Annealing with `polynomial' cooling schedule",paste("(alpha=",alpha,").\n",sep=""))
-              cat("Zero temperature after",K,"iterations.\n")}
+        if (schedule==1) 
+            cat("Performing Simulated Annealing with 'exponential' cooling schedule",
+                paste("(halflife=", halflife, ").\n", sep=""))
+        else {cat("Performing Simulated Annealing with 'polynomial' cooling schedule",
+                paste("(alpha=", alpha, ").", "\n", sep=""))
+                cat("Zero temperature after", K, "iterations.", "\n")
+        }
       }
-      else cat("Performing Nelder-Mead minimization.\n")
-      cat("Calculations for starting simplex...\n")
+      else cat("Performing Nelder-Mead minimization.", "\n")
+      cat("Calculations for starting simplex...", "\n")
       if(.Platform$OS.type == "windows") flush.console()
     }
     f <- apply(simplex,1,function(x){func(link(x))})  #  vector of `func'-values, corresponding to the simplex 
@@ -197,7 +201,7 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
       temp <- T.start
       if (schedule==1) faktor <- 0.5^(1/halflife)
       if ((output) && (schedule==1)){ 
-        cat("Zero temperature after",ceiling(log(zero.temp/T.start,base=faktor)),"iterations.\n")
+        cat("Zero temperature after",ceiling(log(zero.temp/T.start,base=faktor)),"iterations.", "\n")
         if(.Platform$OS.type == "windows") flush.console()
       }
     }
@@ -211,7 +215,7 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
      # REFLEXION: 
       x.reflex <- restrict(centroid + a*(centroid-simplex[max.index,]))
       if (output) {
-        cat("Reflexion\n")
+        cat("Reflexion", "\n")
         if(.Platform$OS.type == "windows") flush.console()
       }
       f.reflex <- func(link(x.reflex))
@@ -222,7 +226,7 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
       if (f.reflex.hot <= f.hot[min.index]) {
         x.expand <- restrict(centroid + g*(x.reflex - centroid))
         if (output) { 
-          cat("Expansion\n")
+          cat("Expansion", "\n")
           if(.Platform$OS.type == "windows") flush.console()
         }
         f.expand <- func(link(x.expand))
@@ -262,7 +266,7 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
             # Since reflexion didn't improve: CONTRACTION. 
              x.contract <- centroid + b*(simplex[max.index,]-centroid)
              if (output) {
-               cat("Contraction\n")
+               cat("Contraction", "\n")
                if(.Platform$OS.type == "windows") flush.console()
              }
              f.contract <- func(link(x.contract))
@@ -282,7 +286,7 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
                for (j in (1:(p+1))[-min.index]) 
                  simplex[j,] <- simplex[min.index,]+r*(simplex[j,]-simplex[min.index,])
                if (output) {
-                 cat("Reduction\n")
+                 cat("Reduction", "\n")
                  if(.Platform$OS.type == "windows") flush.console()
                }
                f.reduce <- apply(simplex[-min.index,],1,function(x){func(link(x))})
@@ -305,8 +309,13 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
         }
       close.enough <-((sd(f) <= e) || any(f <= best.possible))
       if (output) {
-        if (simAnn) cat(paste(i,".",sep=""),"iteration; ",paste("temperature: ",as.character(signif(temp,4)),"; ", sep=""),"best/worst value:",best.ever[1],"/",max(f),"\n")
-        else cat(paste(i,".",sep=""),"iteration; best/worst value:",f[min.index],"/",f[max.index],"\n")
+        if (simAnn) 
+            cat(paste(i, ".", sep=""), "iteration; ", 
+                paste("temperature: ", as.character(signif(temp, 4)), "; ", sep=""),
+                "best/worst value:", best.ever[1], "/", max(f), "\n")
+        else 
+            cat(paste(i, ".", sep=""), "iteration; best/worst value:",
+                f[min.index], "/", f[max.index], "\n")
         if(.Platform$OS.type == "windows") flush.console()
       }
       i <- i+1
@@ -323,9 +332,9 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
       }
     }
     if (output) {
-      if (close.enough) if (any(f <= best.possible)) cat("Best possible value reached.\n")
-                        else cat("Converged.\n")
-      else cat("Stopped after",i-1,"iterations.\n")
+      if (close.enough) if (any(f <= best.possible)) cat("Best possible value reached.", "\n")
+                        else cat("Converged.", "\n")
+      else cat("Stopped after",i-1,"iterations.", "\n")
     }
     if ((close.enough) | any(f <= best.possible)) converged <- TRUE
     else converged <- FALSE
@@ -386,10 +395,10 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
     bothpar <- (!any(is.finite(regularization)))
     n.i <- rep(round(train.fraction*n), fold) # number of observations in bootstrap (training-)samples 
     if (output) {
-      cat(" - RDA -\n")
-      cat(n, "observations of", p, "variables in", g, "classes,\n")
-      if (crossval) cat(paste(fold, "-fold cross-validation.", sep=""),"\n")
-      else cat(fold, "bootstrap samples of", n.i[1], "observations each.\n")
+      cat(" - RDA -", "\n")
+      cat(n, "observations of", p, "variables in", g, "classes,", "\n")
+      if (crossval) cat(paste(fold, "-fold cross-validation.", sep=""), "\n")
+      else cat(fold, "bootstrap samples of", n.i[1], "observations each.", "\n")
       cat("Class names: ", paste(classes[1:(length(classes)-1)], col=",", sep=""),
           classes[length(classes)], "\n")
       if(.Platform$OS.type == "windows") flush.console()
@@ -475,7 +484,7 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
       tryval <- logit(seq(-4,4,le=12)) # values to try first 
       if (is.na(regularization[1])) {
         if (output) {
-          cat("Optimizing gamma...\n")
+          cat("Optimizing gamma...", "\n")
           if(.Platform$OS.type == "windows") flush.console()
         }
         goalfu2 <- function(x)
@@ -488,7 +497,7 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
       }
       else {
         if (output) {
-          cat("Optimizing lambda...\n")
+          cat("Optimizing lambda...", "\n")
           if(.Platform$OS.type == "windows") flush.console()
         }
         goalfu2 <- function(x)
@@ -566,7 +575,7 @@ predict.rda <- function(object, newdata, posterior=TRUE, aslist=TRUE, ...)
   g <- dim(object$means)[2]
   
       if (!inherits(object, "rda")) 
-        stop("object not of class rda")
+        stop("object not of class", " 'rda'")
         if (!is.null(Terms <- object$terms)) {
         if (missing(newdata)) 
             newdata <- model.frame(object)
@@ -624,15 +633,15 @@ predict.rda <- function(object, newdata, posterior=TRUE, aslist=TRUE, ...)
 print.rda <- function(x,...)
 {
   #cat(" - RDA - \n")
-  cat("Call:\n")
+  cat("Call:", "\n")
   print(x$call)
-  cat("\nRegularization parameters:\n")
+  cat("\nRegularization parameters:", "\n")
   #cat("gamma:", round(x$regu[1],5), " lambda:", round(x$regu[2],5), "\n")
   print(x$regu)
-  #cat("\nClass prior:\n")
-  cat("\nPrior probabilities of groups:\n")
+  #cat("\nClass prior:", "\n")
+  cat("\nPrior probabilities of groups:", "\n")
   print(x$prior)
-  cat("\nMisclassification rate:\n")
+  cat("\nMisclassification rate:", "\n")
   cat("       apparent:",
     ifelse(is.na(x$error.rate[1]), "--", as.character(round(x$error.rate[1] * 100, 3))), "%\n")
   if (length(x$error.rate) > 1)

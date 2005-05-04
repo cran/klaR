@@ -1,10 +1,10 @@
-export(b.scal, betascale, calc.trans, centerlines, classscatter, dkernel, 
-    drawparti, e.scal, EDAM, errormatrix, friedman.data, hmm.sop, NaiveBayes, 
-    partimat, plineplot, shardsplot, 
-    quadtrafo, quadlines, quadpoints, quadplot, 
-    rda, sknn, stepclass, svmlight, TopoS, 
-    tritrafo, trilines, tripoints, trigrid, triframe, triplot, triperplines, 
-    ucpm)
+export(b.scal, betascale, calc.trans, centerlines, classscatter, dkernel,
+    drawparti, e.scal, EDAM, errormatrix, friedman.data, hmm.sop, NaiveBayes,
+    partimat, plineplot, shardsplot,
+    quadtrafo, quadlines, quadpoints, quadplot,
+    rda, nm, sknn, stepclass, svmlight, meclight, TopoS,
+    tritrafo, trilines, tripoints, trigrid, triframe, triplot, triperplines,
+    ucpm, benchB3, greedy.wilks)
 
 S3method(NaiveBayes, formula)
 S3method(NaiveBayes, default)
@@ -25,6 +25,16 @@ S3method(sknn, formula)
 S3method(sknn, matrix)
 S3method(sknn, data.frame)
 S3method(predict, sknn)
+S3method(nm, default)
+S3method(nm, formula)
+S3method(nm, matrix)
+S3method(nm, data.frame)
+S3method(meclight, default)
+S3method(meclight, formula)
+S3method(meclight, matrix)
+S3method(meclight, data.frame)
+S3method(predict, meclight)
+S3method(print, meclight)
 S3method(stepclass, formula)
 S3method(stepclass, default)
 S3method(print, stepclass)
@@ -34,3 +44,6 @@ S3method(svmlight, formula)
 S3method(svmlight, matrix)
 S3method(svmlight, data.frame)
 S3method(predict, svmlight)
+S3method(greedy.wilks, default)
+S3method(greedy.wilks, formula)
+S3method(print, greedy.wilks)

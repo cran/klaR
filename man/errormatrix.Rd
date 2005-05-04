@@ -74,3 +74,5 @@ total.rate <- t(indiv.rates) \%*\% prior
 total.rate
 }
 \keyword{multivariate}
+\concept{Visualizing classification results}
+\concept{Confusion matrix}

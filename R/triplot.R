@@ -95,9 +95,10 @@ triplot <- function(x=NULL, y=NULL, z=NULL, main="",
   corners <- tritrafo(x=diag(3))
   rownames(corners) <- paste("corner", 1:3, sep="")
   if (set.par) {
-    if (main!="") newmar <- c(0, 0, 4, 0) + 0.1
+    if (main != "") newmar <- c(0, 0, 4, 0) + 0.1
     else newmar <- rep(0, 4) + 0.1
-    par(mar=newmar)
+    opar <- par(mar = newmar)
+    on.exit(par(opar))
   }
   plot.new()
   plot.window(xlim=c(corners[1,1]-margin[2], corners[3,1]+margin[4]),

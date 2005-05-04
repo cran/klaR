@@ -48,3 +48,4 @@ drawparti(grouping, x, y, method = "lda", prec = 100, xlab = NULL,
 \author{Karsten Luebke, \email{luebke@statistik.uni-dortmund.de}, Uwe Ligges, Irina Czogiel}
 \keyword{classif}
 \keyword{dplot}
+\concept{Vizualizing classification results}

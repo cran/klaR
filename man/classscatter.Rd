@@ -34,7 +34,9 @@ classscatter(formula, data, method, col.correct = "black",
 \examples{
 data(B3)
 library(MASS)
-classscatter(PHASEN ~ BSP91JW + EWAJW + LSTKJW, data = B3, method = "lda")
+classscatter(PHASEN ~ BSP91JW + EWAJW + LSTKJW, 
+    data = B3, method = "lda")
 }
 \keyword{dplot}
 \keyword{classif}
+\concept{Visualizing classification results}

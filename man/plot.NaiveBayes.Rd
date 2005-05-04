@@ -6,18 +6,18 @@
   given the class.
 }
 \usage{
-plot.NaiveBayes(x, vars, n = 1000, legendplot = TRUE, 
-    lty = 1:length(x$apriori), col = rainbow(length(x$apriori)), 
+plot.NaiveBayes(x, vars, n = 1000, legendplot = TRUE, lty, col,
     ylab = "Density", main = "Naive Bayes Plot", ...)
-    }
+}
 
 \arguments{
-  \item{x}{an object of \code{class} \code{\link{NaiveBayes}}}
-  \item{vars}{variables to be plotted. If \code{missing} all predictor variables are plotted.}
-  \item{n}{Number points used to plot the density line.}
-  \item{legendplot}{print a \code{\link{legend}}?}
-  \item{lty}{\code{lty} of the different classes.}
-  \item{col}{\code{color} for the different classes.}
+  \item{x}{an object of class \code{\link{NaiveBayes}}}
+  \item{vars}{variables to be plotted. If missing, all predictor variables are plotted.}
+  \item{n}{number of points used to plot the density line.}
+  \item{legendplot}{logical, whether to print a \code{\link{legend}}}
+  \item{lty}{line type for different classes, defaults to the first \code{length(x$apriori)} 
+    colors of the current palette in use.}
+  \item{col}{color for different classes, defaults to \code{rainbow(length(x$apriori))}.}
   \item{ylab}{label for y-axis.}
   \item{main}{title of the plots.}
   \item{\dots}{furhter arguments passed to the underlying plot functions.}
@@ -31,11 +31,12 @@ plot.NaiveBayes(x, vars, n = 1000, legendplot = TRUE,
 \seealso{\code{\link{NaiveBayes}}}
 \examples{
 data(iris)
-mN<-NaiveBayes(Species~.,data=iris)
+mN <- NaiveBayes(Species ~ ., data = iris)
 plot(mN)
 
-mK<-NaiveBayes(Species~.,data=iris,usekernel=TRUE)
+mK <- NaiveBayes(Species ~ ., data = iris, usekernel = TRUE)
 plot(mK)
 }
 \keyword{classif}
 \keyword{dplot}
+\concept{Visualizing Naive Bayes Classification}

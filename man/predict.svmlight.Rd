@@ -32,3 +32,7 @@ predict(x, iris)
 }
 }
 \keyword{classif}
+\concept{Support vector machines}
+\concept{SVMlight}
+\concept{SVM}
+\concept{Classification}

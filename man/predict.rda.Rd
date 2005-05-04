@@ -40,3 +40,7 @@ x <- rda(Species ~ ., data = iris, gamma = 0.05, lambda = 0.2)
 predict(x, iris[, 1:4])
 }
 \keyword{multivariate}
+\concept{Regularized Discriminant Analysis}
+\concept{Linear Discriminant Analysis}
+\concept{Quadratic Discriminant Analysis}
+\concept{robust against multicollinearity}

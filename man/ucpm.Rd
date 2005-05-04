@@ -48,3 +48,8 @@ data(iris)
 ucpm(predict(lda(Species ~ ., data = iris))$posterior, iris$Species)
 }
 \keyword{classif}
+\concept{Classification Performance Measures}
+\concept{Correctness Rate}
+\concept{Accuracy}
+\concept{Confidence}
+\concept{Ability to Seperate}

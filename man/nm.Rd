@@ -1,20 +1,20 @@
-\name{sknn}
-\alias{sknn}
-\alias{sknn.default}
-\alias{sknn.formula}
-\alias{sknn.matrix}
-\alias{sknn.data.frame}
-\title{Simple k nearest Neighbours}
+\name{nm}
+\alias{nm}
+\alias{nm.default}
+\alias{nm.formula}
+\alias{nm.matrix}
+\alias{nm.data.frame}
+\title{Nearest Mean Classification}
 \description{
-Function for simple knn classification.
+Function for nearest mean classification.
 }
 \usage{
-sknn(x, ...)
+nm(x, ...)
 
-\method{sknn}{default}(x, grouping, kn = 3, gamma=0, ...)
-\method{sknn}{data.frame}(x, ...)
-\method{sknn}{matrix}(x, grouping, ..., subset, na.action = na.fail)
-\method{sknn}{formula}(formula, data = NULL, ..., subset, na.action = na.fail)
+\method{nm}{default}(x, grouping, gamma = 0, ...)
+\method{nm}{data.frame}(x, ...)
+\method{nm}{matrix}(x, grouping, ..., subset, na.action = na.fail)
+\method{nm}{formula}(formula, data = NULL, ..., subset, na.action = na.fail)
 }
 
 \arguments{
@@ -25,8 +25,8 @@ sknn(x, ...)
   \item{formula}{formula of the form \code{groups ~ x1 + x2 + ...}. 
     That is, the response is the grouping factor and the right hand side specifies the (non-factor) discriminators.}
   \item{data}{Data frame from which variables specified in \code{formula} are preferentially to be taken.}
-  \item{kn}{Number of nearest neighbours to use.}
-  \item{gamma}{gamma parameter for rbf in knn. If \code{gamma=0} ordinary knn classification is used.}
+  \item{gamma}{gamma parameter for rbf weight of the distance to mean. If \code{gamma=0} the posterior is 1 for the
+    nearest class (mean) and 0 else.}
   \item{subset}{An index vector specifying the cases to be used in the
     training sample. (Note: If given, this argument must be named.)}
   \item{na.action}{specify the action to be taken if \code{NA}s are
@@ -38,21 +38,23 @@ sknn(x, ...)
 }
 
 \details{
-If \code{gamma>0} an gaussian like density is used to weight the classes of the \code{kn} nearest neighbors. 
+\code{nm} is calling \code{\link{sknn}} with the class means as observations.
+If \code{gamma>0} a gaussian like density is used to weight the distance to the class means
 \code{weight=exp(-gamma*distance)}. This is similar to an rbf kernel. 
 If the distances are large it may be useful to \code{\link{scale}} the data first.
 }
 \value{
-  A list containing the function call. 
+  A list containing the function call and the class means (\code{learn})). 
 }
 \author{Karsten Luebke, \email{luebke@statistik.uni-dortmund.de}}
 
-\seealso{\code{\link{predict.sknn}}, \code{\link[class]{knn}}}
+\seealso{\code{\link{sknn}}, \code{\link{rda}}, \code{\link[class]{knn}}}
 \examples{
-data(iris)
-x <- sknn(Species ~ ., data = iris)
-x <- sknn(Species ~ ., gamma = 4, data = iris)
+data(B3)
+x <- nm(PHASEN ~ ., data = B3)
+x$learn
+x <- nm(PHASEN ~ ., data = B3, gamma = 0.1)
+predict(x)$post
 }
 \keyword{classif}
-\concept{k nearest neighbour classification}
-\concept{KNN}
+\concept{Nearest Mean Classification}

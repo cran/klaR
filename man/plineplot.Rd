@@ -8,11 +8,12 @@ classification method are plotted. The variable need not be used for the actual
 classifcation.
 }
 \usage{
-plineplot(formula, data, method, x, col.wrong = "red", ylim = c(0, 1), loo=FALSE, ...)
+plineplot(formula, data, method, x, col.wrong = "red", 
+          ylim = c(0, 1), loo = FALSE, mfrow, ...)
 }
 
 \arguments{
-  \item{formula}{ formula of the form \code{groups ~ x1 + x2 + ...}. 
+  \item{formula}{formula of the form \code{groups ~ x1 + x2 + ...}. 
     That is, the response is the grouping factor and the right hand side specifies the (non-factor) discriminators.}
   \item{data}{ Data frame from which variables specified in formula are preferentially to be taken.}
   \item{method}{character, name of classification function 
@@ -20,7 +21,9 @@ plineplot(formula, data, method, x, col.wrong = "red", ylim = c(0, 1), loo=FALSE
   \item{x}{variable that should be plotted. See examples.}
   \item{col.wrong}{color to use for missclassified objects.}
   \item{ylim}{\code{ylim} for the plot.}
-  \item{loo}{Should leave-one-out estimate be used for prediction?}
+  \item{loo}{logical, whether leave-one-out estimate is used for prediction}
+  \item{mfrow}{number of rows and columns in the graphics device, see \code{\link{par}}. 
+    If missing, number of rows equals number of classes, and 1 column.}
   \item{\dots}{further arguments passed to the underlying classification method or plot functions.}
 }
 
@@ -45,3 +48,4 @@ plineplot(Species ~ ., data = iris2, method = "lda",
 }
 \keyword{classif}
 \keyword{dplot}
+\concept{Vizualizing classification results}

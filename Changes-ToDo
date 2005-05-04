@@ -19,23 +19,23 @@ Changelog:
               + new args: xlab, ylab, xaxs, yaxs
               + corrected typos in docs
 
-- shardsplot: + Examples in EDAM() and shardsplot() fixed in resp. 
+- shardsplot: + Examples in EDAM() and shardsplot() fixed in resp.
                 to legend() calls
               + box() added in shardsplot()
 - quadplot and friends: Minor doc fixes.
 
 - triplot and friends added
 - triplot doc fixes by KL, UL, CR, and thereafter *again* by UL.
-- shardsplot, countries: Zwei keine Fehler in den Manuals geändert 
+- shardsplot, countries: Zwei keine Fehler in den Manuals geändert
 
-- minor changes in: tritrafo + docs, predict.svmlight, 
+- minor changes in: tritrafo + docs, predict.svmlight,
   quadplot docs, ucpm docs
 
 - quadplot "fixed" and several minor doc. changes
 
 ==== release: 0.2-1 (first one on CRAN)
 
-- quadplot arguments added and code improved to allow much more 
+- quadplot arguments added and code improved to allow much more
   fine-tuning.
 - swapped order of returned arguments in predict.svmlight()
 
@@ -43,7 +43,7 @@ Changelog:
 
 - stepclass() can handle ucpm() measures now
 
-- stepclass() improvement fixed. improvement is now an absolute measure that 
+- stepclass() improvement fixed. improvement is now an absolute measure that
   works with arbitrary ucpm()s. priors have been defined for the null model.
   Defaults now to 0.05 rather than 0.95
   Explicit argument "prior" has been removed, since the implementation war crude anyway.
@@ -51,7 +51,7 @@ Changelog:
 
 - fix in ucpm(), failed if no colnames were given for the argument.
 
-- fix in svmlight / predict.svmlight: also works now if no path is given  
+- fix in svmlight / predict.svmlight: also works now if no path is given
 - svmlight() now returns values scaled via e.scal()
 - some cosmetic changes to svmlight and the help page
 
@@ -74,35 +74,45 @@ Changelog:
                   stepclass, try-catching corrected
                   predict.svmlight oao works for two classes
 
-==== release: 0.3-3
+==== release: 0.3-3, 0.3-4
+
+- minor fixes (e.g. to calm down CRAN maintainer)
+
+==== release: 0.4-0
+
+- first preparations for translations
+- some bug fixes, new args and better docs for plot functions
+- some regressions tests added
+- greedy.wilks and benchB3 added
+- nm (nearest mean)
+- meclight added
+- stepclass returns a formula
+- quadplot fixed now (setting "usr" appropriately),
+   works now with together with fixed scatterplot3d_0.3-22
 
 
-To Do:
+
+To Do (at least in Uwe's opinion):
 ======
 
-Use \concept{} in ALL Rd files.
-
-Implementing regression tests for all major functions
 
 stepclass:
-- LATER: many rather long functions defined in stepclass() 
-  should be defined in the top level of the package 
+- LATER: many rather long functions defined in stepclass()
+  should be defined in the top level of the package
   (e.g. documenting them as "internal")
-  Maybe to hide in a (forthcoming ?) Namespace?
 - LATER: Rewrite it to be readable.
 - allow for *arbitrary* performance measures
 - allow for arbitrary predict functions
 
 rda:
-- In Main Procedure some loops within loops within ... with 
-  really bad memory allocatoin as in: new <- c(new, ......) 
+- In Main Procedure some loops within loops within ... with
+  really bad memory allocatoion as in: new <- c(new, ......)
   e.g. lines 383 ff., the same with calls to cbind()
-- LATER: rda.default() - Many functions defined therein rather 
+- LATER: rda.default() - Many functions defined therein rather
   than in the package itself. Why?
 - LATER: another optimizer, e.g. optim()?
-- check whether rda == lda / qda for extreme parameter settings
 
-quadplot: 
+quadplot:
 - rgl implementation
 
 triplot/quadplot:
@@ -110,4 +120,3 @@ triplot/quadplot:
 
 EDAM:
 - par(asp=1) is more appropriate than the default, isn't it?
-

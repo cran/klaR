@@ -172,7 +172,7 @@ shardsplot <- function(object, plot.type = c("eight", "four", "points", "n"),
                     "rainbow" = rainbow(max(cl.ord))[cl.ord],
                     "topo"    = topo.colors(max(cl.ord))[cl.ord],
                     "gray"    = gray(1:max(cl.ord)/max(cl.ord))[cl.ord],
-                    stop("argument classcolors only support 'rainbow', 'topo', and 'gray'.")
+                    stop("argument classcolors only support 'rainbow', 'topo', and 'gray'")
                 )
             else classcolors[cl.ord]
     }
@@ -197,7 +197,7 @@ shardsplot <- function(object, plot.type = c("eight", "four", "points", "n"),
                         "rainbow" = rainbow(max(code.classes))[code.classes],
                         "topo"    = topo.colors(max(code.classes))[code.classes],
                         "gray"    = gray(1:max(code.classes)/max(code.classes))[code.classes],
-                        stop("argument classcolors only support 'rainbow', 'topo', and 'gray'.")
+                        stop("argument classcolors only support 'rainbow', 'topo', and 'gray'")
                     )
                 else classcolors[cl.ord]
             vec.col.ord <- rep(0,nzx*nzy)

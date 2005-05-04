@@ -13,23 +13,14 @@ structure(list(learn = x, grouping = grouping, lev = levels(grouping),
 
 ### sknn bei verschiedenen Eingabeformaten:
 sknn.formula <- function (formula, data = NULL, ..., subset, na.action = na.fail) 
-{
+{    
     m <- match.call(expand.dots = FALSE)
-    if (is.matrix(eval.parent(m$data))) 
-        m$data <- as.data.frame(data)
     m$... <- NULL
     m[[1]] <- as.name("model.frame")
     m <- eval.parent(m)
     Terms <- attr(m, "terms")
     grouping <- model.response(m)
     x <- model.matrix(Terms, m)
-    xvars <- as.character(attr(Terms, "variables"))[-1]
-    if ((yvar <- attr(Terms, "response")) > 0) 
-        xvars <- xvars[-yvar]
-    xlev <- if (length(xvars) > 0) {
-        xlev <- lapply(m[xvars], levels)
-        xlev[!sapply(xlev, is.null)]
-    }
     xint <- match("(Intercept)", colnames(x), nomatch = 0)
     if (xint > 0) 
         x <- x[, -xint, drop = FALSE]
@@ -39,10 +30,8 @@ sknn.formula <- function (formula, data = NULL, ..., subset, na.action = na.fail
     cl[[1]] <- as.name("sknn")
     res$call <- cl
     res$contrasts <- attr(x, "contrasts")
-    res$xlevels <- xlev
-    attr(res, "na.message") <- attr(m, "na.message")
-    if (!is.null(attr(m, "na.action"))) 
-        res$na.action <- attr(m, "na.action")
+    res$xlevels <- .getXlevels(Terms, m)
+    res$na.action <- attr(m, "na.action")
     res
 }
 
@@ -96,7 +85,7 @@ spsknn <- function(neux,object)
     } 
 
 if (!inherits(object, "sknn")) 
-        stop("object not of class sknn")
+        stop("object not of class", " 'sknn'")
     if (!is.null(Terms <- object$terms)) {
         if (missing(newdata)) 
             newdata <- model.frame(object)

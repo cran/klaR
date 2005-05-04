@@ -51,7 +51,7 @@ memberlist <- vector(length(lev), mode = "list")
 names(memberlist) <- as.character(1:length(lev))
 mcol <- max.col(member)
 if(!all(lev %in% mcol))
-    stop("At least one observation is required for each predicted class.")
+    stop("at least one observation is required for each predicted class")
 temp <- split(memberdata, mcol)
 for(i in names(temp))
     memberlist[i] <- temp[i]

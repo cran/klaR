@@ -13,12 +13,13 @@ classification is done with the one-against-rest partition of data.
 \usage{
 svmlight(x, ...)
 
-\method{svmlight}{default}(x, grouping, temp.dir = NULL, pathsvm = NULL, del = TRUE,
-    type = "C", class.type = "oaa", svm.options = NULL, prior = NULL, 
-    out = FALSE, ...)
+\method{svmlight}{default}(x, grouping, temp.dir = NULL, pathsvm = NULL, 
+    del = TRUE, type = "C", class.type = "oaa", svm.options = NULL, 
+    prior = NULL, out = FALSE, ...)
 \method{svmlight}{data.frame}(x, ...)
 \method{svmlight}{matrix}(x, grouping, ..., subset, na.action = na.fail)
-\method{svmlight}{formula}(formula, data = NULL, ..., subset, na.action = na.fail)
+\method{svmlight}{formula}(formula, data = NULL, ..., subset, 
+    na.action = na.fail)
 }
 
 \arguments{
@@ -76,7 +77,14 @@ svmlight(x, ...)
 \dontrun{
 ## Only works if the svmlight binaries are in the path.
 data(iris)
-x <- svmlight(Species ~ ., data=iris)
+x <- svmlight(Species ~ ., data = iris)
+## Using RBF-Kernel with gamma=0.1:
+data(B3)
+x <- svmlight(PHASEN ~ ., data = B3, svm.options = "-t 2 -g 0.1")
 }
 }
 \keyword{classif}
+\concept{Support vector machines}
+\concept{SVMlight}
+\concept{SVM}
+\concept{Classification}

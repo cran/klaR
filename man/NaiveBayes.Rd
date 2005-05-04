@@ -63,3 +63,5 @@ m <- NaiveBayes(Species ~ ., data = iris)
 }
 \keyword{classif}
 \keyword{category}
+\concept{Naive Bayes Classification}
+\concept{Kernel estimated densities}

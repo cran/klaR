@@ -27,3 +27,6 @@ pbB3 <- b.scal(pB3, B3$PHASEN)
 betascale(pbB3)
 }
 \keyword{classif}
+\concept{Beta scaling}
+\concept{Classification}
+\concept{Posterior probabilities}

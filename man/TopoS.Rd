@@ -34,3 +34,4 @@ plot(cmdscale(dist(B3[, 2:14])), col = rainbow(4)[B3[, 1]], pch = 16)
 TopoS(dist(B3[, 2:14]), dist(cmdscale(dist(B3[, 2:14]))))
 }
 \keyword{internal}
+\concept{S criterion}

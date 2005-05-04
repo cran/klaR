@@ -74,3 +74,5 @@ legend(x = -0.6, y = 0.7, col = c("blue", "green3", "red"),
     pch = 15, legend = colnames(pred$posterior))
 }
 \keyword{aplot}
+\concept{Visualizing Classification Performance Measures}
+\concept{Barycentric plots}

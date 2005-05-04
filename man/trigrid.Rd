@@ -42,3 +42,5 @@ trigrid(x = NA, y = NA, z = c(0.1, 0.2, 0.4, 0.8))
 }
 
 \keyword{aplot}
+\concept{Visualizing Classification Performance Measures}
+\concept{Barycentric plots}

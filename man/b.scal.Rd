@@ -47,3 +47,6 @@ ucpm(pB3, B3$PHASEN)
 ucpm(pbB3$member, B3$PHASEN)
 }
 \keyword{classif}
+\concept{Beta scaling}
+\concept{Classification}
+\concept{Posterior probabilities}
