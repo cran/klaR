@@ -56,7 +56,7 @@
   variables.
   }
 \author{Karsten Luebke}
-\seealso{\code{\link{predict.NaiveBayes}}\,code{\link{plot.NaiveBayes}},\code{\link[e1071]{naiveBayes}},\code{\link[MASS]{qda}}}
+\seealso{\code{\link{predict.NaiveBayes}},\code{\link{plot.NaiveBayes}},\code{\link[e1071]{naiveBayes}},\code{\link[MASS]{qda}}}
 \examples{
 data(iris)
 m <- NaiveBayes(Species ~ ., data = iris)

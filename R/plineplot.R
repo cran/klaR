@@ -1,7 +1,7 @@
 plineplot <- function(formula, data, method, x, col.wrong = "red", 
     ylim = c(0, 1), loo = FALSE, mfrow, ...)
 {
-    variables <- dimnames(attributes(terms(formula))$factors)[[1]]
+    variables <- dimnames(attributes(terms(formula, data=data))$factors)[[1]]
     response <- variables[1]
     discriminators <- variables[-1]
     if(any(discriminators == ".")) {

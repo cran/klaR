@@ -90,6 +90,10 @@ Changelog:
 - quadplot fixed now (setting "usr" appropriately),
    works now with together with fixed scatterplot3d_0.3-22
 
+==== release: 0.4-1
+- stepclass has new argument min1var = TRUE (-> at least one variable in the model)
+- terms(....., data=data)
+
 
 
 To Do (at least in Uwe's opinion):
@@ -117,6 +121,3 @@ quadplot:
 
 triplot/quadplot:
 - check whether membership values are in [0,1]
-
-EDAM:
-- par(asp=1) is more appropriate than the default, isn't it?

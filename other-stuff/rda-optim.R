@@ -6,7 +6,7 @@ rda <- function(x, ...)
 
 rda.formula <- function(formula, data, ...)
 {
-  variables <- dimnames(attributes(terms(formula))$factors)[[1]]
+  variables <- dimnames(attributes(terms(formula, data=data))$factors)[[1]]
   response <- variables[1]
   discriminators <- variables[-1]
   if (any(discriminators==".")) {

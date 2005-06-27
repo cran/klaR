@@ -2369,7 +2369,7 @@ Loading required package: scatterplot3d
 +         main = "RDA posterior assignments")
 > quadlines(centerlines(4), sp = s3d, lty = "dashed")
 > par("mar")
-[1] 5.1 4.1 4.1 2.1
+[1] 5.1 3.1 4.1 3.1
 > 
 > 
 > # triplot
@@ -2391,7 +2391,7 @@ Loading required package: scatterplot3d
 > legend(x = -0.6, y = 0.7, col = c("blue", "green3", "red"), 
 +     pch = 15, legend = colnames(pred$posterior))
 > par("mar")
-[1] 5.1 4.1 4.1 2.1
+[1] 5.1 3.1 4.1 3.1
 > 
 > # partimat
 > partimat(Species ~ ., data = iris, method = "lda", 

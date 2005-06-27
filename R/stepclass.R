@@ -6,7 +6,7 @@ stepclass <- function(x, ...)
 
 stepclass.formula <- function(formula, data, method, ...)
 {
-  variables <- dimnames(attributes(terms(formula))$factors)[[1]]
+  variables <- dimnames(attributes(terms(formula, data=data))$factors)[[1]]
   response <- variables[1]
   discriminators <- variables[-1]
   if(any(discriminators == ".")) {
@@ -24,7 +24,7 @@ stepclass.formula <- function(formula, data, method, ...)
 
 stepclass.default <-function (x, grouping, method, improvement = 0.05, 
     maxvar = Inf, start.vars = NULL, direction = c("both", "forward", "backward"), 
-    criterion = "CR", fold = 10, cv.groups = NULL, output = TRUE, ...) 
+    criterion = "CR", fold = 10, cv.groups = NULL, output = TRUE, min1var = TRUE, ...) 
 {
 
     gpVar <- deparse(substitute(grouping))
@@ -64,7 +64,7 @@ stepclass.default <-function (x, grouping, method, improvement = 0.05,
 
     null.rate <- function(grouping, fold, cv.groups, criterion)
     {
-        goalfunc<-0
+        goalfunc <- numeric(fold)
         for (f in 1:fold) {
             train <- (cv.groups != f)
             test <- which(!train)
@@ -73,9 +73,9 @@ stepclass.default <-function (x, grouping, method, improvement = 0.05,
             hg <- table(training)
             classi <- matrix(rep(hg/length(training),length(test)), 
                 nrow = length(test), ncol = length(levels(grouping)), byrow = TRUE)
-            goalfunc <- goalfunc + (1 - ucpm(classi, grouping[test])[[criterion]])
+            goalfunc[f] <- 1 - ucpm(classi, grouping[test])[[criterion]]
         }
-        return(goalfunc / fold)
+        return(mean(goalfunc))
     }
         
     
@@ -205,8 +205,9 @@ stepclass.default <-function (x, grouping, method, improvement = 0.05,
             flush.console()
     }
     if (is.null(start.vars)){
-        old.rate <- null.rate(grouping = grouping, fold = fold, 
-            cv.groups = cv.groups, criterion = criterion)   
+        old.rate <- if(min1var) 1
+            else null.rate(grouping = grouping, fold = fold, 
+                           cv.groups = cv.groups, criterion = criterion)   
     }
     else {
         old.rate <- cv.rate(vars = start.vars, data = data, grouping = grouping, 

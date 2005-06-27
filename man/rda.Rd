@@ -88,6 +88,12 @@ misclassification rate; the misclassification rate is estimated
 either by Cross-Validation or by repeatedly dividing the data 
 into training- and test-sets (Boostrapping).
 
+\emph{Warning}: If these sets are small, optimization is expected 
+to produce almost random results. We recommend to adjust the 
+parameters manually in such a case.
+In all other cases it is recommended to run the optimization 
+several times in order to see whether stable results are gained.
+
 Since the Nelder-Mead-algorithm is actually intended for 
 \emph{continuous} functions while the observed error rate 
 by its nature is \emph{discrete}, a greater number of 

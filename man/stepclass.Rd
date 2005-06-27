@@ -15,7 +15,8 @@ stepclass(x, ...)
 
 \method{stepclass}{default}(x, grouping, method, improvement = 0.05, maxvar = Inf, 
     start.vars = NULL, direction = c("both", "forward", "backward"), 
-    criterion = "CR",  fold = 10, cv.groups = NULL, output = TRUE, ...)
+    criterion = "CR",  fold = 10, cv.groups = NULL, output = TRUE, 
+    min1var = TRUE, ...)
 \method{stepclass}{formula}(formula, data, method, ...)
 }
 \arguments{
@@ -43,6 +44,8 @@ stepclass(x, ...)
 \item{cv.groups}{vector of group indicators for cross-validation. 
     By default assigned automatically.}
 \item{output}{indicator (logical) for textoutput during computation (slows down computation!)}
+\item{min1var}{logical, whether to include at least one variable in the model, 
+    even if the prior itself already is a reasonable model.}
 \item{...}{further parameters passed to classification function (\sQuote{\code{method}}), e.g. priors etc.}
 }
 \details{

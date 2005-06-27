@@ -31,7 +31,10 @@ greedy.wilks.formula <- function(formula, data = NULL, ...)
 }
 
 greedy.wilks.default <- function(X, grouping, niveau = 0.2, ...){
-   
+ 
+ namesset <- FALSE
+ if (is.null(colnames(X))) {colnames(X) <- 1:ncol(X); namesset <- TRUE}
+ 
  ### Help Function   
  Lambda <- function(X, grouping){       
     # function to calculate the eigenvalues of model X with its vector of groupings grouping
@@ -142,6 +145,7 @@ greedy.wilks.default <- function(X, grouping, niveau = 0.2, ...){
  if(!exists("X.mod"))
     stop("unable to perform required calculations, perhaps not enough observations?")
  vars <- colnames(X.mod)
+ if (namesset) vars<-as.numeric(vars)
  resDat <- data.frame(vars = vars, Wilks.lambda = wilks, F.statistics.overall = Fstat, 
                       p.value.overall = pwert, F.statistics.diff = Fstat2, p.value.diff = pwert2)
  resForm <- as.formula(paste(gpVar, "~", paste(vars, collapse = "+")))
