@@ -16,7 +16,7 @@ partimat(x,...)
 
 \method{partimat}{default}(x, grouping, method = "lda", prec = 100, 
     nplots.vert, nplots.hor, main = "Partition Plot", name, mar, 
-    plot.matrix = FALSE, ...)
+    plot.matrix = FALSE, plot.control = list(), ...)
 \method{partimat}{data.frame}(x, ...)
 \method{partimat}{matrix}(x, grouping, ..., subset, na.action = na.fail)
 \method{partimat}{formula}(formula, data = NULL, ..., subset, na.action = na.fail)
@@ -49,8 +49,9 @@ partimat(x,...)
   \item{plot.matrix}{logical; if \code{TRUE}, like a scatterplot matrix; 
     if \code{FALSE} (default) uses less space and arranges the plots \dQuote{optimal} 
     (using a fuzzy algorithm) in an array by plotting each pair of variables once.}
-  \item{...}{Further arguments passed to the classification \code{method} 
-    and underlying plot function \code{\link{drawparti}}.}
+  \item{plot.control}{A list containing further arguments passed to the underlying 
+    plot functions (and to \code{\link{drawparti}}).}
+  \item{...}{Further arguments passed to the classification \code{method} (through \code{\link{drawparti}}).}
 }
 \seealso{for much more fine tuning see \code{\link{drawparti}}}
 \author{Karsten Luebke, \email{luebke@statistik.uni-dortmund.de}, Uwe Ligges, Irina Czogiel}

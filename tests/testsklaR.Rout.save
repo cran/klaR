@@ -900,71 +900,71 @@ Proportion of trace:
 > # beta scaling, e.scal
 > print(pbB3 <- b.scal(pB3, B3$PHASEN, dis = TRUE))
 $model
-$model$"1"
-$model$"1"$CR
+$model$`1`
+$model$`1`$CR
 [1] 0.8888889
 
-$model$"1"$N
+$model$`1`$N
 [1] 4
 
-$model$"1"$pm
+$model$`1`$pm
 [1] 0.9218658
 
-$model$"1"$NM
+$model$`1`$NM
 [1] 4.403097
 
-$model$"1"$S
+$model$`1`$S
 [1] 0.0133311
 
 
-$model$"2"
-$model$"2"$CR
+$model$`2`
+$model$`2`$CR
 [1] 0.8518519
 
-$model$"2"$N
+$model$`2`$N
 [1] 3
 
-$model$"2"$pm
+$model$`2`$pm
 [1] 0.8061683
 
-$model$"2"$NM
+$model$`2`$NM
 [1] 2.967772
 
-$model$"2"$S
+$model$`2`$S
 [1] 0.03938255
 
 
-$model$"3"
-$model$"3"$CR
+$model$`3`
+$model$`3`$CR
 [1] 0.9090909
 
-$model$"3"$N
+$model$`3`$N
 [1] 2
 
-$model$"3"$pm
+$model$`3`$pm
 [1] 0.8860824
 
-$model$"3"$NM
+$model$`3`$NM
 [1] 2.810216
 
-$model$"3"$S
+$model$`3`$S
 [1] 0.02649203
 
 
-$model$"4"
-$model$"4"$CR
+$model$`4`
+$model$`4`$CR
 [1] 0.9130435
 
-$model$"4"$N
+$model$`4`$N
 [1] 3
 
-$model$"4"$pm
+$model$`4`$pm
 [1] 0.8559067
 
-$model$"4"$NM
+$model$`4`$NM
 [1] 3.280018
 
-$model$"4"$S
+$model$`4`$S
 [1] 0.0288154
 
 
@@ -2195,11 +2195,6 @@ true     1  2  3  4 -SUM-
 > plineplot(PHASEN ~ ., data = B3, method = "lda", 
 +     x = "EWAJW", xlab = "EWAJW")
 [1] 0.1719745
-Warning messages:
-1: parameter "xlab" could not be set in high-level plot() function 
-2: parameter "xlab" could not be set in high-level plot() function 
-3: parameter "xlab" could not be set in high-level plot() function 
-4: parameter "xlab" could not be set in high-level plot() function 
 > 
 > 
 > # quadplot
@@ -2396,11 +2391,6 @@ Loading required package: scatterplot3d
 > # partimat
 > partimat(Species ~ ., data = iris, method = "lda", 
 +     plot.matrix = TRUE, imageplot = FALSE)
-Warning messages:
-1: parameter "imageplot" could not be set in high-level plot() function 
-2: parameter "imageplot" could not be set in high-level plot() function 
-3: parameter "imageplot" could not be set in high-level plot() function 
-4: parameter "imageplot" could not be set in high-level plot() function 
 > 
 > dev.off()
 null device 

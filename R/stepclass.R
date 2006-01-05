@@ -147,8 +147,6 @@ stepclass.default <-function (x, grouping, method, improvement = 0.05,
     data <- x
     rm("x")
     switch(method, 
-        lda = require("MASS"), 
-        qda = require("MASS"), 
         rpart = require("rpart"), 
         naiveBayes = require("e1071"))
     stopifnot(dim(as.data.frame(data))[1] == length(grouping))

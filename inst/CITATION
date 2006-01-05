@@ -16,10 +16,9 @@ citEntry(entry       = "inproceedings",
 	address      = "Berlin",
 	year         = 2005,
 	pages        = "335-343",
-	note         = "(in print)",
 	textVersion  = paste("Weihs, C., Ligges, U., Luebke, K. and Raabe, N. (2005).",
 			"klaR Analyzing German Business Cycles.",
 			"In Baier, D., Decker, R. and Schmidt-Thieme, L. (eds.).",
 			"Data Analysis and Decision Support, 335-343,",
-			"Springer-Verlag, Berlin. (in print)")
+			"Springer-Verlag, Berlin.")
 	)

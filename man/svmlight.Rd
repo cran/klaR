@@ -31,7 +31,7 @@ svmlight(x, ...)
     That is, the response is the grouping factor and the right hand side specifies the (non-factor) discriminators.}
   \item{data}{Data frame from which variables specified in \code{formula} are preferentially to be taken.}
   \item{temp.dir}{directory for temporary files.}
-  \item{pathsvm}{Path to SVMlight binaries (required, if path os unknown by the OS).}
+  \item{pathsvm}{Path to SVMlight binaries (required, if path is unknown by the OS).}
   \item{del}{Logical: whether to delete temporary files}
   \item{type}{Perform \code{"C"}=Classification or \code{"R"}=Regression}
   \item{class.type}{Multiclass scheme to use. See details.}
@@ -52,6 +52,7 @@ svmlight(x, ...)
   \item{...}{}
   
 }
+\section{Requirements}{SVMlight (\url{http://svmlight.joachims.org/}) must be installed before using this interface.}
 \details{
   Function to call SVMlight from R for classification (\code{type="C"}). 
   SVMlight is an implementation of Vapnik's Support Vector Machine. It

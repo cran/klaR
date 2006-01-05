@@ -91,8 +91,24 @@ Changelog:
    works now with together with fixed scatterplot3d_0.3-22
 
 ==== release: 0.4-1
+
 - stepclass has new argument min1var = TRUE (-> at least one variable in the model)
 - terms(....., data=data)
+
+==== release: 0.4-2
+
+- minor svmlight.Rd improvement
+- all.equal stuff for R-2.3.x changed
+
+
+
+
+FUTURE:
+
+==== release: 0.5-0
+
+- pvs and friends added
+
 
 
 

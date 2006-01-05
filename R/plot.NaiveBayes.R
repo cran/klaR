@@ -5,6 +5,10 @@ plot.NaiveBayes <- function(x, vars, n = 1000, legendplot = TRUE, lty, col,
   if(missing(lty)) lty <- seq(along = x$apriori)
   if(missing(col)) col <- rainbow(length(x$apriori))
   vars <- vars[is.element(vars,names(x$tables))]
+  if(interactive() && length(vars > 1)){
+    opar <- par(ask=TRUE)
+    on.exit(par(opar))
+  }
   if(length(vars))
   for(j in seq(along = vars))
   {

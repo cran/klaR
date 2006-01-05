@@ -4,7 +4,7 @@ partimat<-function (x, ...)
 
 partimat.default <- function(x, grouping, method = "lda", prec = 100, 
     nplots.vert, nplots.hor, main = "Partition Plot", name, mar,
-    plot.matrix = FALSE, ...){
+    plot.matrix = FALSE, plot.control = list(), ...){
   
     nvar <- ncol(x)
     if(nvar < 2) stop("at least 2 variables required")
@@ -22,14 +22,14 @@ partimat.default <- function(x, grouping, method = "lda", prec = 100,
             {
                 par(mfg = c(i, j))
                 drawparti(grouping, x[,j], x[,i], method = method, 
-                    prec = prec, legend.err = plot.matrix, xaxt="n", 
-                    yaxt="n", xlab="", ylab="", ...)
+                    prec = prec, legend.err = plot.matrix, xlab="", ylab="", 
+                    plot.control = c(xaxt="n", yaxt="n", plot.control), ...)
                 if(j == 1) axis(2)
                 if(i == nvar) axis(1)
                 par(mfg = c(j, i))
                 drawparti(grouping, x[,i], x[,j], method = method, 
-                    prec = prec, legend.err = plot.matrix, xaxt="n", 
-                    yaxt="n", xlab="", ylab="", ...)
+                    prec = prec, legend.err = plot.matrix, xlab="", ylab="", 
+                    plot.control = c(xaxt="n", yaxt="n", plot.control), ...)
                 if(j == 1) axis(3) 
                 if(i == nvar) axis(4)
             }
@@ -44,7 +44,7 @@ partimat.default <- function(x, grouping, method = "lda", prec = 100,
                     axis(1); axis(4)
                 }
                 mxi <- mean(range(x[,i]))
-                text(mxi, mxi, name[i], ...)
+                do.call("text", c(list(mxi, mxi, name[i]), plot.control))
             }
     } # Plotting fuzzy in rows and columns to save space:
     else{
@@ -75,7 +75,7 @@ partimat.default <- function(x, grouping, method = "lda", prec = 100,
             drawparti(grouping = grouping, x = vars[(1:nobs), k], 
                 y = vars[(nobs+1):(2*nobs), k], method = method, 
                 xlab = varname[1,k], ylab = varname[2,k], prec = prec, 
-                legend.err = plot.matrix, ...)
+                legend.err = plot.matrix, plot.control = plot.control, ...)
         )
         par(mfrow=c(1,1))
         title(main = main, outer = TRUE)
@@ -152,7 +152,8 @@ drawparti <- function(grouping, x, y, method = "lda", prec = 100,
     xlab=NULL, ylab=NULL, col.correct = "black", col.wrong = "red", 
     col.mean = "black", col.contour = "darkgrey", gs = as.character(grouping), 
     pch.mean = 19, cex.mean = 1.3, print.err = 0.7, legend.err = FALSE,
-    legend.bg = "white", imageplot = TRUE, image.colors = cm.colors(nc), ...){
+    legend.bg = "white", imageplot = TRUE, image.colors = cm.colors(nc), 
+    plot.control = list(), ...){                       
     #grouping: class vec.
     #x: first data vec.
     #y: second data vec.
@@ -204,14 +205,14 @@ drawparti <- function(grouping, x, y, method = "lda", prec = 100,
 
     nc <- ncol(temp)
     if(imageplot){
-        image(xg, yg, matrix(apply(temp, 1, which.max), ncol = prec), 
+        do.call("image", c(list(xg, yg, matrix(apply(temp, 1, which.max), ncol = prec), 
             main = NULL, col = image.colors, breaks = (0:nc) + .5, 
-            xlab = xlab, ylab = ylab, ...)
-        points(x, y, pch = gs, col = color, ...)
+            xlab = xlab, ylab = ylab), plot.control))
+        do.call("points", c(list(x, y, pch = gs, col = color), plot.control))
         box()
     }
     else 
-        plot(x, y, pch = gs, col = color, main = NULL, xlab = xlab, ylab = ylab, ...)
+        do.call("plot", c(list(x, y, pch = gs, col = color, main = NULL, xlab = xlab, ylab = ylab), plot.control))
     if((method=="lda") || (method=="qda")) 
         points(z$means, pch = pch.mean, cex = cex.mean, col = col.mean)
     

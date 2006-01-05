@@ -1,3 +1,5 @@
+import("MASS")
+
 export(b.scal, betascale, calc.trans, centerlines, classscatter, dkernel,
     drawparti, e.scal, EDAM, errormatrix, friedman.data, hmm.sop, NaiveBayes,
     partimat, plineplot, shardsplot,
@@ -47,3 +49,4 @@ S3method(predict, svmlight)
 S3method(greedy.wilks, default)
 S3method(greedy.wilks, formula)
 S3method(print, greedy.wilks)
+

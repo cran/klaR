@@ -13,7 +13,8 @@ drawparti(grouping, x, y, method = "lda", prec = 100, xlab = NULL,
     col.mean = "black", col.contour = "darkgrey", 
     gs = as.character(grouping), pch.mean = 19, cex.mean = 1.3, 
     print.err = 0.7, legend.err = FALSE, legend.bg = "white",
-    imageplot = TRUE, image.colors = cm.colors(nc), ...)        
+    imageplot = TRUE, image.colors = cm.colors(nc), 
+    plot.control = list(), ...)        
 }
 
 \arguments{
@@ -41,8 +42,8 @@ drawparti(grouping, x, y, method = "lda", prec = 100, xlab = NULL,
   \item{legend.bg}{Backgound colour to use for the legend.}
   \item{imageplot}{logical; whether to use an \code{\link{image}} plot or \code{\link{contour}} lines.}
   \item{image.colors}{colors used for the \code{imageplot}, if TRUE.}
-  \item{...}{Further arguments passed to the classification \code{method} 
-    and underlying plot functions.}
+  \item{plot.control}{A list containing further arguments passed to the underlying plot functions.}
+  \item{...}{Further arguments passed to the classification \code{method}.}
 }
 \seealso{\code{\link{partimat}}}
 \author{Karsten Luebke, \email{luebke@statistik.uni-dortmund.de}, Uwe Ligges, Irina Czogiel}
