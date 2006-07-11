@@ -22,7 +22,7 @@ Returns the \sQuote{prior probablilities} of states.
 
 \references{Garczarek, Ursula Maria (2002): Classification rules in standardized partition spaces.
             Dissertation, University of Dortmund. 
-            URL \url{http://eldorado.uni-dortmund.de:8080/FB5/ls7/forschung/2002/Garczarek}}
+            URL \url{http://deposit.ddb.de/cgi-bin/dokserv?idn=965050130}}
 
 \author{Daniel Fischer, Reinald Oetsch}
 

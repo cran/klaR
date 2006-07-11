@@ -177,21 +177,22 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
     if (output) {
       if (simAnn) {
         if (schedule==1) 
-            cat("Performing Simulated Annealing with 'exponential' cooling schedule",
-                paste("(halflife=", halflife, ").\n", sep=""))
-        else {cat("Performing Simulated Annealing with 'polynomial' cooling schedule",
-                paste("(alpha=", alpha, ").", "\n", sep=""))
-                cat("Zero temperature after", K, "iterations.", "\n")
+            message("Performing Simulated Annealing with ", "'exponential'", " cooling schedule ",
+                "(halflife=", halflife, ").")
+        else{
+            message("Performing Simulated Annealing with ", "'polynomial'", " cooling schedule ",
+                "(alpha=", alpha, ").")
+            message("Zero temperature after ", K, " iterations.")
         }
       }
-      else cat("Performing Nelder-Mead minimization.", "\n")
-      cat("Calculations for starting simplex...", "\n")
+      else message("Performing Nelder-Mead minimization.")
+      message("Calculations for starting simplex...")
       if(.Platform$OS.type == "windows") flush.console()
     }
     f <- apply(simplex,1,function(x){func(link(x))})  #  vector of `func'-values, corresponding to the simplex 
     min.index <- min.sample(f)
     if (output) {
-      cat("best/worst value:",min(f),"/",max(f),"\n")
+      message("best/worst value: ", min(f), "/", max(f))
       if(.Platform$OS.type == "windows") flush.console()
     }
     best.ever <- c(f[min.index], simplex[min.index,])
@@ -201,7 +202,7 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
       temp <- T.start
       if (schedule==1) faktor <- 0.5^(1/halflife)
       if ((output) && (schedule==1)){ 
-        cat("Zero temperature after",ceiling(log(zero.temp/T.start,base=faktor)),"iterations.", "\n")
+        message("Zero temperature after ", ceiling(log(zero.temp/T.start, base=faktor)), " iterations.")
         if(.Platform$OS.type == "windows") flush.console()
       }
     }
@@ -215,7 +216,7 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
      # REFLEXION: 
       x.reflex <- restrict(centroid + a*(centroid-simplex[max.index,]))
       if (output) {
-        cat("Reflexion", "\n")
+        message("Reflexion")
         if(.Platform$OS.type == "windows") flush.console()
       }
       f.reflex <- func(link(x.reflex))
@@ -226,7 +227,7 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
       if (f.reflex.hot <= f.hot[min.index]) {
         x.expand <- restrict(centroid + g*(x.reflex - centroid))
         if (output) { 
-          cat("Expansion", "\n")
+          message("Expansion")
           if(.Platform$OS.type == "windows") flush.console()
         }
         f.expand <- func(link(x.expand))
@@ -266,7 +267,7 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
             # Since reflexion didn't improve: CONTRACTION. 
              x.contract <- centroid + b*(simplex[max.index,]-centroid)
              if (output) {
-               cat("Contraction", "\n")
+               message("Contraction")
                if(.Platform$OS.type == "windows") flush.console()
              }
              f.contract <- func(link(x.contract))
@@ -286,7 +287,7 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
                for (j in (1:(p+1))[-min.index]) 
                  simplex[j,] <- simplex[min.index,]+r*(simplex[j,]-simplex[min.index,])
                if (output) {
-                 cat("Reduction", "\n")
+                 message("Reduction")
                  if(.Platform$OS.type == "windows") flush.console()
                }
                f.reduce <- apply(simplex[-min.index,],1,function(x){func(link(x))})
@@ -300,22 +301,23 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
            }
            
       # Check if simplex is degeneraed?
-      doubles<-apply(simplex,2,duplicated)
-      doublesdc<-apply(doubles,2,sum)
+      doubles <- apply(simplex, 2, duplicated)
+      doublesdc <- colSums(doubles)
       if (any(doublesdc==p)){
        # If degenerated simplex replace by random vectors
-        simplex[apply(doubles,1,any),apply(doubles,2,any)]<-rmunif(sum(apply(doubles,1,any)),minir[apply(doubles,2,any)],maxir[apply(doubles,2,any)])
+        simplex[apply(doubles,1,any), apply(doubles,2,any)] <- 
+            rmunif(sum(apply(doubles,1,any)), minir[apply(doubles,2,any)], maxir[apply(doubles,2,any)])
         f <- apply(simplex,1,function(x){func(link(x))})  
-        }
+      }
       close.enough <-((sd(f) <= e) || any(f <= best.possible))
       if (output) {
         if (simAnn) 
-            cat(paste(i, ".", sep=""), "iteration; ", 
-                paste("temperature: ", as.character(signif(temp, 4)), "; ", sep=""),
-                "best/worst value:", best.ever[1], "/", max(f), "\n")
+            message(i, ".", " iteration; ",
+                "temperature: ", as.character(signif(temp, 4)), "; ",
+                "best/worst value: ", best.ever[1], "/", max(f))
         else 
-            cat(paste(i, ".", sep=""), "iteration; best/worst value:",
-                f[min.index], "/", f[max.index], "\n")
+            message(i, ".", " iteration; best/worst value: ",
+                f[min.index], "/", f[max.index])
         if(.Platform$OS.type == "windows") flush.console()
       }
       i <- i+1
@@ -332,9 +334,9 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
       }
     }
     if (output) {
-      if (close.enough) if (any(f <= best.possible)) cat("Best possible value reached.", "\n")
-                        else cat("Converged.", "\n")
-      else cat("Stopped after",i-1,"iterations.", "\n")
+      if (close.enough) if (any(f <= best.possible)) message("Best possible value reached.")
+                        else message("Converged.")
+      else message("Stopped after ", i-1, " iterations.")
     }
     if ((close.enough) | any(f <= best.possible)) converged <- TRUE
     else converged <- FALSE
@@ -395,12 +397,12 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
     bothpar <- (!any(is.finite(regularization)))
     n.i <- rep(round(train.fraction*n), fold) # number of observations in bootstrap (training-)samples 
     if (output) {
-      cat(" - RDA -", "\n")
-      cat(n, "observations of", p, "variables in", g, "classes,", "\n")
-      if (crossval) cat(paste(fold, "-fold cross-validation.", sep=""), "\n")
-      else cat(fold, "bootstrap samples of", n.i[1], "observations each.", "\n")
-      cat("Class names: ", paste(classes[1:(length(classes)-1)], col=",", sep=""),
-          classes[length(classes)], "\n")
+      message(" - RDA -")
+      message(n, " observations of ", p, " variables in ", g, " classes,")
+      if (crossval) message(fold, "-fold cross-validation.")
+      else message(fold, " bootstrap samples of ", n.i[1], " observations each.")
+      message("Class names: ", paste(classes[1:(length(classes)-1)], col=",", sep=""),
+          classes[length(classes)])
       if(.Platform$OS.type == "windows") flush.console()
     }  
     # draw bootstrap/crossval samples (row indices): 
@@ -484,7 +486,7 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
       tryval <- logit(seq(-4,4,le=12)) # values to try first 
       if (is.na(regularization[1])) {
         if (output) {
-          cat("Optimizing gamma...", "\n")
+          message("Optimizing gamma...")
           if(.Platform$OS.type == "windows") flush.console()
         }
         goalfu2 <- function(x)
@@ -497,7 +499,7 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
       }
       else {
         if (output) {
-          cat("Optimizing lambda...", "\n")
+          message("Optimizing lambda...")
           if(.Platform$OS.type == "windows") flush.console()
         }
         goalfu2 <- function(x)
@@ -512,8 +514,8 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
   }
   opt.par <- opti$minimum; names(opt.par) <- c("gamma","lambda")
   if (output) {
-    cat("Regularization parameters:\n gamma:", round(opt.par[1],5), 
-        "  lambda:", round(opt.par[2],5), "\n")
+    message("Regularization parameters:\n gamma: ", round(opt.par[1],5), 
+        "  lambda:", round(opt.par[2],5))
     if(.Platform$OS.type == "windows") flush.console()
   }
   # compute parameters for complete data: 
@@ -533,8 +535,8 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
     group.rates <- tabulate(grouping[errors],g) / tabulate(grouping)
     APER <- as.vector(t(prior) %*% group.rates)
     if (output) 
-        cat("Apparent error rate (APER) for training data:", 
-            round(APER * 100, 3), "%\n")  
+        message("Apparent error rate (APER) for training data: ", 
+            round(APER * 100, 3), "%")  
   }
   else APER <- NA
   if (crossval) err <- c("APER"=APER, "crossval"=opti$value)

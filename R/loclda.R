@@ -74,7 +74,7 @@ predict.loclda <- function(object, newdata,...)
     {
         unique.y <- sort(unique(y))
         Zn <- kronecker(rep(1, nrow(Z)), t(z)) - Z
-        distances <- sqrt(diag(Zn %*% t(Zn)))
+        distances <- sqrt(rowSums(Zn^2))
         Knn <- sort(distances)[k]
         indic <- distances <= Knn
         kdist <- distances[indic] / Knn
@@ -89,14 +89,13 @@ predict.loclda <- function(object, newdata,...)
         Z <- Z[indic2, , drop = FALSE]
         apriori.table <- sapply(unique.y, function(x) sum(weighted[y == x]))
         apriori.table <- apriori.table / sum(weighted)
-    if (!weighted.apriori)
+        if (!weighted.apriori)
         {
-        indic3 <- apriori.table != 0
+            indic3 <- apriori.table != 0
             apriori.table [indic3] <- 1/sum (indic3)
         }
         return(list(y = y, Weights = weighted, X = Z, apriori = apriori.table))
     }
-
 
     cov.pooled <- function (X, y, Weights)
     {
@@ -115,7 +114,6 @@ predict.loclda <- function(object, newdata,...)
         1 / (nrow(X) - length(hilfe)) * matrix(rowSums(cov.vecs), nrow = ncol(X))
     }
 
-
     mu.weighted <- function (X, unique.y, y2, Weights, i)
     {
         if (is.vector(X))
@@ -126,14 +124,13 @@ predict.loclda <- function(object, newdata,...)
         as.vector(t(Wnow) %*% Xnow / sum(Wnow))
     }
 
-
     ML <- function (x, X, y, y2, Weights, apriori)
     {
         unique.y <- sort(unique(y))
         sigma <- cov.pooled(X = X, y = y2, Weights = Weights)
         sigma <- solve(sigma, tol = 1e-100)
         mu.distances <- rep (Inf, length (unique.y))
-        posterior.loglik <- (-1)*mu.distances
+        posterior.loglik <- -mu.distances
         for (i in seq(along=posterior.loglik)[apriori!= 0])
         {
             mu <- mu.weighted(X = X, unique.y = unique.y, y2 = y2, Weights = Weights, i = i)
@@ -145,7 +142,6 @@ predict.loclda <- function(object, newdata,...)
         c (mu.distances, posterior.loglik)
     }
 
-
     llda <- function (x, learn, y, weight.func, k, weighted.apriori)
     {
         Weighted <- weighted(z = x, Z = learn, y = y,
@@ -153,7 +149,6 @@ predict.loclda <- function(object, newdata,...)
         ML(x = x, X = Weighted$X, y = y, y2 = Weighted$y, Weights = Weighted$Weights,
            apriori = Weighted$apriori)
     }
-
 
     if (!inherits(object, "loclda"))
             stop("object not of class", " 'loclda'")
@@ -192,6 +187,10 @@ predict.loclda <- function(object, newdata,...)
     indic4 <- seq (along = object.levels)
     mu.distances <- werte[,indic4]
     posterior.loglik <- werte[,-indic4]
+    if (nrow (newdata) == 1) {
+        mu.distances <- matrix (mu.distances, nrow = 1)
+        posterior.loglik <- matrix (posterior.loglik, nrow = 1)
+    }    
     posterior <- exp (posterior.loglik)
     classes <- factor(max.col(posterior), levels = indic4,
                       labels = object.levels)

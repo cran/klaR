@@ -39,7 +39,7 @@ stepclass.default <-function (x, grouping, method, improvement = 0.05,
         CF = cr <- cr[4],
         {   criterion <- "CR"
             cr <- cr[1]
-            cat("Unknown criterion. Changed to", cr, "\n")
+            message("Unknown criterion. Changed to ", cr)
         }
     )
     textoutput <- function(rate, variables, into.model = NA, 
@@ -190,15 +190,14 @@ stepclass.default <-function (x, grouping, method, improvement = 0.05,
         fold <- max(cv.groups)
     }
     if (output) {
-        cat(" `stepwise classification', using ", fold, 
-            "-fold cross-validated ", cr, " of method ", method,
-            "'.\n", sep = "")
-        cat(dim(data)[1], "observations of", dim(data)[2], "variables in", 
-            g, "classes; direction:", direction, "\n")
+        message(" `stepwise classification', using ", fold, 
+            "-fold cross-validated ", cr, " of method ", method, "'.")
+        message(dim(data)[1], " observations of ", dim(data)[2], " variables in ", 
+            g, " classes; direction: ", direction)
         if (!is.finite(maxvar)) 
-            cat("stop criterion: improvement less than", 
-                round(improvement * 100, 2), "%.\n")
-        else cat("stop criterion: assemble", maxvar, "best variables.\n")
+            message("stop criterion: improvement less than ", 
+                round(improvement * 100, 2), "%.")
+        else message("stop criterion: assemble ", maxvar, " best variables.")
         if (.Platform$OS.type == "windows") 
             flush.console()
     }
