@@ -24,7 +24,7 @@ A list containing elements
 }
 \references{Garczarek, Ursula Maria (2002): Classification rules in standardized partition spaces.
             Dissertation, University of Dortmund. 
-            URL \url{http://deposit.ddb.de/cgi-bin/dokserv?idn=965050130}}
+            URL \url{http://hdl.handle.net/2003/2789}}
 
 \author{Karsten Luebke, \email{luebke@statistik.uni-dortmund.de}}
 

@@ -10,7 +10,7 @@
 }
 \usage{
 \method{NaiveBayes}{formula}(formula, data, ..., subset, na.action = na.pass)
-\method{NaiveBayes}{default}(x, grouping, prior, usekernel=FALSE, ...)
+\method{NaiveBayes}{default}(x, grouping, prior, usekernel = FALSE, fL = 0, ...)
 }
 \arguments{
   \item{x}{a numeric matrix, or a data frame of categorical and/or
@@ -25,6 +25,7 @@
     the probabilities should be specified in the order of the factor levels.}
   \item{usekernel}{if \code{TRUE} a kernel density estimate (\code{\link{density}})
     is used for denstity estimation. If \code{FALSE} a normal density is estimated.}
+  \item{fL}{Factor for Laplace correction, default factor is 0, i.e. no correction.}
   \item{\dots}{arguments passed to \code{\link{density}}.}
   \item{subset}{for data given in a data frame, an index vector
     specifying the cases to be used in the
