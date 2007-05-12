@@ -115,6 +115,12 @@ Changelog:
 
 - Laplace correction for NaiveBayes
 
+==== release: 0.5-3
+
+- better computational properties in predict.NaiveBayes for many variables
+  Thanks to Max Kuhn!
+
+
 
 
 FUTURE:
@@ -122,7 +128,6 @@ FUTURE:
 ==== release: 0.6-0
 
 - pvs and friends added
-
 
 
 
