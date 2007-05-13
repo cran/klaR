@@ -1,6 +1,7 @@
 benchB3 <- function(method, prior=rep(1/4, 4), sv="4", scale=FALSE, ...)
 {
-data(B3)
+data("B3", package = "klaR")
+B3 <- get("B3")
 complete <- FALSE
 y <- B3$PHASEN
 zyklus <- numeric(length(y))

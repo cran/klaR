@@ -7,7 +7,7 @@
   the Bayes rule.
 }
 \usage{
-predict.NaiveBayes(object, newdata, threshold = 0.001, ...)
+\method{predict}{NaiveBayes}(object, newdata, threshold = 0.001, ...)
 }
 \arguments{
   \item{object}{An object of class \code{"naiveBayes"}.}

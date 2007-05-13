@@ -1,10 +1,16 @@
 shardsplot <- function(object, plot.type = c("eight", "four", "points", "n"),
     expand = 1, stck = TRUE, grd = FALSE, standardize = FALSE, data.or = NA,
     label = FALSE, plot = TRUE, classes = 0, vertices = TRUE,
-    classcolors = "rainbow", wghts = 0, xlab = "Dimension 1", ylab = "Dimension 2", xaxs = "i", yaxs = "i", ...){
+    classcolors = "rainbow", wghts = 0, xlab = "Dimension 1", 
+    ylab = "Dimension 2", xaxs = "i", yaxs = "i", ...){
     diss <- FALSE
     plot.type <- match.arg(plot.type) # "delaunay" not yet implemented
-    if (plot.type=="delaunay") grd <- FALSE
+    
+    if (plot.type=="delaunay"){
+        stop("plot type delaunay not yet implemented") 
+        grd <- FALSE
+    }
+    
     if (class(object)=="som"){
         preimages <- object$code
         nzx <- object$x
@@ -307,14 +313,14 @@ shardsplot <- function(object, plot.type = c("eight", "four", "points", "n"),
         if (label && plot.type!="delaunay")
             text(mean(draw.points[,1]), mean(draw.points[,2]), rownames(preimages)[i], ...)
     }
-    if (plot && plot.type=="delaunay"){
-        lnames <- 0
-        if (label) lnames <- rownames(preimages)
-        cont.shardsplot(coords=Cells.ex, classes=cl.ord, ydistmat=EV.dist,
-            radius=radius, smallest=smallest, percentage=percentage, convexify=convexify,
-            label=label, vertices=vertices, classcolors=classcolors, pnew=FALSE,
-            vec.col.ord=vec.col.ord, lnames=lnames, ...)
-    }
+#    if (plot && plot.type=="delaunay"){
+#        lnames <- 0
+#        if (label) lnames <- rownames(preimages)
+#        cont.shardsplot(coords=Cells.ex, classes=cl.ord, ydistmat=EV.dist,
+#            radius=radius, smallest=smallest, percentage=percentage, convexify=convexify,
+#            label=label, vertices=vertices, classcolors=classcolors, pnew=FALSE,
+#            vec.col.ord=vec.col.ord, lnames=lnames, ...)
+#    }
     Cells.ex.dist <- distmirr(dist(Cells.ex, method = "euclidean"))
     results <- list(Cells.ex = Cells.ex, S = as.numeric(TopoS(EV.dist,Cells.ex.dist)))
     class(results) <- "EDAM.ex"

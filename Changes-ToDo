@@ -120,6 +120,9 @@ Changelog:
 - better computational properties in predict.NaiveBayes for many variables
   Thanks to Max Kuhn!
 
+==== release: 0.5-4
+
+- many fixes for the codetools checks
 
 
 
@@ -133,6 +136,9 @@ FUTURE:
 
 To Do (at least in Uwe's opinion):
 ======
+
+1. disco must go into klaR and to CRAN!
+   (e.g. for partimat)
 
 
 stepclass:

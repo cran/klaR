@@ -166,12 +166,13 @@ drawparti <- function(grouping, x, y, method = "lda", prec = 100,
         rda = rda(grouping~ x + y, 
             data = cbind.data.frame("grouping" = grouping, "x" = x, "y" = y), ...),
         sknn = sknn(grouping ~ x + y,...),
-        rpart = rpart(grouping~ x + y,...),
-        disco = disco(grouping ~ x + y,
+        rpart = rpart::rpart(grouping~ x + y,...),
+#### we need to move disco to CRAN!!!
+#        disco = disco(grouping ~ x + y,
+#            data = cbind.data.frame("grouping" = grouping, "x" = x, "y" = y), ...),
+        naiveBayes = e1071::naiveBayes(grouping~ x + y, 
             data = cbind.data.frame("grouping" = grouping, "x" = x, "y" = y), ...),
-        naiveBayes = naiveBayes(grouping~ x + y, 
-            data = cbind.data.frame("grouping" = grouping, "x" = x, "y" = y), ...),
-        error("method not yet supported"))
+        stop("method not yet supported"))
 
     # Build a grid on the 2 coordinates
     xg <- seq(min(x), max(x), length = prec)
@@ -185,9 +186,9 @@ drawparti <- function(grouping, x, y, method = "lda", prec = 100,
         rda = predict(z, grd, posterior=TRUE, aslist=TRUE)$post,
         rpart = predict(z, grd, ...),
         sknn = predict(z, grd, ...)$post,
-        disco = predict(z, grd, ...)$post,
+#        disco = predict(z, grd, ...)$post,
         naiveBayes = predict(z, grd , type="raw", ...),
-        error("method not yet supported"))
+        stop("method not yet supported"))
     khead<- switch(method,
         lda = predict(z, data.frame(cbind(x,y)),...)$class,
         qda = predict(z, data.frame(cbind(x,y)),...)$class,
@@ -195,9 +196,9 @@ drawparti <- function(grouping, x, y, method = "lda", prec = 100,
         rda = predict(z, data.frame(cbind(x,y)), posterior=TRUE, aslist=TRUE)$class,
         rpart = predict(z, data.frame(cbind(x,y)), type="class", ...),
         sknn = predict(z, data.frame(cbind(x,y)),...)$class,
-        disco = predict(z, data.frame(cbind(x,y)),...)$class,
+#        disco = predict(z, data.frame(cbind(x,y)),...)$class,
         naiveBayes = predict(z, data.frame(cbind(x,y)), ...),
-        error("method not yet supported"))
+        stop("method not yet supported"))
 
     colorw <- grouping != khead
     err <- round(mean(colorw), 3)

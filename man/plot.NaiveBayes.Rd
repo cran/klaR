@@ -6,7 +6,7 @@
   given the class.
 }
 \usage{
-plot.NaiveBayes(x, vars, n = 1000, legendplot = TRUE, lty, col,
+\method{plot}{NaiveBayes}(x, vars, n = 1000, legendplot = TRUE, lty, col,
     ylab = "Density", main = "Naive Bayes Plot", ...)
 }
 

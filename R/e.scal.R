@@ -13,9 +13,7 @@ e.scal<-function(x, k = 1, tc = NULL)
         return(mean(ec != tc))
     }
     if(!is.null(tc)) {
-        browser()
         k <- optimize(scal2, c(0, 1000), x = x, tc = tc)$minimum
-       
     }
     x <- scal(k, x)
     return(list(sv = x, k = k))
