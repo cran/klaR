@@ -1,5 +1,6 @@
 \name{friedman.data}
 \alias{friedman.data}
+\encoding{latin1}
 \title{Friedman's classification benchmark data}
 \description{Function to generate 3-class classification benchmarking data
   as introduced by J.H. Friedman (1989)}

@@ -45,6 +45,12 @@ NaiveBayes.default <- function (x, grouping, prior = NULL, usekernel = FALSE, fL
     }
     
     tables <- lapply(x, est)
+    if(!usekernel){
+        temp <- apply(sapply(tables, function(x) x[,2]), 2, function(x) any(!x))
+        if(any(temp))
+            stop("Zero variances for at least one class in variables: ", 
+                paste(names(tables)[temp], collapse=", "))
+    }
     names(dimnames(apriori)) <- Yname
     structure(list(apriori = apriori, tables = tables, levels = levels(grouping), 
         call = call, x = x, usekernel = usekernel, varnames = colnames(x)), 
