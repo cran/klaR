@@ -50,7 +50,7 @@ in the data are equal to the prior probabilities.
 \value{
 A (named) matrix.
 }
-\author{Christian Röver, \email{roever@statistik.uni-dortmund.de}}
+\author{Christian Röver, \email{roever@statistik.tu-dortmund.de}}
 \seealso{\code{\link{table}}}
 \examples{
 data(iris)

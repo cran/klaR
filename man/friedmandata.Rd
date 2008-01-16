@@ -55,7 +55,7 @@ friedman.data(setting = 1, p = 6, samplesize = 40, asmatrix = FALSE)
 }
 \references{Friedman, J.H. (1989): Regularized Discriminant Analysis.
   In: \emph{Journal of the American Statistical Association} 84, 165-175.}
-\author{Christian Röver, \email{roever@statistik.uni-dortmund.de}}
+\author{Christian Röver, \email{roever@statistik.tu-dortmund.de}}
 \seealso{
   \code{\link[klaR]{rda}}
 }

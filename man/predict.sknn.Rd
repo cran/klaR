@@ -16,7 +16,7 @@ the \code{sknn}-function.
 \value{
 A list with elements \sQuote{\code{class}} and \sQuote{\code{posterior}}.
 }
-\author{Karsten Luebke, \email{luebke@statistik.uni-dortmund.de}}
+\author{Karsten Luebke, \email{luebke@statistik.tu-dortmund.de}}
 \seealso{
   \code{\link{sknn}}, \code{\link[class]{knn}}
 }

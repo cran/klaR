@@ -38,7 +38,7 @@ Points on the opposite (upper right) side have a zero x-fraction.
 The grid lines show the points at which one dimension is held constant, horizontal lines for 
 example contain points with a constant second dimension.
 }
-\author{Christian Röver, \email{roever@statistik.uni-dortmund.de}}
+\author{Christian Röver, \email{roever@statistik.tu-dortmund.de}}
 \seealso{
 \code{\link{tripoints}}, \code{\link{trilines}}, \code{\link{triperplines}}, \code{\link{trigrid}}, 
 \code{\link{triframe}} for points, lines and layout, \code{\link{tritrafo}} for placing labels,

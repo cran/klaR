@@ -179,7 +179,7 @@ Nelder-Mead).}
   Press, W.H., Flannery, B.P., Teukolsky, S.A., Vetterling, W.T. (1992): 
   \emph{Numerical Recipes in C}.  Cambridge: Cambridge University Press.
 }
-\author{Christian Röver, \email{roever@statistik.uni-dortmund.de}}
+\author{Christian Röver, \email{roever@statistik.tu-dortmund.de}}
 \seealso{
   \code{\link[klaR]{predict.rda}},
   \code{\link[MASS]{lda}}, \code{\link[MASS]{qda}}

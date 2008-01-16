@@ -3,10 +3,10 @@ citHeader("To cite klaR in publications use:")
 citEntry(entry       = "inproceedings",
 	title        = "klaR Analyzing German Business Cycles",
 	author       = personList(
-			person(first="Claus", last="Weihs", email="weihs@statistik.uni-dortmund.de"),
+			person(first="Claus", last="Weihs", email="weihs@statistik.tu-dortmund.de"),
 			person(first="Uwe", last="Ligges", email="Uwe.Ligges@R-project.org"),
-			person(first="Karsten", last="Luebke", email="luebke@statistik.uni-dortmund.de"),
-			person(first="Nils", last="Raabe", email="raabe@statistik.uni-dortmund.de")),
+			person(first="Karsten", last="Luebke", email="luebke@statistik.tu-dortmund.de"),
+			person(first="Nils", last="Raabe", email="raabe@statistik.tu-dortmund.de")),
 	booktitle    = "Data Analysis and Decision Support",
 	editor       = personList(
 			person(first="D.", last="Baier"),

@@ -23,9 +23,7 @@ quadpoints(e, f = NULL, g = NULL, h = NULL, sp, ...)
   \item{sp}{\code{scatterplot3d} object to which \code{points} or \code{lines} should be plotted}
   \item{\dots}{further arguments passed to the underlyind \code{plot} functions}
 }
-\details{
 
-}
 \value{
 For \code{quadtrafo} the 3 dimensional values in the barycentrix coordinate system. 
 }

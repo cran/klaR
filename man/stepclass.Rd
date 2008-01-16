@@ -79,7 +79,7 @@ An object of class \sQuote{\code{stepclass}} containing the following components
 \item{perfomance.measure}{value of the criterion used by \code{\link{ucpm}}}
 \item{formula}{formula of the form \sQuote{\code{response ~ list + of + selected + variables}}}
 }
-\author{Christian Röver, \email{roever@statistik.uni-dortmund.de}, Irina Czogiel}
+\author{Christian Röver, \email{roever@statistik.tu-dortmund.de}, Irina Czogiel}
 \seealso{
 \code{\link[stats]{step}}, \code{\link[MASS]{stepAIC}, 
     and \code{\link{greedy.wilks}} for stepwise variable selection according to Wilk's lambda}

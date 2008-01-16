@@ -24,7 +24,7 @@ e.g. horizontal lines contain all points with a certain value y for the second d
 connecting the two extreme points (0,y,1-y) and (1-y,y,0).
 
 Grids may be designed more flexible than with \code{triplot}'s \code{grid} option.}
-\author{Christian Röver, \email{roever@statistik.uni-dortmund.de}}
+\author{Christian Röver, \email{roever@statistik.tu-dortmund.de}}
 \seealso{\code{\link{triplot}}, \code{\link{trilines}}, \code{\link{triframe}}, \code{\link{centerlines}}}
 \examples{
 triplot(grid = FALSE)

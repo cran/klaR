@@ -30,7 +30,7 @@ containing the posterior probability matrix, or
 
 A list with elements \sQuote{\code{class}} and \sQuote{\code{posterior}}.
 }
-\author{Christian Röver, \email{roever@statistik.uni-dortmund.de}}
+\author{Christian Röver, \email{roever@statistik.tu-dortmund.de}}
 \seealso{
   \code{\link[klaR]{rda}}
 }

@@ -12,7 +12,7 @@ triframe(label = 1:3, label.col = 1, cex = 1, ...)
   \item{cex}{Magnification factor for label text relative to the default.}
   \item{\dots}{Further graphical parameters passed to \code{\link{trilines}}.}
 }
-\author{Christian Röver, \email{roever@statistik.uni-dortmund.de}}
+\author{Christian Röver, \email{roever@statistik.tu-dortmund.de}}
 \seealso{\code{\link{triplot}}, \code{\link{trilines}}, \code{\link{trigrid}}, \code{\link{centerlines}}}
 \examples{
 triplot(grid = TRUE, frame = FALSE)     # plot without frame 

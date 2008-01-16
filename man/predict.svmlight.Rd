@@ -20,7 +20,7 @@ list with elements \sQuote{\code{class}} and \sQuote{\code{posterior}} (scaled, 
 
 If a Regression is learned (\code{type="R"}) in \code{\link{svmlight}} the predicted values.
 }
-\author{Karsten Luebke, \email{luebke@statistik.uni-dortmund.de}}
+\author{Karsten Luebke, \email{luebke@statistik.tu-dortmund.de}}
 \seealso{
   \code{\link{svmlight}}, \code{\link[e1071]{svm}}
 }

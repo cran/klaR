@@ -41,7 +41,7 @@ A list with elements:
             Dissertation, University of Dortmund. 
             URL \url{http://hdl.handle.net/2003/2789}}
             
-\author{Karsten Luebke, \email{luebke@statistik.uni-dortmund.de}}
+\author{Karsten Luebke, \email{luebke@statistik.tu-dortmund.de}}
 \examples{
 library(MASS)
 data(iris)

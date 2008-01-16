@@ -24,7 +24,7 @@ The lengths (and proportions) of these lines are identical to those of \code{x},
 \value{
 a 2-column-matrix containing plot coordinates.
 }
-\author{Christian Röver, \email{roever@statistik.uni-dortmund.de}}
+\author{Christian Röver, \email{roever@statistik.tu-dortmund.de}}
 \seealso{\code{\link{triplot}}, \code{\link{tripoints}}, \code{\link{trilines}}, \code{\link{tritrafo}}}
 \examples{
 triplot()  # empty plot 

@@ -28,7 +28,7 @@ For further details see \code{\link{triplot}}.
 \value{
 A matrix with two columns corresponding to the two dimensions.
 }
-\author{Christian Röver, \email{roever@statistik.uni-dortmund.de}}
+\author{Christian Röver, \email{roever@statistik.tu-dortmund.de}}
 \seealso{\code{\link{triplot}}, \code{\link{tripoints}}, \code{\link{trilines}}, \code{\link{trigrid}}}
 \examples{
 tritrafo(0.1, 0.2, 0.7)

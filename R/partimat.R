@@ -189,7 +189,7 @@ drawparti <- function(grouping, x, y, method = "lda", prec = 100,
 #        disco = predict(z, grd, ...)$post,
         naiveBayes = predict(z, grd , type="raw", ...),
         stop("method not yet supported"))
-    khead<- switch(method,
+    khead <- switch(method,
         lda = predict(z, data.frame(cbind(x,y)),...)$class,
         qda = predict(z, data.frame(cbind(x,y)),...)$class,
         svmlight = predict(z, data.frame(cbind(x,y)),...)$class,
@@ -203,6 +203,7 @@ drawparti <- function(grouping, x, y, method = "lda", prec = 100,
     colorw <- grouping != khead
     err <- round(mean(colorw), 3)
     color <- ifelse(colorw, col.wrong, col.correct)
+    if(is.character(gs) || is.factor(gs)) gs <- substr(gs, 1, 1)
 
     nc <- ncol(temp)
     if(imageplot){
