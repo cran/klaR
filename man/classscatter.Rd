@@ -23,7 +23,6 @@ classscatter(formula, data, method, col.correct = "black",
   \item{\dots}{further arguments passed to the underlying classification method or plot functions.}
 }
 
-}
 \value{
  The actual error rate.
 }

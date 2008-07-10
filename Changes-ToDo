@@ -130,7 +130,7 @@ FUTURE:
 
 ==== release: 0.6-0
 
-- pvs and friends added
+- pvs, locpvs, corclust added
 
 
 

@@ -6,7 +6,7 @@ export(b.scal, betascale, calc.trans, centerlines, classscatter, dkernel,
     quadtrafo, quadlines, quadpoints, quadplot,
     rda, nm, sknn, stepclass, svmlight, meclight, TopoS,
     tritrafo, trilines, tripoints, trigrid, triframe, triplot, triperplines,
-    ucpm, benchB3, greedy.wilks)
+    ucpm, benchB3, greedy.wilks, locpvs, pvs, corclust)
 
 S3method(NaiveBayes, formula)
 S3method(NaiveBayes, default)
@@ -55,3 +55,8 @@ S3method(loclda, matrix)
 S3method(loclda, data.frame)
 S3method(predict, loclda)
 S3method(print, loclda)
+S3method(predict, locpvs)
+S3method(predict, pvs)
+S3method(print, pvs)
+S3method(pvs, default)
+S3method(pvs, formula)
