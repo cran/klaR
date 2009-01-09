@@ -1,6 +1,6 @@
 Package: klaR
-Version: 0.5-7
-Date: 2008-07-10
+Version: 0.5-8
+Date: 2009-01-09
 Title: Classification and visualization
 Author: Christian Roever, Nils Raabe, Karsten Luebke, Uwe Ligges, Gero Szepannek, Marc Zentgraf
 Maintainer: Uwe Ligges <ligges@statistik.tu-dortmund.de>
@@ -11,4 +11,4 @@ Description: Miscellaneous functions for classification and visualization
          developed at the Fakultaet Statistik, Technische Universitaet Dortmund
 License: GPL-2
 URL: http://www.statistik.tu-dortmund.de
-Packaged: Tue Aug  5 05:01:27 2008; theussl
+Packaged: Fri Jan  9 13:54:18 2009; ligges

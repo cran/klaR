@@ -22,7 +22,7 @@ corclust(x, cl = NULL, mincor = NULL, prnt = FALSE, method = "complete")
 The main output consists in the tree visualization of the clustered variables. 
 Each cluster consists of a set of correlated variables according to the chosen clustering criterion. 
 The default criterion is \sQuote{\code{complete}}. This choice is meaningful as it represents the 
-{\emph minimum absolute correlation} between all variables of a cluster.\\
+\emph{minimum absolute correlation} between all variables of a cluster.\\
 Further proceeding would consist in chosing one variable of each cluster to obtain a 
 subset of rather uncorrelated variables for further analysis.\\
 If an additional class vector \code{cl} is given to the function for any two variables their minimum 

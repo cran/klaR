@@ -47,11 +47,11 @@ print(lda(SC$formula, data = B3))
 #########
 # scaling
 
-# beta scaling, e.scal
-print(pbB3 <- b.scal(pB3, B3$PHASEN, dis = TRUE))
-betascale(pbB3)
-e.scal(pB3)
-e.scal(pB3, tc = B3$PHASEN)
+## beta scaling, e.scal
+pbB3 <- b.scal(pB3, B3$PHASEN, dis = TRUE)
+#betascale(pbB3)
+#e.scal(pB3)
+#e.scal(pB3, tc = B3$PHASEN)
 
 # ucpm
 ucpm(pB3, B3$PHASEN)

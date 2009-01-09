@@ -81,8 +81,8 @@ An object of class \sQuote{\code{stepclass}} containing the following components
 }
 \author{Christian Röver, \email{roever@statistik.tu-dortmund.de}, Irina Czogiel}
 \seealso{
-\code{\link[stats]{step}}, \code{\link[MASS]{stepAIC}, 
-    and \code{\link{greedy.wilks}} for stepwise variable selection according to Wilk's lambda}
+\code{\link[stats]{step}}, \code{\link[MASS]{stepAIC}}, 
+    and \code{\link{greedy.wilks}} for stepwise variable selection according to Wilk's lambda
 }
 \examples{
 data(iris)
