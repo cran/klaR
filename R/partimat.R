@@ -1,4 +1,4 @@
-partimat<-function (x, ...) 
+partimat <- function(x, ...) 
     UseMethod("partimat")
 
 
@@ -80,9 +80,10 @@ partimat.default <- function(x, grouping, method = "lda", prec = 100,
         par(mfrow=c(1,1))
         title(main = main, outer = TRUE)
     }
+    invisible()
 }
 
-partimat.formula<-function (formula, data = NULL, ..., subset, na.action = na.fail) 
+partimat.formula <- function(formula, data = NULL, ..., subset, na.action = na.fail) 
 {
     m <- match.call(expand.dots = FALSE)
     if (is.matrix(eval.parent(m$data))) 
