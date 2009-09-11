@@ -181,7 +181,7 @@ Nelder-Mead).}
 }
 \author{Christian Röver, \email{roever@statistik.tu-dortmund.de}}
 \seealso{
-  \code{\link[klaR]{predict.rda}},
+  \code{\link{predict.rda}},
   \code{\link[MASS]{lda}}, \code{\link[MASS]{qda}}
 }
 \examples{

@@ -16,9 +16,9 @@ locpvs(x, subclasses, subclass.labels, prior=NULL, method="lda",
 \item{prior}{prior probabilites for the classes. If not specified the prior probabilities will be set according to proportion in \dQuote{subclasses}. If specified the order of prior 
         probabilities must be the same as in \dQuote{subclasses}. }
 \item{method}{character, name of classification function (e.g. \dQuote{\code{\link[MASS]{lda}}} (default)).}
-\item{vs.method}{character, name of variable selection method. Must be one of \dQuote{\code{\link[ctest]{ks.test}}} (default),
+\item{vs.method}{character, name of variable selection method. Must be one of \dQuote{\code{\link[stats]{ks.test}}} (default),
     \dQuote{\code{\link[klaR]{stepclass}}} or \dQuote{\code{\link[klaR]{greedy.wilks}}}. }
-\item{niveau}{used niveau for \dQuote{\code{\link[ctest]{ks.test}}}}
+\item{niveau}{used niveau for \dQuote{\code{\link[stats]{ks.test}}}}
 \item{fold}{parameter for cross-validation, if \dQuote{\code{\link[klaR]{stepclass}}} is chosen \sQuote{\code{vs.method}}}                                            
 \item{impr}{least improvement of performance measure desired to include or exclude any variable (<=1), if \dQuote{\code{\link[klaR]{stepclass}}} is chosen \sQuote{\code{vs.method}} }  
 \item{direct}{direction of variable selection, if \dQuote{\code{\link[klaR]{stepclass}}} is chosen \sQuote{\code{vs.method}}. 

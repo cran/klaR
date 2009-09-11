@@ -25,6 +25,8 @@ NaiveBayes.formula <- function (formula, data, ..., subset, na.action = na.pass)
 NaiveBayes.default <- function (x, grouping, prior = NULL, usekernel = FALSE, fL = 0, ...) 
 {
     x <- data.frame(x)
+    if(!is.factor(grouping))
+        stop("grouping/classes object must be a factor")
     if (is.null(prior)) 
         apriori <- table(grouping) / length(grouping)
     else 

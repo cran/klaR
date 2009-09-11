@@ -1,5 +1,6 @@
 \name{shardsplot}
 \alias{shardsplot}
+\alias{level_shardsplot}
 \alias{plot.EDAM}
 
 \title{Plotting Eight Direction Arranged Maps or Self-Organizing Maps}
@@ -12,13 +13,31 @@ shardsplot(object, plot.type = c("eight", "four", "points", "n"),
     data.or = NA, label = FALSE, plot = TRUE, classes = 0, 
     vertices = TRUE, classcolors = "rainbow", wghts = 0, 
     xlab = "Dimension 1", ylab = "Dimension 2", xaxs = "i", 
-    yaxs = "i", ...)
+    yaxs = "i", plot.data.column = NA,
+    log.classes = FALSE, revert.colors = FALSE, ...)
+
+level_shardsplot(object, par.names, rows = 1:NCOL(object$data),
+    centers = rep(NA, length(par.names)), class.labels = NA,
+    revert.colors = rep(FALSE, length(par.names)), 
+    log.classes = rep(FALSE, length(par.names)),
+    centeredcolors = colorRamp(c("red", "white", "blue")),
+    mfrow = c(2, 2), plot.type = c("eight", "four", "points", "n"),
+    expand = 1, stck = TRUE, grd = FALSE, standardize = FALSE,
+    label = FALSE, plot = TRUE, vertices = TRUE, classcolors = "topo",
+    wghts = 0, xlab = "Dimension 1", ylab = "Dimension 2",
+    xaxs = "i", yaxs = "i", ...)
 
 \method{plot}{EDAM}(...)
 }
 
 \arguments{
   \item{object}{an object of class \code{EDAM} or \code{som}.}
+  \item{par.names}{names used to lable the data columns}
+  \item{rows}{vector with indices of colomns to be plotted}
+  \item{centers}{vector of type numeric defining the class centers for the data. NA if data does not have a center.}
+  \item{class.labels}{matrix of type text and \code{dimension(3, NROW(object$data))} defining the lables to be used for maximum, minimum and central value.}
+  \item{centeredcolors}{colors to represent the classes with a central value}
+  \item{mfrow}{parameter defining number of plots on a page. see \code{\link{par}}}
   \item{plot.type}{a character giving the shape of the shards. 
     Available are \dQuote{\code{eight}} and \dQuote{\code{four}} for octagons resp. rectangles, 
     and \dQuote{\code{points}} for points. If \code{plot.type} is \dQuote{\code{n}}, 
@@ -52,9 +71,20 @@ shardsplot(object, plot.type = c("eight", "four", "points", "n"),
   \item{xlab}{see \code{\link{par}}}
   \item{ylab}{see \code{\link{par}}}
   \item{\dots}{further plotting parameters.}
-  }
+
+  \item{plot.data.column}{column index defining from \code{data.or} providing the data used to calculate the coloring of the cells.}
+  \item{log.classes}{boolean indicating that the data should be transformed with the logarithmic function before calculating the cell coloring}
+  \item{revert.colors}{boolean indicating that the colorscale should be reverted.}
+}
   
 \details{
+  \code{level_shardsplot} uses multiple \code{shardsplot} representations of a SOM in order to depict how 
+  the data used to calculate the SOM is distribution across the map. 
+  Two representations are possible for the data, first with a single color ramp from the minimum 
+  value to the maximum value. The second representation is usefull for data for which a basic 
+  value exists some where between minimum and maximum for which a special color representation should be used 
+  (e.g. 0 is indicated with white).
+
   If \code{plot.type} is \dQuote{\code{four}} or \dQuote{\code{eight}}, the shape of each shard depends 
   on the relative distances of the actual object 
   or codebook to its up to eight neighbours. If \code{plot.type} is \dQuote{\code{eight}}, \code{shardsplot}
@@ -71,7 +101,7 @@ shardsplot(object, plot.type = c("eight", "four", "points", "n"),
   A Kohonen Map Representation to Avoid Misleading Interpretations.
   \emph{Proceedings of the European Symposium on Atrificial Neural Networks}, D-Facto, pp. 103--110.
 }
-\author{Nils Raabe}
+\author{Nils Raabe, \code{level_shardsplot} function from Dominik Reusser}
 
 \seealso{
     \code{\link{EDAM}}, \code{\link{TopoS}}, \code{\link[som]{som}}
@@ -97,6 +127,9 @@ opar <- par(xpd = NA)
 legend(7.5, 6.1, col = rainbow(3), xjust = 0.5, yjust = 0,
     legend = levels(iris[, 5]), pch = 16, horiz = TRUE)
 par(opar)    
+
+level_shardsplot(irissom, par.names = names(iris), 
+    class.labels = NA, mfrow = c(2,2))
 }
 \keyword{hplot}
 \concept{Vizualizing Eight Direction Arranged Maps}

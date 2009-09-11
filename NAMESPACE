@@ -2,7 +2,7 @@ import("MASS")
 
 export(b.scal, betascale, calc.trans, centerlines, classscatter, dkernel,
     drawparti, e.scal, EDAM, errormatrix, friedman.data, hmm.sop, loclda, NaiveBayes,
-    partimat, plineplot, shardsplot,
+    partimat, plineplot, shardsplot, level_shardsplot,
     quadtrafo, quadlines, quadpoints, quadplot,
     rda, nm, sknn, stepclass, svmlight, meclight, TopoS,
     tritrafo, trilines, tripoints, trigrid, triframe, triplot, triperplines,

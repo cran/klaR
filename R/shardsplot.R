@@ -2,11 +2,13 @@ shardsplot <- function(object, plot.type = c("eight", "four", "points", "n"),
     expand = 1, stck = TRUE, grd = FALSE, standardize = FALSE, data.or = NA,
     label = FALSE, plot = TRUE, classes = 0, vertices = TRUE,
     classcolors = "rainbow", wghts = 0, xlab = "Dimension 1", 
-    ylab = "Dimension 2", xaxs = "i", yaxs = "i", ...){
+    ylab = "Dimension 2", xaxs = "i", yaxs = "i", plot.data.column = NA,
+    log.classes = FALSE, revert.colors = FALSE, ...)
+{
     diss <- FALSE
     plot.type <- match.arg(plot.type) # "delaunay" not yet implemented
     
-    if (plot.type=="delaunay"){
+    if (plot.type == "delaunay"){
         stop("plot type delaunay not yet implemented") 
         grd <- FALSE
     }
@@ -20,8 +22,18 @@ shardsplot <- function(object, plot.type = c("eight", "four", "points", "n"),
         nobs.col <- nobs+1
         maxn <- max(nobs.col)
         cl.ord <- nobs.col
+        if (!is.na(plot.data.column)){
+            if(length(plot.data.column)!=1 || plot.data.column < 1 || plot.data.column > NCOL(preimages)){
+                stop(paste("plot.data.column must be an integer between 1 and ", NCOL(preimages)))
+            }
+            cl.ord <- preimages[,plot.data.column]
+            if(log.classes){
+                cl.ord <- log(cl.ord)
+            }
+            cl.ord <- 100*(cl.ord - min(cl.ord))/diff(range(cl.ord))
+        }
     }
-    else if (class(object)=="EDAM"){
+    else if(class(object) == "EDAM"){
         preimages <- object$preimages
         Z0 <- object$Z
         if (classes[1]==0) cl.ord <- as.numeric(object$cl.ord)
@@ -171,22 +183,20 @@ shardsplot <- function(object, plot.type = c("eight", "four", "points", "n"),
             }
         }
     }
-    if (class(object)!="som"){
-        vec.col.ord <-
-            if(is.character(classcolors) && length(classcolors)==1)
-                switch(classcolors,
-                    "rainbow" = rainbow(max(cl.ord))[cl.ord],
-                    "topo"    = topo.colors(max(cl.ord))[cl.ord],
-                    "gray"    = gray(1:max(cl.ord)/max(cl.ord))[cl.ord],
-                    stop("argument classcolors only support 'rainbow', 'topo', and 'gray'")
-                )
-            else classcolors[cl.ord]
-    }
-    if (class(object)=="som"){
-        if (any(is.na(data.or)))
+    if (class(object)!="som" | (class(object)=="som" & !is.na(plot.data.column))){
+        vec.col.ord <- if(is.character(classcolors) && length(classcolors)==1){
+            temp.col <- switch(classcolors,
+                "rainbow" = rainbow(max(cl.ord))[cl.ord],
+                "topo"    = topo.colors(max(cl.ord))[cl.ord],
+                "gray"    = gray(1:max(cl.ord)/max(cl.ord))[cl.ord],
+                stop("argument classcolors only support 'rainbow', 'topo', and 'gray'")
+            )
+            } else classcolors[cl.ord]
+    } else {
+        if (any(is.na(data.or))){
             vec.col.ord <- c(rgb(1,1,1),
                 hsv(1,1, ((maxn*1.5):1) / (maxn*1.5)))[nobs.col]
-        if (!any(is.na(data.or))){
+        } else {
             code.classes <- rep(1,nzx*nzy)
             i <- 0
             nob <- nrow(data.or)
@@ -198,14 +208,15 @@ shardsplot <- function(object, plot.type = c("eight", "four", "points", "n"),
                 if (length(class.table)>0) code.classes[i] <- which(class.table==max(class.table))[1]
             }
             vec.col.ord1 <-
-                if(is.character(classcolors) && length(classcolors)==1)
-                    switch(classcolors,
+                if(is.character(classcolors) && length(classcolors)==1){
+                    temp.col<-  switch(classcolors,
                         "rainbow" = rainbow(max(code.classes))[code.classes],
                         "topo"    = topo.colors(max(code.classes))[code.classes],
                         "gray"    = gray(1:max(code.classes)/max(code.classes))[code.classes],
                         stop("argument classcolors only support 'rainbow', 'topo', and 'gray'")
                     )
-                else classcolors[cl.ord]
+                    if(revert.colors) rev(temp.col) else temp.col
+                } else classcolors[cl.ord]
             vec.col.ord <- rep(0,nzx*nzy)
             rgb.mat <- col2rgb(vec.col.ord1)/255
             for (i in 1:(nzx*nzy)){

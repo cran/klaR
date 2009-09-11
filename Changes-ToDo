@@ -124,11 +124,16 @@ Changelog:
 
 - many fixes for the codetools checks
 
+==== release: 0.6-0
+
+- additions to shardsplot (for som display) by Dominik Reusser
+- new function level_shardsplot and helper rerange by Dominik Reusser
+
 
 
 FUTURE:
 
-==== release: 0.6-0
+==== release: 0.7-0
 
 - pvs, locpvs, corclust added
 

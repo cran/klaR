@@ -15,7 +15,7 @@
 \arguments{
   \item{x}{a numeric matrix, or a data frame of categorical and/or
     numeric variables.}
-  \item{grouping}{class vector.}
+  \item{grouping}{class vector (a factor).}
   \item{formula}{a formula of the form \code{class ~ x1 + x2 +
       \dots}. Interactions are not allowed.}
   \item{data}{a data frame of predictors (caegorical and/or

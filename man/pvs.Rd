@@ -28,9 +28,9 @@ pvs(x, ...)
 \item{prior}{prior probabilites for the classes. If not specified the prior probabilities will be set according to proportion in \dQuote{grouping}. If specified the order of prior 
         probabilities must be the same as in \dQuote{grouping}. }
 \item{method}{character, name of classification function (e.g. \dQuote{\code{\link[MASS]{lda}}} (default)).}
-\item{vs.method}{character, name of variable selection method. Must be one of \dQuote{\code{\link[ctest]{ks.test}}} (default),
+\item{vs.method}{character, name of variable selection method. Must be one of \dQuote{\code{\link[stats]{ks.test}}} (default),
     \dQuote{\code{\link[klaR]{stepclass}}} or \dQuote{\code{\link[klaR]{greedy.wilks}}}. }
-\item{niveau}{used niveau for \dQuote{\code{\link[ctest]{ks.test}}}}
+\item{niveau}{used niveau for \dQuote{\code{\link[stats]{ks.test}}}}
 \item{fold}{parameter for cross-validation, if \dQuote{\code{\link[klaR]{stepclass}}} is chosen \sQuote{\code{vs.method}}}                                            
 \item{impr}{least improvement of performance measure desired to include or exclude any variable (<=1), if \dQuote{\code{\link[klaR]{stepclass}}} is chosen \sQuote{\code{vs.method}} }  
 \item{direct}{direction of variable selection, if \dQuote{\code{\link[klaR]{stepclass}}} is chosen \sQuote{\code{vs.method}}. 
@@ -49,7 +49,7 @@ For the classification methods \dQuote{\code{\link[e1071]{svm}}} and \dQuote{\co
 \sQuote{\code{pvs}} performs a variable selection using the selection method chosen in \sQuote{\code{vs.method}} for each pair of classes in \sQuote{\code{x}}. 
 Then for each pair of classes a submodel using \sQuote{\code{method}} is trained (using only the earlier selected variables for this class-pair).
 
-If \sQuote{\code{method}} is \dQuote{\code{\link[ctest]{ks.test}}}, then for each variable the empirical distribution functions of the cases of both classes are compared via \dQuote{\code{\link[ctest]{ks.test}}}. Only variables with a p-values below \sQuote{\code{niveau}} are used for training the submodel for this pair of classes.
+If \sQuote{\code{method}} is \dQuote{\code{\link[stats]{ks.test}}}, then for each variable the empirical distribution functions of the cases of both classes are compared via \dQuote{\code{\link[stats]{ks.test}}}. Only variables with a p-values below \sQuote{\code{niveau}} are used for training the submodel for this pair of classes.
 
 If \sQuote{\code{method}} is \dQuote{\code{\link[klaR]{stepclass}}} the variable selection is performed using the \dQuote{\code{\link[klaR]{stepclass}}} method.
 
