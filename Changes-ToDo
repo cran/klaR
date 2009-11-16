@@ -128,14 +128,12 @@ Changelog:
 
 - additions to shardsplot (for som display) by Dominik Reusser
 - new function level_shardsplot and helper rerange by Dominik Reusser
-
-
-
-FUTURE:
-
-==== release: 0.7-0
-
 - pvs, locpvs, corclust added
+
+==== release: 0.6-1
+
+- kmodes added
+
 
 
 
