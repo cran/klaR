@@ -54,7 +54,7 @@ partimat(x,...)
   \item{...}{Further arguments passed to the classification \code{method} (through \code{\link{drawparti}}).}
 }
 \seealso{for much more fine tuning see \code{\link{drawparti}}}
-\author{Karsten Luebke, \email{luebke@statistik.tu-dortmund.de}, Uwe Ligges, Irina Czogiel}
+\author{Karsten Luebke, \email{karsten.luebke@fom.de}, Uwe Ligges, Irina Czogiel}
 \note{Warnings such as  \sQuote{parameter \dQuote{xyz} couldn't be set in high-level plot function} are expected,
     if making use of \code{...}.}
 \examples{

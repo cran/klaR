@@ -44,7 +44,7 @@ A \code{\link[scatterplot3d]{scatterplot3d}} object.
             Dissertation, University of Dortmund. 
             URL \url{http://hdl.handle.net/2003/2789}}
 
-\author{Karsten Luebke, \email{luebke@statistik.tu-dortmund.de}, and Uwe Ligges}
+\author{Karsten Luebke, \email{karsten.luebke@fom.de}, and Uwe Ligges}
 
 \seealso{\code{\link{triplot}}, \code{\link[scatterplot3d]{scatterplot3d}}}
 \examples{

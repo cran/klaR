@@ -17,7 +17,7 @@ To estimate the transition probabilities the empirical frequencies are counted.
 The transition probabilities matrix. 
 \code{x[i,j]} is the probability to change from state \code{i} to state \code{j}.
 }
-\author{Karsten Luebke}
+\author{Karsten Luebke, \email{karsten.luebke@fom.de}}
 
 \examples{
 data(B3)

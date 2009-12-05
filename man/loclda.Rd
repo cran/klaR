@@ -86,7 +86,7 @@ A list of class \code{loclda} containing the following components:
 \references{
   Tutz, G. and Binder, H. (2005): Localized classification. \emph{Statistics and Computing} 15, 155-166.
 }
-\author{Marc Zentgraf (\email{marc-zentgraf@gmx.de}) and Karsten Luebke (\email{luebke@statistik.tu-dortmund.de})}
+\author{Marc Zentgraf (\email{marc-zentgraf@gmx.de}) and Karsten Luebke (\email{karsten.luebke@fom.de})}
 \seealso{
   \code{\link{predict.loclda}},
   \code{\link[MASS]{lda}}

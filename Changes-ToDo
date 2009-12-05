@@ -134,6 +134,11 @@ Changelog:
 
 - kmodes added
 
+==== release: 0.6-2
+
+- fix for numerics in predict.NaiveBayes by Karsten Luebke (bug reported by Feiming Chen)
+- K. Luebke's mail address changed
+
 
 
 

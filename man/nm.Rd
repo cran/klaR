@@ -46,7 +46,7 @@ If the distances are large it may be useful to \code{\link{scale}} the data firs
 \value{
   A list containing the function call and the class means (\code{learn})). 
 }
-\author{Karsten Luebke, \email{luebke@statistik.tu-dortmund.de}}
+\author{Karsten Luebke, \email{karsten.luebke@fom.de}}
 
 \seealso{\code{\link{sknn}}, \code{\link{rda}}, \code{\link[class]{knn}}}
 \examples{

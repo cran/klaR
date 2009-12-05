@@ -40,7 +40,7 @@ greedy.wilks(X, ...)
 }
 \references{Mardia, K. V. , Kent, J. T. and Bibby, J. M. (1979), \emph{Multivariate analysis}, 
             Academic Press (New York; London) }
-\author{ Andrea Preusser, Karsten Luebke }
+\author{ Andrea Preusser, Karsten Luebke (\email{karsten.luebke@fom.de})}
 \seealso{ \code{\link{stepclass}}, \code{\link[stats]{manova}} }
 \examples{
 data(B3)

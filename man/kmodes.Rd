@@ -71,5 +71,5 @@ points(cl$modes, col = 1:5, pch = 8)
 }
 \keyword{multivariate}
 \keyword{cluster}
-\keyword{categorical}
+\keyword{category}
 

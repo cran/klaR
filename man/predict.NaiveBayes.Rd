@@ -27,7 +27,7 @@ probabilities for each class and the estimated class are returned.
   variables. For attributes with missing values, the
   corresponding table entries are omitted for prediction.
 }
-\author{Karsten Luebke}
+\author{Karsten Luebke, \email{karsten.luebke@fom.de}}
 \seealso{\code{\link{NaiveBayes}},\code{\link{dkernel}}\code{\link[e1071]{naiveBayes}},\code{\link[MASS]{qda}}}
 \examples{
 

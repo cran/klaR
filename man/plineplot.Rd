@@ -30,7 +30,7 @@ plineplot(formula, data, method, x, col.wrong = "red",
 \value{
 The actual error rate.
 }
-\author{Karsten Luebke}
+\author{Karsten Luebke, \email{karsten.luebke@fom.de}}
 \seealso{\code{\link{partimat}}}
 \examples{
 library(MASS)

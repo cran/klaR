@@ -45,7 +45,7 @@ If the distances are large it may be useful to \code{\link{scale}} the data firs
 \value{
   A list containing the function call. 
 }
-\author{Karsten Luebke, \email{luebke@statistik.tu-dortmund.de}}
+\author{Karsten Luebke, \email{karsten.luebke@fom.de}}
 
 \seealso{\code{\link{predict.sknn}}, \code{\link[class]{knn}}}
 \examples{

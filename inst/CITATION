@@ -1,24 +1,24 @@
 citHeader("To cite klaR in publications use:")
 
 citEntry(entry       = "inproceedings",
-	title        = "klaR Analyzing German Business Cycles",
-	author       = personList(
-			person(first="Claus", last="Weihs", email="weihs@statistik.tu-dortmund.de"),
-			person(first="Uwe", last="Ligges", email="Uwe.Ligges@R-project.org"),
-			person(first="Karsten", last="Luebke", email="luebke@statistik.tu-dortmund.de"),
-			person(first="Nils", last="Raabe", email="raabe@statistik.tu-dortmund.de")),
-	booktitle    = "Data Analysis and Decision Support",
-	editor       = personList(
-			person(first="D.", last="Baier"),
-			person(first="R.", last="Decker"),
-			person(first="L.", last="Schmidt-Thieme")),
-	publisher    = "Springer-Verlag",
-	address      = "Berlin",
-	year         = 2005,
-	pages        = "335-343",
-	textVersion  = paste("Weihs, C., Ligges, U., Luebke, K. and Raabe, N. (2005).",
-			"klaR Analyzing German Business Cycles.",
-			"In Baier, D., Decker, R. and Schmidt-Thieme, L. (eds.).",
-			"Data Analysis and Decision Support, 335-343,",
-			"Springer-Verlag, Berlin.")
-	)
+    title        = "klaR Analyzing German Business Cycles",
+    author       = personList(
+            person(first="Claus", last="Weihs", email="weihs@statistik.tu-dortmund.de"),
+            person(first="Uwe", last="Ligges", email="Uwe.Ligges@R-project.org"),
+            person(first="Karsten", last="Luebke", email="karsten.luebke@fom.de"),
+            person(first="Nils", last="Raabe", email="raabe@statistik.tu-dortmund.de")),
+    booktitle    = "Data Analysis and Decision Support",
+    editor       = personList(
+            person(first="D.", last="Baier"),
+            person(first="R.", last="Decker"),
+            person(first="L.", last="Schmidt-Thieme")),
+    publisher    = "Springer-Verlag",
+    address      = "Berlin",
+    year         = 2005,
+    pages        = "335-343",
+    textVersion  = paste("Weihs, C., Ligges, U., Luebke, K. and Raabe, N. (2005).",
+            "klaR Analyzing German Business Cycles.",
+            "In Baier, D., Decker, R. and Schmidt-Thieme, L. (eds.).",
+            "Data Analysis and Decision Support, 335-343,",
+            "Springer-Verlag, Berlin.")
+    )

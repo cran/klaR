@@ -27,7 +27,7 @@ classscatter(formula, data, method, col.correct = "black",
  The actual error rate.
 }
 
-\author{Karsten Luebke}
+\author{Karsten Luebke, \email{karsten.luebke@fom.de}}
 
 \seealso{\code{\link{plot}}}
 \examples{

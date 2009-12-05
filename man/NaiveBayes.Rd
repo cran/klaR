@@ -56,7 +56,7 @@
   assumes independence of the predictor
   variables.
   }
-\author{Karsten Luebke}
+\author{Karsten Luebke, \email{karsten.luebke@fom.de}}
 \seealso{\code{\link{predict.NaiveBayes}},\code{\link{plot.NaiveBayes}},\code{\link[e1071]{naiveBayes}},\code{\link[MASS]{qda}}}
 \examples{
 data(iris)

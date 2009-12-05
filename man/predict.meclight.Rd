@@ -26,7 +26,7 @@ Classify multivariate observations in conjunction with \code{\link{meclight}} an
 }
 \references{Roehl, M.C., Weihs, C., and Theis, W. (2002): 
 Direct Minimization in Multivariate Classification. \emph{Computational Statistics}, 17, 29-46.}
-\author{Karsten Luebke}
+\author{Karsten Luebke, \email{karsten.luebke@fom.de}}
 \seealso{\code{\link{meclight}}}
 \examples{
 data(iris)

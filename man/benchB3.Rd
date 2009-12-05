@@ -26,7 +26,7 @@ and the others are used as training data. This is repeated for all complete cycl
   \item{l1co.error}{leave-one-cycle-out error rate}
 }
 
-\author{Karsten Luebke}
+\author{Karsten Luebke, \email{karsten.luebke@fom.de}}
 
 \seealso{\code{\link{B3}}}
 \examples{

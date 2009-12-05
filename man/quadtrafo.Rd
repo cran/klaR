@@ -28,7 +28,7 @@ quadpoints(e, f = NULL, g = NULL, h = NULL, sp, ...)
 For \code{quadtrafo} the 3 dimensional values in the barycentrix coordinate system. 
 }
 
-\author{Karsten Luebke}
+\author{Karsten Luebke, \email{karsten.luebke@fom.de}}
 
 \seealso{\code{\link{triplot}}, \code{\link{quadplot}}}
 \examples{

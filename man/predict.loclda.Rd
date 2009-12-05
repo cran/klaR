@@ -25,7 +25,7 @@ A list with components:
      Those observations are assigned to the class to whose (locally weighted) centroid they have the 
      lowest euclidian distance.}
 }
-\author{Marc Zentgraf (\email{marc-zentgraf@gmx.de}) and Karsten Luebke (\email{luebke@statistik.tu-dortmund.de})}
+\author{Marc Zentgraf (\email{marc-zentgraf@gmx.de}) and Karsten Luebke (\email{karsten.luebke@fom.de})}
 \seealso{
   \code{\link{loclda}}
 }

@@ -71,7 +71,7 @@ svmlight(x, ...)
   A list containing the function call and the result of SVMlight. 
 }
 \references{\url{http://svmlight.joachims.org/}}
-\author{Karsten Luebke, \email{luebke@statistik.tu-dortmund.de}, Andrea Preusser}
+\author{Karsten Luebke, \email{karsten.luebke@fom.de}, Andrea Preusser}
 \seealso{\code{\link{predict.svmlight}},\code{\link[e1071]{svm}},
 }
 \examples{

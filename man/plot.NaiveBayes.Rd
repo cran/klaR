@@ -26,7 +26,7 @@
  For metric variables the estimated density is plotted. For categorial variables \code{\link{mosaicplot} is called.}
 }
 
-\author{Karsten Luebke}
+\author{Karsten Luebke, \email{karsten.luebke@fom.de}}
 
 \seealso{\code{\link{NaiveBayes}}}
 \examples{

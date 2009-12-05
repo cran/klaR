@@ -16,7 +16,7 @@ dkernel(x, kernel = density(x), interpolate = FALSE, ...)
 \value{
     Denstiy of \code{x} in \code{kernel}.
 }
-\author{Karsten Luebke}
+\author{Karsten Luebke, \email{karsten.luebke@fom.de}}
 \seealso{\code{\link{density}}, \code{\link{NaiveBayes}}}
 \examples{
 kern <- density(rnorm(50))

@@ -44,7 +44,7 @@ done by Nelder-Mead in \code{\link{optim}}.}
   }
 \references{Roehl, M.C., Weihs, C., and Theis, W. (2002): 
 Direct Minimization in Multivariate Classification. \emph{Computational Statistics}, 17, 29-46.}
-\author{Maria Eveslage, Karsten Luebke}
+\author{Maria Eveslage, Karsten Luebke, \email{karsten.luebke@fom.de}}
 \seealso{\code{\link{predict.meclight}}}
 \examples{
 data(iris)

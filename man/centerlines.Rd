@@ -16,7 +16,7 @@ centerlines(n)
 \value{
 a matrix with \code{n}-columns. 
 }
-\author{Karsten Luebke}
+\author{Karsten Luebke, \email{karsten.luebke@fom.de}}
 
 \seealso{\code{\link{triplot}}, \code{\link{quadplot}}}
 \examples{
