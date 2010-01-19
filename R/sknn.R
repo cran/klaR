@@ -1,7 +1,7 @@
-sknn<-function (x, ...) 
+sknn <- function (x, ...) 
     UseMethod("sknn")
 
-sknn.default <- function(x, grouping, kn = 3, gamma = 0,...)
+sknn.default <- function(x, grouping, kn = 3, gamma = 0, ...)
 {
 cl <- match.call()
 cl[[1]] <- as.name("sknn")
@@ -67,7 +67,7 @@ sknn.data.frame<-function (x, ...)
 }
 
 
-predict.sknn <- function(object, newdata,...)
+predict.sknn <- function(object, newdata, ...)
 {
 spsknn <- function(neux,object)
     {

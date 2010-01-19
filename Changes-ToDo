@@ -139,6 +139,10 @@ Changelog:
 - fix for numerics in predict.NaiveBayes by Karsten Luebke (bug reported by Feiming Chen)
 - K. Luebke's mail address changed
 
+==== release: 0.6-3
+
+- document several instances of "..." arguments that had empty argument descriptions
+- passing "..." to underlying print() functions for print.rda()
 
 
 

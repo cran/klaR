@@ -632,17 +632,17 @@ predict.rda <- function(object, newdata, posterior=TRUE, aslist=TRUE, ...)
 }
 
 
-print.rda <- function(x,...)
+print.rda <- function(x, ...)
 {
   #cat(" - RDA - \n")
   cat("Call:", "\n")
-  print(x$call)
+  print(x$call, ...)
   cat("\nRegularization parameters:", "\n")
   #cat("gamma:", round(x$regu[1],5), " lambda:", round(x$regu[2],5), "\n")
-  print(x$regu)
+  print(x$regu, ...)
   #cat("\nClass prior:", "\n")
   cat("\nPrior probabilities of groups:", "\n")
-  print(x$prior)
+  print(x$prior, ...)
   cat("\nMisclassification rate:", "\n")
   cat("       apparent:",
     ifelse(is.na(x$error.rate[1]), "--", as.character(round(x$error.rate[1] * 100, 3))), "%\n")
@@ -659,7 +659,7 @@ plot.rda <- function(x, textplot=FALSE, ...)
   parpty <- par("pty")
   par(pty="s")
   if(textplot) {
-    plot(c(0,1),c(0,1), type="n", axes=FALSE, xlab="groups", ylab="covariances",...)
+    plot(c(0,1),c(0,1), type="n", axes=FALSE, xlab="groups", ylab="covariances", ...)
     textcol <- "darkgrey"
     textsize <- 1.5
     textshift <- 0.02
@@ -672,7 +672,7 @@ plot.rda <- function(x, textplot=FALSE, ...)
     axis(2, at=c(0,1), labels=c("correlated", "diagonal"))
   }
   else{
-    plot(c(0,1),c(0,1), type="n", axes=FALSE, xlab=expression(lambda), ylab=expression(gamma),...)
+    plot(c(0,1),c(0,1), type="n", axes=FALSE, xlab=expression(lambda), ylab=expression(gamma), ...)
     axis(1)
     axis(2)
   }

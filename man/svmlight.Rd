@@ -49,7 +49,7 @@ svmlight(x, ...)
     alternative is \code{\link{na.omit}}, which leads to rejection of cases with
     missing values on any required variable. (Note: If given, this
     argument must be named.) }
-  \item{...}{}
+  \item{...}{currently unused}
   
 }
 \section{Requirements}{SVMlight (\url{http://svmlight.joachims.org/}) must be installed before using this interface.}

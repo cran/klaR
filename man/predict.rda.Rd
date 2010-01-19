@@ -8,7 +8,7 @@ the \code{rda}-function.
 }
 \usage{
 \method{predict}{rda}(object, newdata, posterior = TRUE, 
-    aslist = TRUE,...)
+    aslist = TRUE, ...)
 }
 \arguments{
 \item{object}{Object of class \code{rda}.}
@@ -19,7 +19,7 @@ shall be returned in addition to classifications.}
 \item{aslist}{Logical; if \code{TRUE}, a list
 containing classifications and posterior probabilities is returned, 
 otherwise a vector with an attribute \sQuote{\code{posterior}}.}
-\item{...}{}
+\item{...}{currently unused}
 }
 \value{
 Depends on the value of argument \sQuote{\code{aslist}}:

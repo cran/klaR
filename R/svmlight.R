@@ -160,7 +160,7 @@ svmlight.data.frame <- function (x, ...)
 
 
 ### predict method for svmlight
-predict.svmlight <- function(object, newdata, scal=TRUE,...)
+predict.svmlight <- function(object, newdata, scal=TRUE, ...)
 {
 ### utility function for oao classification
 sf<-function(x,pick)
@@ -252,7 +252,7 @@ return(erg)
 }
 
 
-svmlight.file <- function(x, train = FALSE,...)
+svmlight.file <- function(x, train = FALSE, ...)
 {
     if(is.vector(x)) x <- t(x)
     erg <- x

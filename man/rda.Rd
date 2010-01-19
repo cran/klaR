@@ -64,7 +64,7 @@ rda(x, ...)
 \item{zero.temp}{Temperature at which it is set to zero  (schedule 1).} 
 \item{alpha}{Power of temperature reduction (linear, quadratic, cubic,...)  (schedule 2).}
 \item{K}{Number of iterations until temperature = 0  (schedule 2).}
-\item{...}{}
+\item{...}{currently unused}
 }
 \details{
 J.H. Friedman (see references below) suggested a method to fix 
