@@ -32,13 +32,13 @@ NaiveBayes.default <- function (x, grouping, prior = NULL, usekernel = FALSE, fL
     else 
         apriori <- as.table(prior / sum(prior))
     call <- match.call()
-    Yname<- "grouping"
+    Yname <- "grouping"
     LaplaceEst <- function(x, f = 0)  
         t(apply(x, 1, function(u) (u + f)/(sum(u) + (length(u) * f))))
         
     est <- function(var){
         if(is.numeric(var)) {
-            if (usekernel)
+            temp <- if (usekernel)
                 lapply(split(var, grouping), FUN = function(xx) density(xx, ...))
             else
                 cbind(tapply(var, grouping, mean), tapply(var, grouping, sd))
@@ -47,8 +47,12 @@ NaiveBayes.default <- function (x, grouping, prior = NULL, usekernel = FALSE, fL
     }
     
     tables <- lapply(x, est)
+    
     if(!usekernel){
-        temp <- apply(sapply(tables, function(x) x[,2]), 2, function(x) any(!x))
+        num <- sapply(x, is.numeric)
+        temp <- sapply(tables, function(x) x[,2])
+        temp[,!num] <- 1
+        temp <- apply(temp, 2, function(x) any(!x))
         if(any(temp))
             stop("Zero variances for at least one class in variables: ", 
                 paste(names(tables)[temp], collapse=", "))

@@ -74,14 +74,21 @@ predict.NaiveBayes <- function (object, newdata, threshold = 0.001, ...)
         ndata <- newdata[i, ]
         tempres <- log(sapply(1:nattribs, tempfoo))
         L <- log(object$apriori) + rowSums(tempres)
-        L <- exp(L)
-        L/sum(L)
+
+#        L <- exp(L)
+#        L/sum(L)
+
+        if(isTRUE(all.equal(sum(exp(L)), 0)))
+            warning("Numerical 0 probability with observation ", i)
+        L
     }
     L <- sapply(1:nrow(newdata), Lfoo)
 
-    posterior <- t(L)
     classdach <- factor(object$levels[apply(L, 2, which.max)], 
                         levels = object$levels)
+    posterior <- t(apply(exp(L), 2, function(x) x/sum(x)))
+                        
+#                  print(str(posterior))      
     colnames(posterior) <- object$levels
     rownames(posterior) <- names(classdach) <- rownames(newdata)
     return(list(class = classdach, posterior = posterior))
