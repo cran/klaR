@@ -6,7 +6,7 @@ NaiveBayes.formula <- function (formula, data, ..., subset, na.action = na.pass)
     call <- match.call()
     Yname <- as.character(formula[[2]])
     if (is.data.frame(data)) {
-        m <- match.call(expand = FALSE)
+        m <- match.call(expand.dots = FALSE)
         m$... <- NULL
         m$na.action <- na.action
         m[[1]] <- as.name("model.frame")

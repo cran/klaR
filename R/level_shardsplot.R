@@ -32,7 +32,7 @@ level_shardsplot <- function(
             myrgb <- centeredcolors(rerange(seq(from = min(col.values), to = max(col.values), length.out = 100), 
                 center = centers[i]))
     
-            theClasscolors <- rgb(r = myrgb[,1], g = myrgb[,2], b = myrgb[,3], maxColorValue = 255)
+            theClasscolors <- rgb(red = myrgb[,1], green = myrgb[,2], blue = myrgb[,3], maxColorValue = 255)
             which.center <- 100 * (centers[i] - min(col.values)) / (max(col.values) - min(col.values))
             if(which.center < 1 || which.center > 100) 
                 which.center <- NA

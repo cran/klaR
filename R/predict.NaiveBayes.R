@@ -79,7 +79,7 @@ predict.NaiveBayes <- function (object, newdata, threshold = 0.001, ...)
 #        L/sum(L)
 
         if(isTRUE(all.equal(sum(exp(L)), 0)))
-            warning("Numerical 0 probability with observation ", i)
+            warning("Numerical 0 probability for all classes with observation ", i)
         L
     }
     L <- sapply(1:nrow(newdata), Lfoo)
