@@ -212,7 +212,7 @@ rda.default <- function(x, grouping=NULL, prior=NULL,
       else f.hot <- f
       min.index <- min.sample(f.hot)
       max.index <- max.sample(f.hot)
-      centroid <- apply(simplex[-max.index,], 2, mean)  # centroid of simplex except worst point 
+      centroid <- colMeans(simplex[-max.index,])  # centroid of simplex except worst point 
      # REFLEXION: 
       x.reflex <- restrict(centroid + a*(centroid-simplex[max.index,]))
       if (output) {

@@ -4,7 +4,7 @@ nm <- function (x, ...)
 nm.default <- function(x, grouping, gamma=0, ...)
 {
     xlist <- split(data.frame(x),as.factor(grouping))
-    x <- t(sapply(xlist, mean))
+    x <- t(sapply(xlist, colMeans))
     grouping <- as.factor(levels(grouping))
     k <- 1
     if(gamma != 0) k <- length(grouping)
