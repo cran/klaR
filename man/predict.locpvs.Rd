@@ -29,36 +29,7 @@ a list with components:
 \references{Szepannek, G. and Weihs, C. (2006) Local Modelling in Classification on Different Feature Subspaces. 
 In \emph{Advances in Data Mining.}, ed Perner, P., LNAI 4065, pp. 226-234. Springer, Heidelberg.}
 \seealso{
-\code{\link[klaR]{locpvs}} for learning \sQuote{\code{locpvs}}-models, \code{\link[klaR]{pvs}} for pairwise variable selection without modeling subclasses, \code{\link[klaR]{predict.pvs}} for predicting \sQuote{\code{pvs}}-models 
-}
-\examples{
-
-## this example might be a bit artificial, but it sufficiently shows how locpvs has to be used
-
-## learn a locpvs-model on the Vehicle dataset
-
-library("mlbench")
-data("Vehicle")
-
-subclass <- Vehicle$Class # use four car-types in dataset as subclasses
-## aggregate "bus" and "van" to upper-class "big" and "saab" and "opel" to upper-class "small":
-subclass_class <- matrix(c("bus","van","saab","opel","big","big","small","small"), ncol=2) 
-
-## learn now a locpvs-model for the subclasses:
-model <- locpvs(Vehicle[,1:18], subclass, subclass_class)
-model # short summary, showing the class-pairs of the submodels 
-# together with the selected variables and the relation of sub- to upperclasses
-
-## predict:
-pred <- predict(model,Vehicle[,1:18])
-
-## now you can look at the predicted classes:
-pred$class
-## or at the posterior probabilities:
-pred$posterior
-## or at the posterior probabilities for the subclasses:
-pred$subclass.posteriors
-
+\code{\link[klaR]{locpvs}} for learning \sQuote{\code{locpvs}}-models and examples for applying this predict method, \code{\link[klaR]{pvs}} for pairwise variable selection without modeling subclasses, \code{\link[klaR]{predict.pvs}} for predicting \sQuote{\code{pvs}}-models 
 }
 \keyword{classif}
 \concept{Pairwise variable selection for classification}

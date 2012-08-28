@@ -30,29 +30,7 @@ a list with components:
 Classes Where the Data are Sparse. In \emph{From Data and Information Analysis to Kwnowledge Engineering.},
   eds Spiliopolou, M., Kruse, R., Borgelt, C., Nuernberger, A. and Gaul, W. pp. 700-708. Springer, Heidelberg.}
 \seealso{
-\code{\link[klaR]{pvs}}
-}
-\examples{
-
-## learn a pvs-model with half of the Satellite dataset, 
-## using "ks.test" as selection and "qda" as classification method:
-
-library("mlbench")
-data("Satellite")
-
-model <- pvs(classes ~ ., Satellite[1:3218,], method = "qda", vs.method = "ks.test")
-model # short summary, showing the class-pairs of the submodels and the selected variables
-
-## now predict on the rest of the data set:
-
-## pred <- predict(model,Satellite[3219:6435,]) # takes some time
-pred <- predict(model,Satellite[3219:6435,], quick=TRUE) # that's much quicker
-
-## now you can look at the predicted classes:
-pred$class 
-## or the posterior probabilities:
-pred$posterior
-
+For more details and examples how to use this predict method, see \code{\link[klaR]{pvs}}.
 }
 \keyword{classif}
 \concept{Pairwise variable selection for classification}

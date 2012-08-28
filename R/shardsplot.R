@@ -30,7 +30,7 @@ shardsplot <- function(object, plot.type = c("eight", "four", "points", "n"),
             if(log.classes){
                 cl.ord <- log(cl.ord)
             }
-            cl.ord <- 100*(cl.ord - min(cl.ord))/diff(range(cl.ord))
+            cl.ord <- 99*(cl.ord - min(cl.ord))/diff(range(cl.ord))+1
         }
     }
     else if(class(object) == "EDAM"){
@@ -313,6 +313,7 @@ shardsplot <- function(object, plot.type = c("eight", "four", "points", "n"),
         draw.points[(draw.points[,1] < 1),1] <- expand
         if (plot && plot.type!="delaunay" && plot.type!="n"){
             if (plot.type!="points") {
+                stopifnot(length(vec.col.ord) == length(cl.ord))            
                 polygon(draw.points, col = vec.col.ord[i], ...)
                 if (label)
                     text(mean(draw.points[,1]), mean(draw.points[,2]),

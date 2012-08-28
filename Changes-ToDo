@@ -149,6 +149,10 @@ Changelog:
 - another fix for numerics in predict.NaiveBayes by Karsten Luebke
 - fix for wrong error message in case of 0 in 2nd column of tables for factors 
 
+==== release: 0.6-7
+
+- fix for shardsplot color problems by Dominik Reusser
+
 
 
 
