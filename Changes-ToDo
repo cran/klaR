@@ -147,11 +147,18 @@ Changelog:
 ==== release: 0.6-4
 
 - another fix for numerics in predict.NaiveBayes by Karsten Luebke
-- fix for wrong error message in case of 0 in 2nd column of tables for factors 
+- fix for wrong error message in case of 0 in 2nd column of tables for factors
 
 ==== release: 0.6-7
 
 - fix for shardsplot color problems by Dominik Reusser
+
+
+==== release: 0.6-7
+
+- fix for data() without envir
+- fix for more than 100 factor levels in stepclass (reported by Ryan Brady)
+
 
 
 

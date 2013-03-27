@@ -176,7 +176,7 @@ stepclass.default <-function (x, grouping, method, improvement = 0.05,
         if (fold > length(grouping)) 
             fold <- length(grouping)
         cv.groups <- rep(0, dim(data)[1])
-        groupsizes <- c(0, cumsum(summary(grouping)))
+        groupsizes <- c(0, cumsum(table(grouping)))
         numbers <- c(rep(1:fold, length(grouping) %/% fold), 
             sample(fold, length(grouping) %% fold))
         for (lev in 1:g) {
