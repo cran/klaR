@@ -63,6 +63,9 @@ greedy.wilks.default <- function(X, grouping, niveau = 0.2, ...){
 
 
  gpVar <- deparse(substitute(grouping))
+ if(!is.null(ncol(grouping)) && ncol(grouping) > 1) 
+    stop("only one grouping variable supported")
+ 
  X        <- as.matrix(X)               # data matrix
  grouping <- factor(grouping)           # vector of groupings
  k        <- length(levels(grouping))   # number of existing groups/populations

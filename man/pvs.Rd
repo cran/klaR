@@ -79,13 +79,14 @@ An object of class \sQuote{\code{pvs}} containing the following components:
 \code{\link[klaR]{predict.pvs}} for predicting \sQuote{\code{pvs}} models and \code{\link[klaR]{locpvs}} for pairwisevariable selection in local models of several subclasses
 }
 \examples{
-## Example 1: learn an "lda" model on the waveform data using pairwise variable selection (pvs) using "ks.test" 
-## and compare it to using lda without pvs 
+## Example 1: learn an "lda" model on the waveform data using pairwise variable 
+## selection (pvs) using "ks.test" and compare it to using lda without pvs 
 
 library("mlbench")
 trainset <- mlbench.waveform(300) 
 pvsmodel <- pvs(trainset$x, trainset$classes, niveau=0.05) # default: using method="lda"
-pvsmodel # short summary, showing the class-pairs of the submodels and the selected variables
+## short summary, showing the class-pairs of the submodels and the selected variables
+pvsmodel
  
 testset <-  mlbench.waveform(500)
 ## prediction of the test data set: 
@@ -103,13 +104,15 @@ LDAprediction <- predict(ldamodel, testset$x)
 1-sum(testset$classes==LDAprediction$class)/length(testset$classes)
 
 
-## Example 2: learn a "qda" model with pvs on half of the Satellite dataset, using "ks.test" 
+## Example 2: learn a "qda" model with pvs on half of the Satellite dataset, 
+## using "ks.test" 
 
 library("mlbench")
 data("Satellite")
 
 model <- pvs(classes ~ ., Satellite[1:3218,], method="qda", vs.method="ks.test")
-model # short summary, showing the class-pairs of the submodels and the selected variables
+## short summary, showing the class-pairs of the submodels and the selected variables
+model 
 
 ## now predict on the rest of the data set:
 ## pred <- predict(model,Satellite[3219:6435,]) # takes some time

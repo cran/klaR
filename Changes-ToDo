@@ -153,12 +153,17 @@ Changelog:
 
 - fix for shardsplot color problems by Dominik Reusser
 
-
-==== release: 0.6-7
+==== release: 0.6-8
 
 - fix for data() without envir
 - fix for more than 100 factor levels in stepclass (reported by Ryan Brady)
 
+==== release: 0.6-9
+
+- new function woe() and its methods: Computes weight of evidence transform of factor variables for binary classification
+- fix: better error message: greedy.wilks does not support more than one grouping variable
+- fix: NaiveBayes work for explanatory variables that are factors with only 1 level (reported by Jeff Allard)
+- fix: break lines wider than 100 characters in Rd files
 
 
 

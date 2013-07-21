@@ -50,7 +50,7 @@ NaiveBayes.default <- function (x, grouping, prior = NULL, usekernel = FALSE, fL
     
     if(!usekernel){
         num <- sapply(x, is.numeric)
-        temp <- sapply(tables, function(x) x[,2])
+        temp <- as.matrix(sapply(tables, function(x) x[,2]))
         temp[,!num] <- 1
         temp <- apply(temp, 2, function(x) any(!x))
         if(any(temp))

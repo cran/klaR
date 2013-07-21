@@ -1,8 +1,8 @@
-f634506ca36a67bb6715b77a7d353a42 *Changes-ToDo
-a99b2c96fb3e3070a3ad3a7c3b5ad83f *DESCRIPTION
-c5045e091b061fdd1d9e2f2d27df0d3d *NAMESPACE
+7ffd9cc7f1c3b81709834881a5a017d0 *Changes-ToDo
+6177d1f5e721ac8ca9862a56603abce7 *DESCRIPTION
+7ef3286b304e4b39eaa545390924d245 *NAMESPACE
 b610953123a76054229b56f3c92d012f *R/EDAM.R
-172bec7c7f61203049c521d41a0aecfc *R/NaiveBayes.R
+915ddb9d45bb679a88f46a6e49f9d95b *R/NaiveBayes.R
 77ff010c16dd5c82313d0afed50487e0 *R/TopoS.R
 fd50d5f431d3d127c7ec01c5febffa9c *R/benchB3.R
 3a20c6c50ac36e58f2ba3d092a16efa3 *R/betaskal.R
@@ -14,7 +14,7 @@ fd50d5f431d3d127c7ec01c5febffa9c *R/benchB3.R
 33a7ed1e85799be00399470066d27e97 *R/e.scal.R
 b8260d10cd52351d88100fc18686d5f8 *R/errormatrix.R
 9392d1f6d7e0931967b26e188a25793c *R/friedmandata.R
-de587439129e52cfdd1e05b690746467 *R/greedy.wilks.R
+edb31cdf63bb5850d88ab4e26cd76fc8 *R/greedy.wilks.R
 3757d3a994b9a734411edcee20a22dd4 *R/hmm.sop.R
 981832b25b69a245ec192ce9054a89ec *R/kmodes.R
 7d7cb648be1bb1a63dbfee4afab9b88a *R/level_shardsplot.R
@@ -37,8 +37,9 @@ d9e1e7ed20651e5b99e9e40b92de944e *R/quadplot.R
 a2590c1c8566744455faf0b666d65670 *R/svmlight.R
 ede77aca0ccb46b0fb3178fbfa3d7d88 *R/triplot.R
 5b0f2f78d9cdf777b523b91e83e38ed7 *R/ucpm.R
-745cdf94635bfb3c7822cf0aecb99ed2 *data/B3.RData
-7ea54a0a70ab09ee8a5037913ee46831 *data/countries.RData
+590c194e9285387202dae0dc3fa9eb0b *R/woe.R
+f45cf05fb69496ca70b8882fa55c35bf *data/B3.RData
+6f680e52c5110c63897e5e9c26e96fe3 *data/countries.RData
 85be2026445ddd91b755cc923a8b2b6b *inst/CITATION
 bbc53f9cac4eb36503b54b8bc87b8ee0 *man/B3.Rd
 699e7f778cb3f901904f4bcc13dd22b6 *man/EDAM.Rd
@@ -69,6 +70,7 @@ bf4b5946c726999f341459bdf3cdc2d5 *man/meclight.Rd
 31f5408e225d31a0b95826a80652455a *man/partimat.Rd
 7bfd4059750a5ba838df03a5e2bdb33e *man/plineplot.Rd
 0bc684becbaaecd98db1ab2cbac81a24 *man/plot.NaiveBayes.Rd
+e5d95e737a73001e23f478737e2e6a19 *man/plot.woe.Rd
 cb4dfc308530bed3173efb47e1e085ac *man/predict.NaiveBayes.Rd
 bc4d96b12b66993a90f3566177fa5352 *man/predict.loclda.Rd
 561c5dcaffe0128ab10c5c2742c4f186 *man/predict.locpvs.Rd
@@ -77,7 +79,8 @@ f71b47e71c6ec558d0ad97c8640ade59 *man/predict.meclight.Rd
 f5c4887e1491752fa7c50695901a7652 *man/predict.rda.Rd
 4b8df9f99876a6048aa07da5e2b6031b *man/predict.sknn.Rd
 f924b844bfcefdb49ae446af748a9d5e *man/predict.svmlight.Rd
-4084a3079d559fa346597ae479899329 *man/pvs.Rd
+a333fbffa0892a9a0acc95a491ef5771 *man/predict.woe.Rd
+8c26bb938ef00226779f9c0a17f84d8c *man/pvs.Rd
 a2c645d7a24b5cddcb25898ab42b83b7 *man/quadplot.Rd
 aec1346ed37ac18cc42d78b09bb45fb6 *man/quadtrafo.Rd
 f4be8e6eab03e913aeead2193c1311d7 *man/rda.Rd
@@ -93,6 +96,7 @@ aad7f5149f18ab512194096696259ccf *man/trigrid.Rd
 fb4e9cf7f40d00dc58b0fbfe1ecde3d6 *man/tripoints.Rd
 d4ca8cb8de0ef0a7960aad705e13d9e1 *man/tritrafo.Rd
 be3f7334b09b0a920319f13c6f457b00 *man/ucpm.Rd
+fb0a17a0c8f8819e3f3252a371834005 *man/woe.Rd
 de4c93104ebafa52b4d58e0839e0262d *tests/EDAM.R
 0d1d5fd0d0160115cfacda10526d250c *tests/EDAM.Rout.save
 286f39d4e98523328148d113d6df309b *tests/EDAM.ps.save
