@@ -1,6 +1,6 @@
-7ffd9cc7f1c3b81709834881a5a017d0 *Changes-ToDo
-6177d1f5e721ac8ca9862a56603abce7 *DESCRIPTION
-7ef3286b304e4b39eaa545390924d245 *NAMESPACE
+7e3e3493bf15a82172f27110a04107db *DESCRIPTION
+a17f8c1ef9eeb57a16da0554e0e61638 *NAMESPACE
+c6f82254e0b79d65c5a2779b6a98e625 *NEWS
 b610953123a76054229b56f3c92d012f *R/EDAM.R
 915ddb9d45bb679a88f46a6e49f9d95b *R/NaiveBayes.R
 77ff010c16dd5c82313d0afed50487e0 *R/TopoS.R
@@ -19,7 +19,7 @@ edb31cdf63bb5850d88ab4e26cd76fc8 *R/greedy.wilks.R
 981832b25b69a245ec192ce9054a89ec *R/kmodes.R
 7d7cb648be1bb1a63dbfee4afab9b88a *R/level_shardsplot.R
 31eec7f3a9d09d8dfd5bac87c88f43d3 *R/loclda.R
-11ffa60f32f9507bbbd67bf587e84296 *R/locpvs.R
+9ed798ad82a5de8423ba29e1841b03c7 *R/locpvs.R
 77a9bc077cb843e3873955514703f555 *R/meclight.R
 a6c14c8e8671d8f301cf0da486311924 *R/membercheck.R
 3fd1ffcca721dab2f726f04a6358f825 *R/nm.R
@@ -38,8 +38,8 @@ a2590c1c8566744455faf0b666d65670 *R/svmlight.R
 ede77aca0ccb46b0fb3178fbfa3d7d88 *R/triplot.R
 5b0f2f78d9cdf777b523b91e83e38ed7 *R/ucpm.R
 590c194e9285387202dae0dc3fa9eb0b *R/woe.R
-f45cf05fb69496ca70b8882fa55c35bf *data/B3.RData
-6f680e52c5110c63897e5e9c26e96fe3 *data/countries.RData
+6c78106e63229276423f5c9d3650a9d9 *data/B3.RData
+257718f1555d2695c4ce50bfaa74e746 *data/countries.RData
 85be2026445ddd91b755cc923a8b2b6b *inst/CITATION
 bbc53f9cac4eb36503b54b8bc87b8ee0 *man/B3.Rd
 699e7f778cb3f901904f4bcc13dd22b6 *man/EDAM.Rd
@@ -101,5 +101,5 @@ de4c93104ebafa52b4d58e0839e0262d *tests/EDAM.R
 0d1d5fd0d0160115cfacda10526d250c *tests/EDAM.Rout.save
 286f39d4e98523328148d113d6df309b *tests/EDAM.ps.save
 ff1bd3bb6ff77ce4b898681b076389f9 *tests/testklaR.ps.save
-ee27c905d55e8bc0911b0805b18f0ab4 *tests/testsklaR.R
-1f30b1272427fc3944e8693413e30403 *tests/testsklaR.Rout.save
+b5d204ce8ef0646764e5854cf90f4d3c *tests/testsklaR.R
+8385eb8234eaf58be6529562ee174e80 *tests/testsklaR.Rout.save

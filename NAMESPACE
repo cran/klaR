@@ -1,4 +1,5 @@
 import("MASS")
+importFrom("combinat", combn)
 
 export(b.scal, betascale, calc.trans, centerlines, classscatter, dkernel,
     drawparti, e.scal, EDAM, errormatrix, friedman.data, hmm.sop, loclda, NaiveBayes,

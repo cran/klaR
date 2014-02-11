@@ -1,8 +1,7 @@
 
-R Under development (unstable) (2012-08-23 r60396) -- "Unsuffered Consequences"
-Copyright (C) 2012 The R Foundation for Statistical Computing
-ISBN 3-900051-07-0
-Platform: x86_64-w64-mingw32/x64 (64-bit)
+R Under development (unstable) (2014-02-10 r64961) -- "Unsuffered Consequences"
+Copyright (C) 2014 The R Foundation for Statistical Computing
+Platform: i386-w64-mingw32/i386 (32-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -18,9 +17,9 @@ Type 'q()' to quit R.
 
 > ###############
 > # preliminaries
-> library(klaR)
+> library("klaR")
 Loading required package: MASS
-> library(MASS)
+> library("MASS")
 > data(B3)
 > postscript("testklaR.ps")
 > 
@@ -880,21 +879,10 @@ $posterior
 > 
 > # stepclass
 > set.seed(123)
-> print(SC <- stepclass(PHASEN ~ ., data = B3, method = "lda", criterion = "AS"))
- `stepwise classification', using 10-fold cross-validated abiltity to seperate of method lda'.
-157 observations of 13 variables in 4 classes; direction: both
-stop criterion: improvement less than 5%.
-abiltity to seperate: 0.35922;  in: "ZINSK";  variables (1): ZINSK 
-abiltity to seperate: 0.48739;  in: "EWAJW";  variables (2): ZINSK, EWAJW 
-abiltity to seperate: 0.55569;  in: "CP91JW";  variables (3): ZINSK, EWAJW, CP91JW 
-abiltity to seperate: 0.61866;  in: "LSTKJW";  variables (4): ZINSK, EWAJW, CP91JW, LSTKJW 
-
- hr.elapsed min.elapsed sec.elapsed 
-       0.00        0.00        9.44 
-
+> print(SC <- stepclass(PHASEN ~ ., data = B3, method = "lda", criterion = "AS", output=FALSE))
 method      : lda 
 final model : PHASEN ~ CP91JW + EWAJW + LSTKJW + ZINSK
-<environment: 0x00000000087a6ed8>
+<environment: 0x037c21b4>
 
 abiltity to seperate = 0.6187 
 > print(lda(SC$formula, data = B3))
@@ -973,34 +961,34 @@ $CFvec
 > # greedy.wilks
 > data(B3)
 > gw_obj <- greedy.wilks(PHASEN ~ ., data = B3, niveau = 0.1)
-> print(gw_obj)
+> print(gw_obj, digits=4)
 Formula containing included variables: 
 
 PHASEN ~ EWAJW + LSTKJW + ZINSK + CP91JW + IAU91JW + PBSPJW + 
     ZINSLR + PCPJW
-<environment: 0x0000000008a6df58>
+<environment: 0x04381918>
 
 
 Values calculated in each step of the selection procedure: 
 
      vars Wilks.lambda F.statistics.overall p.value.overall F.statistics.diff
-1   EWAJW    0.6058201             33.18341    1.405358e-16         33.183411
-2  LSTKJW    0.4271561             26.85606    1.218146e-25         21.192038
-3   ZINSK    0.3614525             21.20584    7.607587e-29          9.149422
-4  CP91JW    0.3002868             19.05337    1.153881e-32         10.184539
-5 IAU91JW    0.2624925             17.11094    6.597858e-35          7.151127
-6  PBSPJW    0.2451025             14.99388    3.695840e-35          3.500196
-7  ZINSLR    0.2205325             13.94619    1.442943e-36          5.459204
-8   PCPJW    0.1999847             13.10739    9.454573e-38          5.000333
+1   EWAJW       0.6058                33.18       1.405e-16            33.183
+2  LSTKJW       0.4272                26.86       1.218e-25            21.192
+3   ZINSK       0.3615                21.21       7.608e-29             9.149
+4  CP91JW       0.3003                19.05       1.154e-32            10.185
+5 IAU91JW       0.2625                17.11       6.598e-35             7.151
+6  PBSPJW       0.2451                14.99       3.696e-35             3.500
+7  ZINSLR       0.2205                13.95       1.443e-36             5.459
+8   PCPJW       0.2000                13.11       9.455e-38             5.000
   p.value.diff
-1 1.405358e-16
-2 1.554268e-11
-3 1.326989e-05
-4 3.783582e-06
-5 1.604993e-04
-6 1.708972e-02
-7 1.379166e-03
-8 2.486333e-03
+1    1.405e-16
+2    1.554e-11
+3    1.327e-05
+4    3.784e-06
+5    1.605e-04
+6    1.709e-02
+7    1.379e-03
+8    2.486e-03
 > print(lda(gw_obj$formula, data = B3))
 Call:
 lda(gw_obj$formula, data = B3)
@@ -1709,3 +1697,6 @@ Loading required package: scatterplot3d
 null device 
           1 
 > 
+> proc.time()
+   user  system elapsed 
+   7.16    0.06    7.19 

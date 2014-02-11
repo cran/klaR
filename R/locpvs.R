@@ -7,9 +7,6 @@ pvs <- function(x, ...)
 pvs.default <- function(x, grouping, prior=NULL, method="lda", vs.method=c("ks.test","stepclass","greedy.wilks"), 
                  niveau=0.05, fold=10, impr=0.1, direct="backward", out=FALSE, ...) { 
 
-    require(combinat)     
-    require(MASS)
-
     cl <- match.call()
     cl[[1]] <- as.name("pvs")
     vs.method <- match.arg(vs.method)

@@ -165,6 +165,11 @@ Changelog:
 - fix: NaiveBayes work for explanatory variables that are factors with only 1 level (reported by Jeff Allard)
 - fix: break lines wider than 100 characters in Rd files
 
+==== release: 0.6-10
+
+- rename Changes-ToDo -> NEWS to make R CMD check happy
+- move combinat from Suggests to Imports
+- remoce require calls for MASS
 
 
 
