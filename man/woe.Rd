@@ -42,7 +42,6 @@ Kullback, S. (1959): \emph{Information Theory and Statistics.} Wiley, New York.
 
 \examples{
 ## load German credit data
-library("evtree")
 data("GermanCredit")
 
 ## training/validation split

@@ -169,7 +169,12 @@ Changelog:
 
 - rename Changes-ToDo -> NEWS to make R CMD check happy
 - move combinat from Suggests to Imports
-- remoce require calls for MASS
+- remove require calls for MASS
+
+==== release: 0.6-11
+
+- GermanCredit data copied vom evtree package which has been archived
+- depends on R >= 2.10.0
 
 
 
