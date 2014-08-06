@@ -15,7 +15,7 @@ NaiveBayes.formula <- function (formula, data, ..., subset, na.action = na.pass)
         if (any(attr(Terms, "order") > 1)) 
             stop("NaiveBayes cannot handle interaction terms")
         Y <- model.extract(m, "response")
-        X <- m[ , -attr(Terms, "response")]
+        X <- m[ , -attr(Terms, "response"), drop=FALSE]
         return(NaiveBayes(X, Y, ...))
     }
     else stop("NaiveBayes formula interface handles data frames only")

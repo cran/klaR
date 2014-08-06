@@ -176,6 +176,12 @@ Changelog:
 - GermanCredit data copied vom evtree package which has been archived
 - depends on R >= 2.10.0
 
+==== release: 0.6-12
+
+- new function cond.index for the "Calculation of Condition Indices for Linear Regression"
+- bugfix for NaiveBayes: predict would not work for one explan. variable
+
+
 
 
 To Do (at least in Uwe's opinion):

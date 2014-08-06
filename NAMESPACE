@@ -1,7 +1,7 @@
 import("MASS")
 importFrom("combinat", combn)
 
-export(b.scal, betascale, calc.trans, centerlines, classscatter, dkernel,
+export(b.scal, betascale, calc.trans, centerlines, classscatter, cond.index, dkernel,
     drawparti, e.scal, EDAM, errormatrix, friedman.data, hmm.sop, loclda, NaiveBayes,
     partimat, plineplot, shardsplot, level_shardsplot,
     quadtrafo, quadlines, quadpoints, quadplot,
