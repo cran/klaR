@@ -159,6 +159,14 @@ drawparti <- function(grouping, x, y, method = "lda", prec = 100,
     #x: first data vec.
     #y: second data vec.
     #prec: nr. of hor/vert splits.
+
+    success <- switch(method, 
+        rpart = requireNamespace("rpart") , 
+        naiveBayes = requireNamespace("e1071"))
+    if(!is.null(success) && !success){
+        message("For method 'rpart' the 'rpart' package is required, for method 'naiveBayes' the package 'e1071'.")
+        return(NULL)
+    }
     
     z <- switch(method,
         lda = lda(grouping ~ x + y,...),

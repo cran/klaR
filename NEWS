@@ -181,7 +181,16 @@ Changelog:
 - new function cond.index for the "Calculation of Condition Indices for Linear Regression"
 - bugfix for NaiveBayes: predict would not work for one explan. variable
 
+==== release: 0.6-13
 
+- woe: speedup and extension for weighted observation (imports wtd.table from questionr)   
+- kmodes: bugfix (wrong calculation for weights) speedup (additional fast = TRUE argument) [note: works on data frames instead of matrices (cf. ln. 3/83) and characters instead of integers (cf. ln. 42/43)] 
+- corclust: extension to categorical variables (using Cramer's V); returned object now of class corclust; 
+  plot.corclust() added; 
+  additional functions xtractvars() and cvtree() [cutree() for variables] added that also returns within vs. between cluster correlations (not yet exported)
+- NaiveBayes update for new versions of R
+- predict.NaiveBayes gains support for logical explanatory variables thanks to Vincent R. Nijs
+- various fixes to make new checks happy
 
 
 To Do (at least in Uwe's opinion):
@@ -189,7 +198,6 @@ To Do (at least in Uwe's opinion):
 
 1. disco must go into klaR and to CRAN!
    (e.g. for partimat)
-
 
 stepclass:
 - LATER: many rather long functions defined in stepclass()

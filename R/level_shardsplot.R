@@ -13,7 +13,7 @@ level_shardsplot <- function(
     yaxs = "i", ...)
 {
 
-    require("som")
+#    require("som") # not required?
     if(class(object) != "som") stop("Object must be of class som")
     classes <- 100
     oldpar <- par(mfrow = mfrow)

@@ -1,7 +1,5 @@
 quadtrafo <- function(e, f=NULL, g=NULL, h=NULL)
 {
-    ## assumed to require() for all other quad**** function
-    require(scatterplot3d)
     if (is.matrix(e)) dat <- e
     else if (is.null(f)) dat <- t(e)
         else dat <- cbind(e,f,g,h)
@@ -17,7 +15,7 @@ quadtrafo <- function(e, f=NULL, g=NULL, h=NULL)
 
 quadlines <- function(e, f=NULL, g=NULL, h=NULL, sp, ...)
 {
-  result <- quadtrafo(e,f,g,h) # requires scatterplot3d
+  result <- quadtrafo(e,f,g,h)
   sp$points3d(result[,1], result[,2], result[,3], type="l", ...)
   invisible(result)
 }
@@ -25,7 +23,7 @@ quadlines <- function(e, f=NULL, g=NULL, h=NULL, sp, ...)
 
 quadpoints <- function(e, f=NULL, g=NULL, h=NULL, sp, ...)
 {
-  result <- quadtrafo(e,f,g,h) # requires scatterplot3d
+  result <- quadtrafo(e,f,g,h)
   sp$points3d(result[,1], result[,2], result[,3], type="p", ...)
   invisible(result)
 }
@@ -37,9 +35,12 @@ quadplot <- function(e=NULL, f=NULL, g=NULL, h=NULL, angle=75, scale.y=0.6,
                     s3d.control = list(), simplex.control = list(), 
                     legend.control = list(), ...)
 {
-
-    corners <- quadtrafo(diag(4)) # requires scatterplot3d
-    s3d <- do.call("scatterplot3d", 
+    corners <- quadtrafo(diag(4))
+    if(!requireNamespace("scatterplot3d", quietly=TRUE)){
+        message("Package 'scatterplot3d' is required for functionality from the quadplot function")
+        return(NULL)
+    }
+    s3d <- do.call(scatterplot3d::scatterplot3d, 
         c(list(0.5, 0.2886751, 0.2041241, type="n", 
             xlim=range(corners[,1]), ylim=range(corners[,2]), zlim=range(corners[,3]),
             axis = FALSE, grid=FALSE, angle = angle, scale.y = scale.y, main = main),

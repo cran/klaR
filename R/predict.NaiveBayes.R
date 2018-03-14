@@ -1,49 +1,50 @@
-predict.NaiveBayes <- function (object, newdata, threshold = 0.001, ...) 
+predict.NaiveBayes <- function (object, newdata, threshold = 0.001, ...)
 {
-    if (missing(newdata)) 
+    if (missing(newdata))
         newdata <- object$x
     ## (both colnames & varnames are given) & (varnames is a subset of colnames):
-    if ((!any(is.null(colnames(newdata)), is.null(object$varnames))) && 
+    if ((!any(is.null(colnames(newdata)), is.null(object$varnames))) &&
             all(is.element(object$varnames, colnames(newdata))))
         newdata <- data.frame(newdata[, object$varnames])
     nattribs <- ncol(newdata)
+    islogical <- sapply(newdata, is.logical)
     isnumeric <- sapply(newdata, is.numeric)
 #   L <- sapply(
-#      1:nrow(newdata), 
-#      function(i) 
+#      1:nrow(newdata),
+#      function(i)
 #      {
 #         ndata <- as.numeric(newdata[i, ])
 #         L <-  sapply(
-#               1:nattribs, 
-#               function(v) 
+#               1:nattribs,
+#               function(v)
 #               {
 #                  nd <- ndata[v]
-#                  if (is.na(nd)) 
+#                  if (is.na(nd))
 #                  {
 #                     rep(1, length(object$apriori))
 #                  } else {
-#                     prob <- if (isnumeric[v]) 
+#                     prob <- if (isnumeric[v])
 #                     {
 #                        msd <- object$tables[[v]]
 #                        if (object$usekernel) sapply(
-#                           msd, 
-#                           FUN = function(y) 
+#                           msd,
+#                           FUN = function(y)
 #                           {
 #                              dkernel(x = nd, kernel = y, ...)
 #                           })
 #                        else dnorm(nd, msd[, 1], msd[, 2])
 #                     }
 #                     else object$tables[[v]][, nd]
-#                     
+#
 #                     prob
 #                  }
 #               }
-#               )   
-#            
-#         L <- ifelse(L < threshold, threshold, L)               
+#               )
+#
+#         L <- ifelse(L < threshold, threshold, L)
 #         # normalize by p(x) = p(x_1|y) + ... + p(x_p|y)
 #         Lnorm <- apply(L, 2, function(x, y) x/sum(x * y), y = as.vector(object$apriori))
-#         # get product 
+#         # get product
 #         Lprod <- apply(Lnorm, 1, prod)
 #         # normalize by posterior
 #         Lpost <- object$apriori * Lprod
@@ -57,13 +58,15 @@ predict.NaiveBayes <- function (object, newdata, threshold = 0.001, ...)
             nd <- ndata[v]
             if (is.na(nd))
                 return(rep(1, length(object$apriori)))
-            prob <- 
+            prob <-
                 if (isnumeric[v]) {
                     msd <- object$tables[[v]]
                     if (object$usekernel)
-                        sapply(msd, FUN = function(y) 
+                        sapply(msd, FUN = function(y)
                             dkernel(x = nd, kernel = y, ...))
                     else dnorm(nd, msd[, 1], msd[, 2])
+                } else if (islogical[v]) {
+                    object$tables[[v]][, nd + 1]
                 } else {
                     object$tables[[v]][, nd]
                 }
@@ -84,11 +87,11 @@ predict.NaiveBayes <- function (object, newdata, threshold = 0.001, ...)
     }
     L <- sapply(1:nrow(newdata), Lfoo)
 
-    classdach <- factor(object$levels[apply(L, 2, which.max)], 
+    classdach <- factor(object$levels[apply(L, 2, which.max)],
                         levels = object$levels)
     posterior <- t(apply(exp(L), 2, function(x) x/sum(x)))
-                        
-#                  print(str(posterior))      
+
+#                  print(str(posterior))
     colnames(posterior) <- object$levels
     rownames(posterior) <- names(classdach) <- rownames(newdata)
     return(list(class = classdach, posterior = posterior))

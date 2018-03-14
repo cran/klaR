@@ -256,7 +256,7 @@ predict.pvs <- function(object, newdata, quick = FALSE, detail = FALSE, ...) {
 pfromp <- function(matr, tolerance=1.E-4, matnum=matrix(rep(1, dim(matr)[1]^2), nrow=dim(matr)[1]))
 {
     classnum<-dim(matr)[1]
-    #initial set for the matrix of mu´s.
+    #initial set for the matrix of mus.
     matmue<-matrix(0, nrow=classnum, ncol=classnum)
     #initial estimate for class probabilities = laplace probabilities
     pestnew<-rep(1/classnum, classnum)

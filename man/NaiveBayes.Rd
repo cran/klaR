@@ -18,13 +18,13 @@
   \item{grouping}{class vector (a factor).}
   \item{formula}{a formula of the form \code{class ~ x1 + x2 +
       \dots}. Interactions are not allowed.}
-  \item{data}{a data frame of predictors (caegorical and/or
+  \item{data}{a data frame of predictors (categorical and/or
     numeric).}
   \item{prior}{the prior probabilities of class membership. If unspecified, 
     the class proportions for the training set are used. If present, 
     the probabilities should be specified in the order of the factor levels.}
   \item{usekernel}{if \code{TRUE} a kernel density estimate (\code{\link{density}})
-    is used for denstity estimation. If \code{FALSE} a normal density is estimated.}
+    is used for density estimation. If \code{FALSE} a normal density is estimated.}
   \item{fL}{Factor for Laplace correction, default factor is 0, i.e. no correction.}
   \item{\dots}{arguments passed to \code{\link{density}}.}
   \item{subset}{for data given in a data frame, an index vector

@@ -1,7 +1,7 @@
 TopoS <- function(EV.dist, Cells.dist){
     dim(Cells.dist) <- NULL
     dim(EV.dist) <- NULL
-    beta.est <- (1/(Cells.dist %*% Cells.dist)) %*% Cells.dist %*% EV.dist
+    beta.est <- c((1/(Cells.dist %*% Cells.dist)) %*% Cells.dist %*% EV.dist)
     Cells.dist.est <- (Cells.dist * beta.est) - EV.dist
     return(1 - sqrt((Cells.dist.est %*% Cells.dist.est) / (EV.dist %*% EV.dist)))
 }

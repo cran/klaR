@@ -7,15 +7,16 @@
 \description{Computes weight of evidence transform of factor variables for binary classification.}
 \usage{
 woe(x, ...)
-\method{woe}{default}(x, grouping, zeroadj = 0, ids = NULL, 
+\method{woe}{default}(x, grouping, weights = NULL, zeroadj = 0, ids = NULL, 
                       appont = TRUE, ...)
-\method{woe}{formula}(formula, data = NULL, ...)
+\method{woe}{formula}(formula, data = NULL, weights = NULL, ...)
 }
 \arguments{
   \item{x}{A matrix or data frame containing the explanatory variables.}
   \item{grouping}{A factor specifying the binary class for each observation.}
   \item{formula}{A formula of the form \code{grouping ~ x1 + x2 + ...} That is, the response is the grouping factor and the right hand side specifies the discriminators.}
   \item{data}{Data frame from which variables specified in formula are to be taken.}
+  \item{weights}{Vector with observation weights. For call \code{woe(formula, data, weights)} also a a character is possible that specifies the name of the weight coloumn in data.} 
   \item{zeroadj}{Additive constant to be added for a level with 0 observations in a class.}  
   \item{ids}{Vector of either indices or variable names that specifies the variables to be transformed.}
   \item{appont}{Application on training data: logical indicating whether the transformed values for the training data should be returned by recursive calling of \code{predict.woe}.}

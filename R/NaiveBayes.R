@@ -33,9 +33,8 @@ NaiveBayes.default <- function (x, grouping, prior = NULL, usekernel = FALSE, fL
         apriori <- as.table(prior / sum(prior))
     call <- match.call()
     Yname <- "grouping"
-    LaplaceEst <- function(x, f = 0)  
-        t(apply(x, 1, function(u) (u + f)/(sum(u) + (length(u) * f))))
-        
+    LaplaceEst <- function(x, f = 0)  (x + f)/(rowSums(x) + f * nlevels(var))
+
     est <- function(var){
         if(is.numeric(var)) {
             temp <- if (usekernel)

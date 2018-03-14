@@ -146,9 +146,14 @@ stepclass.default <-function (x, grouping, method, improvement = 0.05,
     }
     data <- x
     rm("x")
-    switch(method, 
-        rpart = require("rpart"), 
-        naiveBayes = require("e1071"))
+    success <- switch(method, 
+        rpart = requireNamespace("rpart") , 
+        naiveBayes = requireNamespace("e1071"))
+    if(!is.null(success) && !success) {
+        message("For method 'rpart' the 'rpart' package is required, for method 'naiveBayes' the package 'e1071'.")
+        return(NULL)
+    }
+        
     stopifnot(dim(as.data.frame(data))[1] == length(grouping))
     runtime <- proc.time()[3]
     direction <- match.arg(direction)

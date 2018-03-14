@@ -41,12 +41,13 @@ EDAM <- function(EV0, nzx = 0, iter.max = 10, random = TRUE, standardize = FALSE
     if (!temp.gamma) temp.gamma <- (temp.fin/temp.in)^(1/(max(nzx,nzy)-3))
 
 
-    TopoS <- function(EV.dist, Cells.dist){
-        dim(EV.dist) <- NULL
-        beta.est <- (1/(Cells.dist %*% Cells.dist)) %*% Cells.dist %*% EV.dist
-        Cells.dist.est <- (Cells.dist * beta.est) - EV.dist
-        return(1 - sqrt((Cells.dist.est %*% Cells.dist.est) / (EV.dist %*% EV.dist)))
-    }
+#  TopoS <- function(EV.dist, Cells.dist){
+#        dim(EV.dist) <- NULL
+#        beta.est <- (1/(Cells.dist %*% Cells.dist)) %*% Cells.dist %*% EV.dist
+#        browser()
+#        Cells.dist.est <- (Cells.dist * beta.est) - EV.dist
+#        return(1 - sqrt((Cells.dist.est %*% Cells.dist.est) / (EV.dist %*% EV.dist)))
+#    }
 
     sim.ann <- function(EV.old, EV, EV.dist.old, EV.dist, S.old, S.new, temperature){                           
         change.prob <- exp(-(S.old-S.new)/temperature)
