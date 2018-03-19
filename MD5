@@ -1,6 +1,6 @@
-5e1d250e72165cead6af0a8b6c7c23d2 *DESCRIPTION
-32ee5d2872d36f90a50b9da9b8d8bfb9 *NAMESPACE
-a29e80ad7bfea88476772aa36f286df8 *NEWS
+7405e173b7b4df10b5117523251460d6 *DESCRIPTION
+7cfdc6820bd18c7c4b15b29d83ecaee0 *NAMESPACE
+24f89dab6c0baa4800f0d13731916e65 *NEWS
 044e5f32911e01b48490e064fa78b40a *R/EDAM.R
 9ef14c0cf6f49b06eeda68c9314adad8 *R/NaiveBayes.R
 e682be4c057e1dd12026e50cc63a3132 *R/TopoS.R
@@ -55,8 +55,9 @@ fc08e7431935a81faa8530cba11f0bf4 *man/calc.trans.Rd
 0fa1bb48423342d0044151177d7213b2 *man/centerlines.Rd
 52dbc75c145ed15f73f22eb0a5c881af *man/classscatter.Rd
 af6ad03eefcc105be66ed329d0ae36c8 *man/cond.index.Rd
-23c89aa561ff3264d2fb87e85dbcc5dc *man/corclust.Rd
+58063d6fab0c5d6c4781c351355f97f7 *man/corclust.Rd
 5788f52d31b4b7542c249cc993439f5a *man/countries.Rd
+8538282df354c2d62739a2b76c5ef105 *man/cvtree.Rd
 d7a5c6c8223c3328e625ffe73d9cbeb1 *man/distmirr.Rd
 28e0044aa3a7919dd8ec14ddab57303d *man/dkernel.Rd
 30b222c7149b053e57fc898715ec1fd6 *man/dmvnorm.Rd
@@ -101,9 +102,10 @@ fb4e9cf7f40d00dc58b0fbfe1ecde3d6 *man/tripoints.Rd
 d4ca8cb8de0ef0a7960aad705e13d9e1 *man/tritrafo.Rd
 be3f7334b09b0a920319f13c6f457b00 *man/ucpm.Rd
 77d6348c1156fd0d4b06fdc0015009b0 *man/woe.Rd
-de4c93104ebafa52b4d58e0839e0262d *tests/EDAM.R
-0d1d5fd0d0160115cfacda10526d250c *tests/EDAM.Rout.save
-286f39d4e98523328148d113d6df309b *tests/EDAM.ps.save
-ff1bd3bb6ff77ce4b898681b076389f9 *tests/testklaR.ps.save
-b5d204ce8ef0646764e5854cf90f4d3c *tests/testsklaR.R
-8385eb8234eaf58be6529562ee174e80 *tests/testsklaR.Rout.save
+75b5e1fc95b15d318377825b4c300c4e *man/xtractvars.Rd
+2489491ddceeb72071a31f8060ffc01f *tests/EDAM.R
+9abe203edd813c72c2731678a850c69c *tests/EDAM.Rout.save
+c9c2851feaebfd96be2bcef6126aab0a *tests/EDAM.ps.save
+0900f09639c8316815f7662293d24087 *tests/testklaR.ps.save
+ebc177802c3938706b47197218e9486c *tests/testsklaR.R
+da366953d5274977ce2c2151d3aa85c7 *tests/testsklaR.Rout.save

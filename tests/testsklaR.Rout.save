@@ -1,7 +1,7 @@
 
-R Under development (unstable) (2014-02-10 r64961) -- "Unsuffered Consequences"
-Copyright (C) 2014 The R Foundation for Statistical Computing
-Platform: i386-w64-mingw32/i386 (32-bit)
+R version 3.4.1 (2017-06-30) -- "Single Candle"
+Copyright (C) 2017 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -1205,6 +1205,12 @@ Proportion of trace:
 > data(iris)
 > set.seed(123)
 > meclight.obj <- meclight(Species ~ ., data = iris)
+> set.seed(123)
+> meclight.obj2 <- meclight(iris[,1:4], iris[,5])
+> identical(all.equal(meclight.obj$Proj.matrix, meclight.obj2$Proj.matrix), TRUE)
+[1] TRUE
+> 
+> meclight.obj$Proj.matrix <- abs(meclight.obj$Proj.matrix) # make BLAS checks happy as projection may be P or -P
 > print(meclight.obj)
 Dimension of projection:   1 
 est. bootstrap error rate: 0.02 
@@ -1214,12 +1220,8 @@ Projection matrix:
              Proj.dim 1
 Sepal.Length  0.8293776
 Sepal.Width   1.5344731
-Petal.Length -2.2012117
-Petal.Width  -2.8104603
-> set.seed(123)
-> meclight.obj2 <- meclight(iris[,1:4], iris[,5])
-> identical(all.equal(meclight.obj$Proj.matrix, meclight.obj2$Proj.matrix), TRUE)
-[1] TRUE
+Petal.Length  2.2012117
+Petal.Width   2.8104603
 > 
 > ######
 > # misc
@@ -1696,6 +1698,11 @@ Loading required package: scatterplot3d
 > dev.off()
 null device 
           1 
+> 
+> psSave <- readLines("testklaR.ps.save")
+> ps <- readLines("testklaR.ps")
+> setdiff(ps, psSave)
+character(0)
 > 
 > proc.time()
    user  system elapsed 

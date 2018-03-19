@@ -82,10 +82,12 @@ predict(x)$post
 data(iris)
 set.seed(123)
 meclight.obj <- meclight(Species ~ ., data = iris)
-print(meclight.obj)
 set.seed(123)
 meclight.obj2 <- meclight(iris[,1:4], iris[,5])
 identical(all.equal(meclight.obj$Proj.matrix, meclight.obj2$Proj.matrix), TRUE)
+
+meclight.obj$Proj.matrix <- abs(meclight.obj$Proj.matrix) # make BLAS checks happy as projection may be P or -P
+print(meclight.obj)
 
 ######
 # misc
@@ -158,3 +160,7 @@ partimat(Species ~ ., data = iris, method = "lda",
     plot.matrix = TRUE, imageplot = FALSE)
 
 dev.off()
+
+psSave <- readLines("testklaR.ps.save")
+ps <- readLines("testklaR.ps")
+setdiff(ps, psSave)

@@ -19,7 +19,7 @@ plot(irisEDAM, vertices = FALSE)
 legend(3, 5, col = rainbow(3), legend = levels(iris[,5]), pch = 16)
 print(irisEDAM)
 
-# B3
+# B3    
 phasemat <- lapply(1:4, function(x) B3[B3[,1] == x, 2:14])
 subclasses <- lapply(phasemat, 
     function(x) cutree(hclust(dist(x)), k = round(nrow(x) / 4.47)))
@@ -50,3 +50,7 @@ countryEDAM <- EDAM(logstand, classes = cclasses, sa = FALSE,
 plot(countryEDAM, vertices = FALSE, label = TRUE, stck = FALSE)
 print(countryEDAM)
 dev.off()
+
+psSave <- readLines("EDAM.ps.save")
+ps <- readLines("EDAM.ps")
+setdiff(ps, psSave)

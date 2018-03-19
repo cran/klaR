@@ -192,6 +192,14 @@ Changelog:
 - predict.NaiveBayes gains support for logical explanatory variables thanks to Vincent R. Nijs
 - various fixes to make new checks happy
 
+==== release: 0.6-14
+- cvtree and xtractvars gain help files and are exported now.
+- make MKL check happy (print projection without orientation)
+- add tests for plots (we never diffed the ps files)
+
+
+
+
 
 To Do (at least in Uwe's opinion):
 ======

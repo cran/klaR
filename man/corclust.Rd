@@ -33,7 +33,7 @@ For a large number of factor variables this might take some time.
 The resulting trees can be plotted using \code{plot}.\cr
 Further proceeding would consist in chosing one variable of each cluster to obtain a 
 subset of rather uncorrelated variables for further analysis. 
-%An automatic variable selection can be done using \code{\link{cvtree}} and \code{\link{xtractvars}}.\cr
+An automatic variable selection can be done using \code{\link{cvtree}} and \code{\link{xtractvars}}.\cr
 If an additional class vector \code{cl} is given to the function for any two variables their minimum correlation over all classes is used.  
 }
 \value{Object of class \code{corclust}.
@@ -43,7 +43,6 @@ If an additional class vector \code{cl} is given to the function for any two var
   \item{cluster.factors}{Resulting hierarchical \code{hclust} model for factor variables.}
   \item{id.numerics}{Variable IDs of numeric variables in \code{x}.}
   \item{id.factors}{Variable IDs of factor variables \code{x}.}
-
 }
 
 \references{Roever, C. and Szepannek, G. (2005): Application of a genetic algorithm
@@ -53,8 +52,8 @@ to variable selection in fuzzy clustering. In C. Weihs and W. Gaul (eds), Classi
 
 \author{Gero Szepannek}
 
-\seealso{See also \code{\link{plot.corclust}} and \code{\link{hclust}} for details on the clustering algorithm.}
-% \code{\link{cvtree}}, \code{\link{xtractvars}} 
+\seealso{\code{\link{plot.corclust}} and \code{\link{hclust}} for details on the clustering algorithm, and 
+ \code{\link{cvtree}}, \code{\link{xtractvars}} for postprocessing.}
 \examples{
     data(iris)
     classes <- iris$Species

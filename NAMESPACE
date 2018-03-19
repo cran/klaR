@@ -24,8 +24,8 @@ export(b.scal, betascale, calc.trans, centerlines, classscatter, cond.index, dke
     quadtrafo, quadlines, quadpoints, quadplot,
     rda, nm, sknn, stepclass, svmlight, meclight, TopoS,
     tritrafo, trilines, tripoints, trigrid, triframe, triplot, triperplines,
-    ucpm, benchB3, greedy.wilks, locpvs, pvs, corclust, kmodes, woe)
-#cvtree, xtractvars	
+    ucpm, benchB3, greedy.wilks, locpvs, pvs, corclust, kmodes, woe, cvtree, xtractvars)
+
 
 S3method(NaiveBayes, formula)
 S3method(NaiveBayes, default)
