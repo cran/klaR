@@ -191,12 +191,18 @@ Changelog:
 - NaiveBayes update for new versions of R
 - predict.NaiveBayes gains support for logical explanatory variables thanks to Vincent R. Nijs
 - various fixes to make new checks happy
+- cvtree and xtractvars gain help files and are exported now.
 
 ==== release: 0.6-14
-- cvtree and xtractvars gain help files and are exported now.
 - make MKL check happy (print projection without orientation)
 - add tests for plots (we never diffed the ps files)
 
+==== release: 0.6-15
+- fix length(class) > 1 problem
+- fix Laplace correction thanks to Yan Li
+- add sanity check if not all required variables are provided
+- update reference output
+- adapt to changes in RNG (tests use the old RNG)
 
 
 

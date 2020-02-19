@@ -2,10 +2,10 @@ predict.NaiveBayes <- function (object, newdata, threshold = 0.001, ...)
 {
     if (missing(newdata))
         newdata <- object$x
+    if (sum(is.element(colnames(newdata), object$varnames)) < length(object$varnames))
+        stop("Not all variable names used in object found in newdata") 
     ## (both colnames & varnames are given) & (varnames is a subset of colnames):
-    if ((!any(is.null(colnames(newdata)), is.null(object$varnames))) &&
-            all(is.element(object$varnames, colnames(newdata))))
-        newdata <- data.frame(newdata[, object$varnames])
+    newdata <- data.frame(newdata[, object$varnames])
     nattribs <- ncol(newdata)
     islogical <- sapply(newdata, is.logical)
     isnumeric <- sapply(newdata, is.numeric)

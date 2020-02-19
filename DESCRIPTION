@@ -1,8 +1,8 @@
 Package: klaR
-Version: 0.6-14
-Date: 2018-03-19
+Version: 0.6-15
+Date: 2020-02-18
 Title: Classification and Visualization
-Author: Christian Roever, Nils Raabe, Karsten Luebke, Uwe Ligges, Gero Szepannek, Marc Zentgraf
+Author: Christian Roever, Nils Raabe, Karsten Luebke, Uwe Ligges, Gero Szepannek, Marc Zentgraf, David Meyer
 Maintainer: Uwe Ligges <ligges@statistik.tu-dortmund.de>
 SystemRequirements: SVMlight
 Suggests: scatterplot3d (>= 0.3-22), som, mlbench, rpart, e1071
@@ -15,9 +15,9 @@ Description: Miscellaneous functions for classification and visualization,
          and shardsplot() of cluster results as well as kmodes() clustering for categorical data, 
 	 corclust() variable clustering, variable extraction from different variable clustering models 
          and weight of evidence preprocessing.
-License: GPL-2
+License: GPL-2 | GPL-3
 URL: http://www.statistik.tu-dortmund.de
 NeedsCompilation: no
-Packaged: 2018-03-19 10:52:49 UTC; ligges
+Packaged: 2020-02-18 22:04:05 UTC; ligges
 Repository: CRAN
-Date/Publication: 2018-03-19 11:10:32 UTC
+Date/Publication: 2020-02-19 06:00:15 UTC

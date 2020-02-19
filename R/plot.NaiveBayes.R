@@ -13,8 +13,7 @@ plot.NaiveBayes <- function(x, vars, n = 1000, legendplot = TRUE, lty, col,
   for(j in seq(along = vars))
   {
     dummy <- (x$tables[names(x$tables) == as.name(vars[j])])
-    cd1 <- class(dummy[[1]]) 
-    if(cd1 == "matrix")
+    if(inherits(dummy[[1]], "matrix"))
     {
         dummy <- data.frame(dummy)
         plotvector <- seq(min(x$x[,vars[j]]), max(x$x[,vars[j]]), len = n)
@@ -30,9 +29,9 @@ plot.NaiveBayes <- function(x, vars, n = 1000, legendplot = TRUE, lty, col,
             legend(min(plotvector), max(pv), legend = rownames(dummy), 
                 lty = lty, col = col)
     }
-    if(cd1 == "table")
+    if(inherits(dummy[[1]], "table"))
         mosaicplot(dummy[[1]], main = main, ...)
-    if(cd1 == "list")
+    if(inherits(dummy[[1]], "list"))
     {        
         plotvector <- seq(min(x$x[,vars[j]]), max(x$x[,vars[j]]), len = n)
         pv <- matrix(0, nrow = length(dummy[[1]]), ncol = n)

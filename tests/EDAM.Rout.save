@@ -31,6 +31,7 @@ Loading required package: MASS
 [1,] 0.7979349
 > 
 > # iris
+> suppressWarnings(RNGversion("2.10.0"))
 > set.seed(1234)
 > iris.sample <- sample(150, 42)
 > irisEDAM <- EDAM(iris[iris.sample, 1:4], classes = iris[iris.sample, 5], 

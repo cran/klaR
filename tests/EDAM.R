@@ -11,6 +11,7 @@ postscript("EDAM.ps")
 TopoS(dist(B3[, 2:14]), dist(cmdscale(dist(B3[, 2:14]))))
 
 # iris
+suppressWarnings(RNGversion("2.10.0"))
 set.seed(1234)
 iris.sample <- sample(150, 42)
 irisEDAM <- EDAM(iris[iris.sample, 1:4], classes = iris[iris.sample, 5], 

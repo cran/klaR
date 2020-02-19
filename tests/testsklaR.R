@@ -9,6 +9,7 @@ postscript("testklaR.ps")
 # classifier
 
 # Naive Bayes
+suppressWarnings(RNGversion("2.10.0"))
 set.seed(123)
 print(NB <- NaiveBayes(PHASEN ~ ., data = B3))
 predict(NB)
