@@ -115,7 +115,7 @@ greedy.wilks.default <- function(X, grouping, niveau = 0.2, ...){
         Mat           <- as.matrix(cbind(X.mod, X[,j]))     # the model to be tested
         colnames(Mat) <- c(colnames(X.mod), colnames(X)[j])
         e2            <- manova(Mat ~ grouping)
-        e2sum         <- summary(e2, test = "Wilks")[[4]][1,]
+        e2sum         <- summary(e2, test = "Wilks", tol = 0)[[4]][1,]
         ausw.wilks[j] <- e2sum[2]
         ausw.Fstat[j] <- e2sum[3] 
         ausw.pwert[j] <- e2sum[6] 
