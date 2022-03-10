@@ -4,7 +4,7 @@ library(klaR)
 library(MASS)
 data(B3)
 data(countries)
-postscript("EDAM.ps")
+postscript("EDAM.ps", encoding="ISOLatin1")
 
 ######
 # EDAM

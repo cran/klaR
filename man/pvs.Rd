@@ -107,9 +107,11 @@ LDAprediction <- predict(ldamodel, testset$x)
 ## Example 2: learn a "qda" model with pvs on half of the Satellite dataset, 
 ## using "ks.test" 
 
+\donttest{
 library("mlbench")
 data("Satellite")
 
+## takes few seconds as exact KS tests are calculated here:
 model <- pvs(classes ~ ., Satellite[1:3218,], method="qda", vs.method="ks.test")
 ## short summary, showing the class-pairs of the submodels and the selected variables
 model 
@@ -122,6 +124,7 @@ pred <- predict(model,Satellite[3219:6435,], quick=TRUE) # that's much quicker
 pred$class 
 ## or the posterior probabilities:
 pred$posterior
+}
 }
 \keyword{classif}
 \keyword{multivariate}

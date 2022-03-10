@@ -20,7 +20,7 @@ Socioeconomic data for the most populous countries.
 }
 
 \source{
-CIA World Factbook \url{http://www.cia.gov/cia/publications/factbook/}
+CIA World Factbook \url{https://www.cia.gov/the-world-factbook/}
 }
 
 \examples{

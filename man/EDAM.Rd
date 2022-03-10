@@ -63,7 +63,6 @@ EDAM(EV0, nzx = 0, iter.max = 10, random = TRUE, standardize = FALSE,
   \emph{Vergleich von Kohonen Self-Organizing-Maps mit einem nichtsimultanen 
   Klassifikations- und Visualisierungsverfahren}.
   Diploma Thesis, Department of Statistics, University of Dortmund.
-  \url{http://www.statistik.tu-dortmund.de/de/content/einrichtungen/lehrstuehle/personen/raabe/Diplomarbeit.pdf}.
 }
 \author{Nils Raabe}
 

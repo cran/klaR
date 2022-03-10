@@ -137,7 +137,7 @@ plot.corclust <- function(x, selection = "both",  mincor = NULL, ...){
 ### function that extract cluster IDs for variables from object fo class corclust 
 cvtree <- function(object, k = 2, mincor = NULL, ...){
   
-  if(class(object) != "corclust") stop("Object must be of class corclust!")
+  if(!inherits(object, "corclust")) stop("Object must be of class corclust!")
   numfac <- !c(is.null(object$cluster.numerics),is.null(object$cluster.factors))
   if(!is.null(mincor)){
     k <- NULL
@@ -251,10 +251,10 @@ cvtree <- function(object, k = 2, mincor = NULL, ...){
 
 # convenience function to apply variable selction based on an obect of class cvtree (or the summary of a CLV object)
 xtractvars <- function(object, data, thres = 0.5){
-  if(class(object) != "cvtree") {if(!any("groups" %in% names(object))) stop("Object must be of class cvtree!")}
+  if(!inherits(object, "cvtree")) {if(!any("groups" %in% names(object))) stop("Object must be of class cvtree!")}
                                  # not only for application on cvtree output but also on summary of CLV objects          
   
-  if(class(object) == "cvtree"){
+  if(inherits(object, "cvtree")){
     clids <- unique(object$correlations[,1])
     vsel <- NULL
     for(i in clids){

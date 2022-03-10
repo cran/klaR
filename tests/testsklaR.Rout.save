@@ -21,7 +21,7 @@ Type 'q()' to quit R.
 Loading required package: MASS
 > library("MASS")
 > data(B3)
-> postscript("testklaR.ps")
+> postscript("testklaR.ps", encoding="ISOLatin1")
 > 
 > ############
 > # classifier
@@ -990,35 +990,7 @@ Values calculated in each step of the selection procedure:
 6    1.709e-02
 7    1.379e-03
 8    2.486e-03
-> print(lda(gw_obj$formula, data = B3))
-Call:
-lda(gw_obj$formula, data = B3)
-
-Prior probabilities of groups:
-        1         2         3         4 
-0.3757962 0.1528662 0.2993631 0.1719745 
-
-Group means:
-       EWAJW   LSTKJW    ZINSK   CP91JW      IAU91JW   PBSPJW   ZINSLR    PCPJW
-1  1.0645763 2.111017 4.715085 3.545254  6.893559322 2.789153 3.976271 2.214746
-2  2.6808333 4.195833 6.836250 6.427500 11.360416667 3.927917 3.571250 3.187917
-3  1.0778723 6.291064 7.682553 3.656596 -0.003404255 4.496170 3.230000 4.062128
-4 -0.9940741 4.249630 5.672222 2.620000 -1.939259259 4.206296 3.739259 3.938148
-
-Coefficients of linear discriminants:
-                LD1         LD2          LD3
-EWAJW   -0.04107489 -0.66884489 -0.275687088
-LSTKJW   0.20893161  0.14392549 -0.261964673
-ZINSK    0.65721216 -0.14041644 -0.074454749
-CP91JW   0.33362685  0.10232432  0.426167611
-IAU91JW -0.05559234 -0.04194468  0.018758932
-PBSPJW  -1.35166645  0.37434238  1.079166073
-ZINSLR  -0.92927856  0.31677554  0.712785501
-PCPJW    0.49981922 -0.09015987  0.005415702
-
-Proportion of trace:
-   LD1    LD2    LD3 
-0.5462 0.3596 0.0942 
+> ldaresult <- lda(gw_obj$formula, data = B3)
 > gw_obj2 <- greedy.wilks(B3[,-1], B3$PHASEN, niveau = 0.1)
 > identical(all.equal(gw_obj$results, gw_obj2$results), TRUE)
 [1] TRUE
@@ -1702,7 +1674,7 @@ null device
 > 
 > psSave <- readLines("testklaR.ps.save")
 > ps <- readLines("testklaR.ps")
-> setdiff(ps, psSave)
+> setdiff(trimws(ps), trimws(psSave))
 character(0)
 > 
 > proc.time()

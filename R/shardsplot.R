@@ -13,7 +13,7 @@ shardsplot <- function(object, plot.type = c("eight", "four", "points", "n"),
         grd <- FALSE
     }
     
-    if (class(object)=="som"){
+    if (inherits(object, "som")){
         preimages <- object$code
         nzx <- object$x
         nzy <- object$y
@@ -33,7 +33,7 @@ shardsplot <- function(object, plot.type = c("eight", "four", "points", "n"),
             cl.ord <- 99*(cl.ord - min(cl.ord))/diff(range(cl.ord))+1
         }
     }
-    else if(class(object) == "EDAM"){
+    else if(inherits(object, "EDAM")){
         preimages <- object$preimages
         Z0 <- object$Z
         if (classes[1]==0) cl.ord <- as.numeric(object$cl.ord)
@@ -183,7 +183,7 @@ shardsplot <- function(object, plot.type = c("eight", "four", "points", "n"),
             }
         }
     }
-    if (class(object)!="som" | (class(object)=="som" & !is.na(plot.data.column))){
+    if (!inherits(object, "som") || (inherits(object, "som") && !is.na(plot.data.column))){
         vec.col.ord <- if(is.character(classcolors) && length(classcolors)==1){
             temp.col <- switch(classcolors,
                 "rainbow" = rainbow(max(cl.ord))[cl.ord],
@@ -269,7 +269,7 @@ shardsplot <- function(object, plot.type = c("eight", "four", "points", "n"),
                 }
             }
         }
-        if (cl.ord[1] && class(object)!="som"){
+        if (cl.ord[1] && !inherits(object, "som")){
             if (Cells0[i,1] > 1 && Cells0[i,2] > 1){
                 if (cl.ord[Z0[Cells0[i,1]-1, Cells0[i,2]]] == cl.ord[i] &&
                     cl.ord[Z0[Cells0[i,1], Cells0[i,2]-1]] == cl.ord[i]){
