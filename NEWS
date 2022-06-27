@@ -210,6 +210,16 @@ Changelog:
 - update test results for changes in the R graphics device
 - omit printing some lda test results to avoid eigenvector sign related diffs
 
+==== release: 1.7-1
+- fix some LaTeX isues (replace \& by & in Rd files)
+- fix issues when comparing classes to a length 1 vector
+- drawparti and hence partimat try to decide for a non random class in case 
+  of (almost) identical posteriors
+- predict.NaiveBayes now handles newdata correctly if factor structure does 
+  not match the training datas'
+- corclust: initialization of kor matrix fixed
+
+
 
 
 

@@ -160,7 +160,11 @@ kmodes <- function(data, modes, iter.max = 10, weighted = FALSE, fast = TRUE) {
       }
       # assign clusters 
       #old.cluster  <- cluster
-      cluster      <- apply(dists, 1, function(z) {a <- which.min(z); if (length(a)>1) a <- sample(a,1); return(a)}) # sample in case of multiple minima
+      cluster      <- apply(dists, 1, function(z) {
+        a <- which(z == min(z, na.rm=TRUE))
+        if (length(a) > 1) a <- sample(a,1)
+        return(a)
+      }) # sample in case of multiple minima
       #min.dists     <- apply(cbind(clusters, dists), 1, function(z) z[z[1]+1])      
       # update modes
       for(j in 1:nrow(modes)) modes[j,] <- update_mode(j, num_var, data, cluster)        
@@ -190,7 +194,11 @@ kmodes <- function(data, modes, iter.max = 10, weighted = FALSE, fast = TRUE) {
         }
         # assign clusters 
         old.cluster  <- cluster
-        cluster      <- apply(dists, 1, function(z) {a <- which.min(z); if (length(a)>1) a <- sample(a,1); return(a)}) # sample in case of multiple minima
+        cluster      <- apply(dists, 1, function(z) {
+            a <- which(z == min(z, na.rm=TRUE))
+            if (length(a)>1) a <- sample(a,1)
+            return(a)
+        }) # sample in case of multiple minima
         #min.dists     <- apply(cbind(clusters, dists), 1, function(z) z[z[1]+1])      
         # update modes
         for(j in 1:nrow(modes)) modes[j,] <- update_mode(j, num_var, data, cluster)        

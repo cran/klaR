@@ -52,6 +52,21 @@ predict.NaiveBayes <- function (object, newdata, threshold = 0.001, ...)
 #         Lpost
 #      }
 #   )
+    isfactor <- sapply(object$x, is.factor)
+    if(any(isfactor)){
+        factors <- object$varnames[isfactor]
+        newdata[factors] <- lapply(factors, function(f) {
+            undf <- unique(newdata[[f]])
+            contained <- undf %in% levels(object$x[[f]])
+            if(any(!contained)){
+                newlevels <- undf[!contained]
+                warning(paste0("NAs produced for new level(s) (", paste(sQuote(newlevels, "'"), collapse=", "), ") of newdata$", f))
+            }
+            factor(newdata[[f]], levels=levels(object$x[[f]]))
+        })
+    }
+
+    
     newdata <- data.matrix(newdata)
     Lfoo <- function(i) {
         tempfoo <- function(v) {

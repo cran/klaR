@@ -1,6 +1,6 @@
 Package: klaR
-Version: 1.7-0
-Date: 2022-03-09
+Version: 1.7-1
+Date: 2022-06-27
 Title: Classification and Visualization
 Author: Christian Roever, Nils Raabe, Karsten Luebke, Uwe Ligges, Gero Szepannek, Marc Zentgraf, David Meyer
 Maintainer: Uwe Ligges <ligges@statistik.tu-dortmund.de>
@@ -10,15 +10,15 @@ Enhances: clustMixType, randomForest, ClustVarLV
 Depends: R (>= 2.10.0), MASS
 Imports: combinat, questionr, grDevices, stats, utils, graphics
 Description: Miscellaneous functions for classification and visualization,
-	 e.g. regularized discriminant analysis, sknn() kernel-density naive Bayes, 
-	 an interface to 'svmlight' and stepclass() wrapper variable selection 
-   	 for supervised classification, partimat() visualization of classification rules 
+     e.g. regularized discriminant analysis, sknn() kernel-density naive Bayes, 
+     an interface to 'svmlight' and stepclass() wrapper variable selection 
+     for supervised classification, partimat() visualization of classification rules 
          and shardsplot() of cluster results as well as kmodes() clustering for categorical data, 
-	 corclust() variable clustering, variable extraction from different variable clustering models 
+     corclust() variable clustering, variable extraction from different variable clustering models 
          and weight of evidence preprocessing.
 License: GPL-2 | GPL-3
-URL: http://www.statistik.tu-dortmund.de
+URL: https://www.statistik.tu-dortmund.de
 NeedsCompilation: no
-Packaged: 2022-03-10 13:55:03 UTC; ligges
+Packaged: 2022-06-27 14:30:23 UTC; ligges
 Repository: CRAN
-Date/Publication: 2022-03-10 15:00:02 UTC
+Date/Publication: 2022-06-27 15:20:02 UTC

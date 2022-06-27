@@ -30,7 +30,7 @@ corclust <- function(x, cl = NULL, method = "complete"){
         kor <- 1-abs(cor(x[,numids],use="pairwise.complete.obs")) # not yet the matrix of distances!
       }
       else{
-        kor <- matrix(1,ncol(x[,numids]),ncol(x[,numids]))
+        kor <- matrix(0,ncol(x[,numids]),ncol(x[,numids]))
         for(k in seq(along=levels(cl))){
           cls <- levels(cl)[k]
           oldkor <- kor
@@ -53,7 +53,7 @@ corclust <- function(x, cl = NULL, method = "complete"){
         
     }  
     
-    if(length(facids)==0) {cat("No factor variables!\n\n"); facres <- NULL; crv <- NULL}
+    if(length(facids)==0) {cat("No factor variables in x, Cramer's V not used.\n\n"); facres <- NULL; crv <- NULL}
     if(length(facids)==1){cat("Only one factor variable. No cluster model for factors returned!\n\n"); facres <- NULL; crv <- NULL}
     if(length(facids)>1){
       N <- nrow(x)
@@ -61,7 +61,7 @@ corclust <- function(x, cl = NULL, method = "complete"){
       crv <- function(X1,X2,n=N){ # fucntion to calculate cramer's V statistic
         l <- nlevels(X1)
         m <- nlevels(X2)
-        chi2 <- chisq.test(X1,X2,correct=F)
+        chi2 <- chisq.test(X1,X2,correct=FALSE)
         V <- sqrt(chi2$statistic/(n*min(l-1,m-1)))
         return(V)
       }

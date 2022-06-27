@@ -199,17 +199,21 @@ drawparti <- function(grouping, x, y, method = "lda", prec = 100,
         naiveBayes = predict(z, grd , type="raw", ...),
         stop("method not yet supported"))
     khead <- switch(method,
-        lda = predict(z, data.frame(cbind(x,y)),...)$class,
-        qda = predict(z, data.frame(cbind(x,y)),...)$class,
-        svmlight = predict(z, data.frame(cbind(x,y)),...)$class,
-        rda = predict(z, data.frame(cbind(x,y)), posterior=TRUE, aslist=TRUE)$class,
-        rpart = predict(z, data.frame(cbind(x,y)), type="class", ...),
-        sknn = predict(z, data.frame(cbind(x,y)),...)$class,
-#        disco = predict(z, data.frame(cbind(x,y)),...)$class,
-        naiveBayes = predict(z, data.frame(cbind(x,y)), ...),
+        lda = predict(z, data.frame(cbind(x,y)),...)$post,
+        qda = predict(z, data.frame(cbind(x,y)),...)$post,
+        svmlight = e.scal(predict(z, data.frame(cbind(x,y)),...)$post)$sv,
+        rda = predict(z, data.frame(cbind(x,y)), posterior=TRUE, aslist=TRUE)$post,
+        rpart = predict(z, data.frame(cbind(x,y)), ...),
+        sknn = predict(z, data.frame(cbind(x,y)),...)$post,
+#        disco = predict(z, data.frame(cbind(x,y)),...)$post,
+        naiveBayes = predict(z, data.frame(cbind(x,y)), type="raw", ...),
         stop("method not yet supported"))
 
-    colorw <- grouping != khead
+# was: colorw <- grouping != khead
+# avoid random results in case posteriors are almost identical
+
+    colorw <- colnames(khead)[apply(khead, 1, which.max)] != grouping
+    
     err <- round(mean(colorw), 3)
     color <- ifelse(colorw, col.wrong, col.correct)
     if(is.character(gs) || is.factor(gs)) gs <- substr(gs, 1, 1)

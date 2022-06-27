@@ -102,7 +102,7 @@ stepclass.default <-function (x, grouping, method, improvement = 0.05,
                 }
             object <- try(do.call(method, list(traindat, grouping[train], ...)), 
                 silent = TRUE)
-            if (class(object) != "try-error") {
+            if (!inherits(object, "try-error")) {
                 testdat <- data[test, vars]
                 if (is.vector(testdat)) 
                   if (is.data.frame(data)) {
@@ -114,7 +114,7 @@ stepclass.default <-function (x, grouping, method, improvement = 0.05,
                     testdat <- matrix(testdat, ncol = length(vars))
                   }
                 classi <- try(predict(object, testdat), silent = TRUE)
-                if (class(classi) != "try-error") {
+                if (!inherits(classi, "try-error")) {
                   if (is.list(classi)) 
                     classi <- classi$posterior
                   predicted[test] <- as.numeric(max.col(classi))
@@ -315,9 +315,9 @@ stepclass.default <-function (x, grouping, method, improvement = 0.05,
     }
     object <- try(do.call(method, list(data[, model], grouping, ...)), 
         silent = TRUE)
-    if (class(object) != "try-error") {
+    if (!inherits(object, "try-error")) {
         classi <- try(predict(object, data[, model]), silent = TRUE)
-        if (class(classi) != "try-error") {
+        if (!inherits(classi, "try-error")) {
             if (is.list(classi)) 
                 classi <- classi$posterior
         aper <- (1-ucpm(classi,grouping)[[criterion]])
