@@ -4,7 +4,6 @@
 \alias{svmlight.formula}
 \alias{svmlight.matrix}
 \alias{svmlight.data.frame}
-\alias{svmlight.file}
 \title{Interface to SVMlight}
 \description{
 Function to call SVMlight from R for classification. Multiple group

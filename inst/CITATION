@@ -1,6 +1,6 @@
 citHeader("To cite klaR in publications use:")
 
-citEntry(entry       = "inproceedings",
+bibentry(bibtype = "inproceedings",
     title        = "klaR Analyzing German Business Cycles",
     author       = c(
             person(given="Claus", family="Weihs", email="weihs@statistik.tu-dortmund.de"),

@@ -219,8 +219,8 @@ Changelog:
   not match the training datas'
 - corclust: initialization of kor matrix fixed
 
-
-
+==== release: 1.7-2
+- rename internal function svmlight.file to svmlight_file to make S3 checks happy
 
 
 

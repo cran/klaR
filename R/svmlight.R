@@ -65,11 +65,11 @@ y <- grouping
       ### construct matrix to learn svm in a format, so that svmlight can read it
       if (class.type !="oao")
          {
-          train <- svmlight.file(cbind(ymat[,j], x), train = TRUE)    
+          train <- svmlight_file(cbind(ymat[,j], x), train = TRUE)    
           }
         else
           {
-           train <- svmlight.file(cbind(ymat[[j]], xlist[[j]]), train = TRUE)
+           train <- svmlight_file(cbind(ymat[[j]], xlist[[j]]), train = TRUE)
            }  
       ### save to disk
           write.table(train, file = train.filename[j], row.names = FALSE, 
@@ -207,8 +207,8 @@ return(erg)
 #######################################
 
 ### save test data on disk
-    x <- svmlight.file(cbind(rep(0,nrow(x)),x), train = TRUE)
-    #x <- svmlight.file(x, train = FALSE)
+    x <- svmlight_file(cbind(rep(0,nrow(x)),x), train = TRUE)
+    #x <- svmlight_file(x, train = FALSE)
     test.filename <- paste(object$temp.dir, "_test_.dat", sep = "")
     write.table(x, file = test.filename, row.names = FALSE, 
         col.names = FALSE, quote = FALSE)
@@ -252,7 +252,7 @@ return(erg)
 }
 
 
-svmlight.file <- function(x, train = FALSE, ...)
+svmlight_file <- function(x, train = FALSE, ...)
 {
     if(is.vector(x)) x <- t(x)
     erg <- x
