@@ -1,6 +1,6 @@
 Package: klaR
-Version: 1.7-2
-Date: 2023-03-17
+Version: 1.7-3
+Date: 2023-12-13
 Title: Classification and Visualization
 Author: Christian Roever, Nils Raabe, Karsten Luebke, Uwe Ligges, Gero Szepannek, Marc Zentgraf, David Meyer
 Maintainer: Uwe Ligges <ligges@statistik.tu-dortmund.de>
@@ -19,6 +19,6 @@ Description: Miscellaneous functions for classification and visualization,
 License: GPL-2 | GPL-3
 URL: https://statistik.tu-dortmund.de
 NeedsCompilation: no
-Packaged: 2023-03-17 17:28:11 UTC; ligges
+Packaged: 2023-12-13 16:51:28 UTC; ligges
 Repository: CRAN
-Date/Publication: 2023-03-17 23:40:10 UTC
+Date/Publication: 2023-12-13 22:30:03 UTC

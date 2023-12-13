@@ -43,7 +43,6 @@ pB3 <- pB3$posterior
 # stepclass
 set.seed(123)
 print(SC <- stepclass(PHASEN ~ ., data = B3, method = "lda", criterion = "AS", output=FALSE))
-print(lda(SC$formula, data = B3))
 
 #########
 # scaling
@@ -102,14 +101,6 @@ errormatrix(B3$PHASEN, apply(prior.prob, 1, which.max))
 # friedman.data
 set.seed(123)
 friedman.data(1, 6, 40)
-
-# dkernel
-set.seed(123)
-kern <- density(rnorm(50))
-x <- seq(-3, 3, len = 100)
-print(dkernel(x, kern))
-
-
 
 ########
 ## plots

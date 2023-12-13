@@ -68,11 +68,11 @@ An object of class \sQuote{\code{pvs}} containing the following components:
 \author{Gero Szepannek, \email{szepannek@statistik.tu-dortmund.de}, Christian Neumann}
 \references{
     \itemize{
-        \item{}{Szepannek, G. and Weihs, C. (2006)  Variable Selection for Classification of More than Two 
+        \item Szepannek, G. and Weihs, C. (2006)  Variable Selection for Classification of More than Two 
             Classes Where the Data are Sparse. In \emph{From Data and Information Analysis to Kwnowledge Engineering.},
-          eds Spiliopolou, M., Kruse, R., Borgelt, C., Nuernberger, A. and Gaul, W. pp. 700-708. Springer, Heidelberg.}
-        \item{}{Szepannek, G. (2008): Different Subspace Classification - Datenanalyse, -interpretation, -visualisierung und 
-          Vorhersage in hochdimensionalen Raeumen, ISBN 978-3-8364-6302-7, vdm, Saarbruecken.}
+          eds Spiliopolou, M., Kruse, R., Borgelt, C., Nuernberger, A. and Gaul, W. pp. 700-708. Springer, Heidelberg.
+        \item Szepannek, G. (2008): Different Subspace Classification - Datenanalyse, -interpretation, -visualisierung und 
+          Vorhersage in hochdimensionalen Raeumen, ISBN 978-3-8364-6302-7, vdm, Saarbruecken.
     }
 }
 \seealso{

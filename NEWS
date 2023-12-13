@@ -222,6 +222,10 @@ Changelog:
 ==== release: 1.7-2
 - rename internal function svmlight.file to svmlight_file to make S3 checks happy
 
+==== release: 1.7-3
+- fix lost braces in documentation
+- change tests not to produce any diffs
+
 
 
 To Do (at least in Uwe's opinion):
