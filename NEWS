@@ -226,6 +226,9 @@ Changelog:
 - fix lost braces in documentation
 - change tests not to produce any diffs
 
+==== release: 1.7-4
+- add Authors@R
+
 
 
 To Do (at least in Uwe's opinion):

@@ -18,6 +18,8 @@ b.scal(member, grouping, dis = FALSE, eps = 1e-04)
      the values are treated as one point.}
 }
 \details{
+\url{https://magnusdv.shinyapps.io/quickped}
+
 With \code{\link{betascale}} and \code{b.scal}, membership values of an argmax classifier 
 are scaled in such a way, that the mean membership value of those values which are assigned 
 to each class reflect the mean correctness rate of that values.

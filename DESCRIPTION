@@ -1,24 +1,52 @@
 Package: klaR
-Version: 1.7-3
-Date: 2023-12-13
+Version: 1.7-4
+Date: 2026-02-23
 Title: Classification and Visualization
-Author: Christian Roever, Nils Raabe, Karsten Luebke, Uwe Ligges, Gero Szepannek, Marc Zentgraf, David Meyer
-Maintainer: Uwe Ligges <ligges@statistik.tu-dortmund.de>
+Authors@R: c(person(given = "Christian",
+					family = "Roever",
+					role = "aut"),
+			 person(given = "Nils",
+					family = "Raabe",
+					role = "aut"),
+			 person(given = "Karsten",
+					family = "Luebke",
+					role = "aut"),
+			 person(given = "Uwe",
+					family = "Ligges",
+					role = c("aut", "cre"),
+					email = "ligges@statistik.tu-dortmund.de"),
+			 person(given = "Gero",
+					family = "Szepannek",
+					role = "aut"),
+			 person(given = "Marc",
+					family = "Zentgraf",
+					role = "aut"),
+			 person(given = "David",
+					family = "Meyer",
+					role = "aut"))
 SystemRequirements: SVMlight
 Suggests: scatterplot3d (>= 0.3-22), som, mlbench, rpart, e1071
 Enhances: clustMixType, randomForest, ClustVarLV
 Depends: R (>= 2.10.0), MASS
 Imports: combinat, questionr, grDevices, stats, utils, graphics
 Description: Miscellaneous functions for classification and visualization,
-     e.g. regularized discriminant analysis, sknn() kernel-density naive Bayes, 
-     an interface to 'svmlight' and stepclass() wrapper variable selection 
-     for supervised classification, partimat() visualization of classification rules 
-         and shardsplot() of cluster results as well as kmodes() clustering for categorical data, 
-     corclust() variable clustering, variable extraction from different variable clustering models 
-         and weight of evidence preprocessing.
+    e.g. regularized discriminant analysis, sknn() kernel-density naive Bayes, 
+    an interface to 'svmlight' and stepclass() wrapper variable selection 
+    for supervised classification, partimat() visualization of classification rules 
+    and shardsplot() of cluster results as well as kmodes() clustering for categorical data, 
+    corclust() variable clustering, variable extraction from different variable clustering models 
+    and weight of evidence preprocessing.
 License: GPL-2 | GPL-3
 URL: https://statistik.tu-dortmund.de
 NeedsCompilation: no
-Packaged: 2023-12-13 16:51:28 UTC; ligges
+Packaged: 2026-02-23 12:12:43 UTC; ligges
+Author: Christian Roever [aut],
+  Nils Raabe [aut],
+  Karsten Luebke [aut],
+  Uwe Ligges [aut, cre],
+  Gero Szepannek [aut],
+  Marc Zentgraf [aut],
+  David Meyer [aut]
+Maintainer: Uwe Ligges <ligges@statistik.tu-dortmund.de>
 Repository: CRAN
-Date/Publication: 2023-12-13 22:30:03 UTC
+Date/Publication: 2026-02-23 17:00:11 UTC
